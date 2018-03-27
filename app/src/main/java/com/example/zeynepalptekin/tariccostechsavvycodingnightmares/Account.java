@@ -26,6 +26,7 @@ public class Account {
     public Account() {
         name = "name";
         email = "user@email.com";
+        loc = new Location();
     }
 
     /**

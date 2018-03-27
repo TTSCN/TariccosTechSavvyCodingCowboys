@@ -33,10 +33,7 @@ public class Listing {
      * the account of the owner of the listing
      */
     private Account owner;
-    /**
-     * the image associated with the listing
-     */
-    private BufferedImage img;
+    
     /**
      * the cost, in dollars and cents, to use the service or equipment per hour
      */
@@ -46,12 +43,6 @@ public class Listing {
      * the date the listing was created
      */
     private Date date;
-
-
-try {
-        img = ImageIO.read(new File("strawberry.jpg"));
-    } catch (IOException e) {
-    }
 
 //    String Location;
 //    Add Location class info after pulling from Abby

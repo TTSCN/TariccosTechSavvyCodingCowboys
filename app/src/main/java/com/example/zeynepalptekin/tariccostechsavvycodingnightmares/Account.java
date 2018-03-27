@@ -21,7 +21,7 @@ public class Account {
     private Location loc;
 
     /**
-     * constructs an empty account with a fake name and a fake email
+     * constructs an empty account with a fake name, a fake email, and a default location
      */
     public Account() {
         name = "name";

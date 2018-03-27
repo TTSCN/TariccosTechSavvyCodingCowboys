@@ -3,6 +3,7 @@ package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 import java.io.File;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
+import java.util.Date;
 
 import javax.imageio.ImageIO;
 
@@ -14,7 +15,8 @@ public class Listing {
     /**
      * type: equipment or service
      */
-    private String type;    //Service or equipment
+    private String type;
+    //Service or equipment
     /**
      * title of equipment or service
      */
@@ -40,6 +42,10 @@ public class Listing {
      */
     private Double cost;
 
+    /**
+     * the date the listing was created
+     */
+    private Date date;
 
 
 try {
@@ -65,6 +71,7 @@ try {
         title = type + " in " + owner.getLocation() + " for " + cost;
         this.description = description;
         equipmentType = null;
+        date = new Date();
     }
 
     /**
@@ -83,6 +90,7 @@ try {
         this.title = equipmentType + " in " + owner.getLocation() + " for " + cost;
         this.description = description;
         this.equipmentType = equipmentType;
+        date = new Date();
     }
 
     /**
@@ -121,5 +129,9 @@ try {
      */
     public String getDescription() { return description;}
 
-
+    /**
+     * returns the date the listing was created
+     * @return returns the date the listing was created
+     */
+    public Date getDate() { return date;}
 }

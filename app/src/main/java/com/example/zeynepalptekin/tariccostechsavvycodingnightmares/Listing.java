@@ -14,29 +14,34 @@ public class Listing {
     /**
      * type: equipment or service
      */
-    String type;    //Service or equipment
+    private String type;    //Service or equipment
     /**
      * title of equipment or service
      */
-    String title;
+    private String title;
     /**
      * user-entered description of equipment or service
      */
-    String description;
+    private String description;
     /**
      * if the type is equipment, the type of equipment
      */
-    String equipmentType;
+    private String equipmentType;
     /**
      * the account of the owner of the listing
      */
-    Account owner;
-
+    private Account owner;
     /**
      * the image associated with the listing
      */
-    BufferedImage img;
-    
+    private BufferedImage img;
+    /**
+     * the cost, in dollars and cents, to use the service or equipment per hour
+     */
+    private Double cost;
+
+
+
 try {
         img = ImageIO.read(new File("strawberry.jpg"));
     } catch (IOException e) {
@@ -50,28 +55,71 @@ try {
      * constructs a listing with the type "service"
      * @param owner account of the owner of the listing
      * @param type type of the listing; this constructor sets type to "service"
-     * @param title title of the listing
      * @param description user-entered description of the listing
+     * @param cost the cost, in dollars in cents, per hour of the service
      */
-    public Listing(Account owner, String type, String title, String description) {
+    public Listing(Account owner, String type, String description, double cost) {
         type = "service";
-        this.title = title;
+        this.owner = owner;
+        this.cost = cost;
+        title = type + " in " + owner.getLocation() + " for " + cost;
         this.description = description;
+        equipmentType = null;
     }
 
     /**
      * constructs a listing with the type "equipment"
+     * @param owner the account of the owner of the listing
      * @param type type of the listing; this constructor sets type to "equipment"
      * @param title title of the listing
      * @param description user-entered description of the listing
      * @param equipmentType type of equipment of the listing
+     * @param cost the cost, in dollars and cents, per hour of using the equipment
      */
-    public Listing(String type, String title, String description, String equipmentType){
+    public Listing(Account owner, String type, String title, String description, String equipmentType, double cost){
         type = "equipment";
-        this.title = title;
+        this.owner = owner;
+        this.cost = cost;
+        this.title = equipmentType + " in " + owner.getLocation() + " for " + cost;
         this.description = description;
         this.equipmentType = equipmentType;
     }
+
+    /**
+     * gets the account of the owner of the listing
+     * @return the account of the owner of the listing
+     */
+    public Account getOwner() { return owner;}
+
+    /**
+     * gets the cost of the listing per hour
+     * @return the cost of the listing, in dollars and cents, per hour
+     */
+    public double getCost() {return cost;}
+
+    /**
+     * gets the type of the listing
+     * @return the type of the listing
+     */
+    public String getType() { return type;}
+
+    /**
+     * gets the title of the listing
+     * @return the title of the listing
+     */
+    public String getTitle() { return title;}
+
+    /**
+     * gets the equipment type of the listing
+     * @return equipment type of the listing
+     */
+    public String getEquipmentType() {return equipmentType;}
+
+    /**
+     * returns the owner-entered description of the listing
+     * @return the owner-entered description of the listing
+     */
+    public String getDescription() { return description;}
 
 
 }

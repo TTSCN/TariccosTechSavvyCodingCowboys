@@ -46,7 +46,8 @@ public class Account {
      * returns the name of the owner of the account
      * @return name of the owner of the account
      */
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
@@ -54,7 +55,8 @@ public class Account {
      * returns the email of the owner of the account
      * @return the email of the owner of the account
      */
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
@@ -62,5 +64,7 @@ public class Account {
      * return the location of the owner of the account
      * @return the location of the owner of the account
      */
-    public Location getLocation() { return loc;}
+    public Location getLocation() {
+        return loc;
+    }
 }

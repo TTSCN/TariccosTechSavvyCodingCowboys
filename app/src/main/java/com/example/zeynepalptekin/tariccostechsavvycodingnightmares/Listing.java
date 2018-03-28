@@ -1,11 +1,6 @@
 package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
-import java.io.File;
-import java.io.IOException;
-import java.awt.image.BufferedImage;
 import java.util.Date;
-
-import javax.imageio.ImageIO;
 
 /**
  * Created by zeynepalptekin on 3/26/18.
@@ -33,12 +28,10 @@ public class Listing {
      * the account of the owner of the listing
      */
     private Account owner;
-    
     /**
      * the cost, in dollars and cents, to use the service or equipment per hour
      */
     private Double cost;
-
     /**
      * the date the listing was created
      */
@@ -51,11 +44,10 @@ public class Listing {
     /**
      * constructs a listing with the type "service"
      * @param owner account of the owner of the listing
-     * @param type type of the listing; this constructor sets type to "service"
      * @param description user-entered description of the listing
      * @param cost the cost, in dollars in cents, per hour of the service
      */
-    public Listing(Account owner, String type, String description, double cost) {
+    public Listing(Account owner, String description, double cost) {
         type = "service";
         this.owner = owner;
         this.cost = cost;
@@ -68,13 +60,11 @@ public class Listing {
     /**
      * constructs a listing with the type "equipment"
      * @param owner the account of the owner of the listing
-     * @param type type of the listing; this constructor sets type to "equipment"
-     * @param title title of the listing
      * @param description user-entered description of the listing
      * @param equipmentType type of equipment of the listing
      * @param cost the cost, in dollars and cents, per hour of using the equipment
      */
-    public Listing(Account owner, String type, String title, String description, String equipmentType, double cost){
+    public Listing(Account owner, String description, String equipmentType, double cost){
         type = "equipment";
         this.owner = owner;
         this.cost = cost;

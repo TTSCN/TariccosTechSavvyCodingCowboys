@@ -2,6 +2,7 @@ package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
 /**
  * Created by Abby on 3/26/2018.
+ * class that creates locations
  */
 
 public class Location {

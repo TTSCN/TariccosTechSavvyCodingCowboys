@@ -4,6 +4,9 @@ import java.util.Date;
 
 /**
  * Created by zeynepalptekin on 3/26/18.
+ * class that creates and has methods for access listing objects
+ * both for services and equipment listings
+ * uses the account and location class
  */
 
 public class Listing {

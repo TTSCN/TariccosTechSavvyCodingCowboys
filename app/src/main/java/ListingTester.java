@@ -10,8 +10,12 @@ import java.util.logging.LogRecord;
  */
 
 public class ListingTester {
-    Account user = new Account("John Smith","email@gmail.com","Worcester","MA");
-    Listing listing = new Listing(user, "garden help",8 );
-    String str = listing.getTitle();
-    Log.d("listing", str);
+
+    public void main()
+    {
+        Account user = new Account("John Smith", "email@gmail.com", "Worcester", "MA");
+        Listing listing = new Listing(user, "garden help", 8);
+        String str = listing.getTitle();
+        Log.d("listing", str);
+    }
 }

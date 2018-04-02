@@ -54,7 +54,7 @@ public class Listing {
         type = "service";
         this.owner = owner;
         this.cost = cost;
-        title = type + " in " + owner.getLocation() + " for $" + cost;
+        title = type + " in " + owner.getLocation().toString() + " for $" + cost;
         this.description = description;
         equipmentType = null;
         date = new Date();
@@ -71,7 +71,7 @@ public class Listing {
         type = "equipment";
         this.owner = owner;
         this.cost = cost;
-        this.title = equipmentType + " in " + owner.getLocation() + " for $" + cost;
+        this.title = equipmentType + " in " + owner.getLocation().toString() + " for $" + cost;
         this.description = description;
         this.equipmentType = equipmentType;
         date = new Date();

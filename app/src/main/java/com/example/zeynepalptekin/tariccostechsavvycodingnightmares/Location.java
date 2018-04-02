@@ -45,4 +45,14 @@ public class Location {
      * @return the state abbreviation of the location
      */
     public String getState() { return state;}
+
+    /**
+     * returns the location object as a string in the form of "Town, ST"
+     * @return the location as a string in the form of "Town, St"
+     */
+    @Override
+    public String toString() {
+        String str = getTown() + ", " + getState();
+        return str;
+    }
 }

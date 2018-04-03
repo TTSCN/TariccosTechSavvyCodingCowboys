@@ -1,5 +1,7 @@
 package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
+import android.content.Intent;
+
 import java.util.Date;
 
 /**

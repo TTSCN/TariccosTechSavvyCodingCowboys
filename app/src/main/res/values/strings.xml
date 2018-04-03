@@ -4,4 +4,17 @@
     <string name="introQuestion">Would you like to...</string>
     <string name="listingButton">Create a listing</string>
     <string name="viewButton">View listings</string>
+    <string name="listingType">Type:</string>
+    <string name="price">Price: $</string>
+    <string name="city">City:</string>
+    <string name="state">State:</string>
+    <string name="listingTitle">title</string>
+    <string name="description">Write a brief description...</string>
+    <string name="addImage">Add an image</string>
+    <string name="publish">Publish</string>
+    <string name="title2">Search for listings</string>
+    <string name="keyword">Keywords:</string>
+    <string name="priceMin">Minimum Price: $</string>
+    <string name="priceMaximum">Maximum Price: $</string>
+    <string name="search">Search</string>
 </resources>

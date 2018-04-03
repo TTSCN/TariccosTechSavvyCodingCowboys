@@ -7,7 +7,7 @@
     tools:context=".CreateListing">
 
     <TextView
-        android:id="@+id/createListingText"
+        android:id="@+id/textVie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -16,15 +16,15 @@
         android:layout_marginTop="8dp"
         android:text="@string/title"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/typeEnter"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/typeEnter"
+        android:id="@+id/editText"
         android:layout_width="214dp"
-        android:layout_height="37dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
@@ -33,10 +33,10 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="85dp" />
+        tools:layout_editor_absoluteY="87dp" />
 
     <EditText
-        android:id="@+id/priceEnter"
+        android:id="@+id/editText2"
         android:layout_width="214dp"
         android:layout_height="36dp"
         android:layout_marginBottom="8dp"
@@ -47,13 +47,13 @@
         android:inputType="numberDecimal"
         android:text="Price: $"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/cityEnter"
+        app:layout_constraintBottom_toTopOf="@+id/editText3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typeEnter" />
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <EditText
-        android:id="@+id/cityEnter"
+        android:id="@+id/editText3"
         android:layout_width="122dp"
         android:layout_height="34dp"
         android:layout_marginStart="88dp"
@@ -65,7 +65,7 @@
         tools:layout_editor_absoluteY="184dp" />
 
     <EditText
-        android:id="@+id/stateEnter"
+        android:id="@+id/editText4"
         android:layout_width="69dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -77,11 +77,11 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toEndOf="@+id/cityEnter"
-        app:layout_constraintTop_toBottomOf="@+id/priceEnter" />
+        app:layout_constraintStart_toEndOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
     <EditText
-        android:id="@+id/titleEnter"
+        android:id="@+id/editText5"
         android:layout_width="213dp"
         android:layout_height="34dp"
         android:layout_marginBottom="8dp"
@@ -92,13 +92,13 @@
         android:inputType="text|textPersonName"
         android:text="Title"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/descriptionEnter"
+        app:layout_constraintBottom_toTopOf="@+id/editText6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityEnter" />
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
     <EditText
-        android:id="@+id/descriptionEnter"
+        android:id="@+id/editText6"
         android:layout_width="215dp"
         android:layout_height="140dp"
         android:layout_marginEnd="8dp"

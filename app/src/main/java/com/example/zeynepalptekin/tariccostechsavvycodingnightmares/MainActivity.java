@@ -13,16 +13,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Intent intent1 = new Intent(this, CreateListing.class);
-        Button button1 = findViewById(R.id.createListingButton);
-        button1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-
-                startActivity(intent1);
+        final Button button = findViewById(R.id.viewListingButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                    clickView();
             }
         });
     }
+
+        public void clickView() {
+        Log.d("clickView", "clickView is running");
+        Intent intent = new Intent(this, SearchForListings.class);
+        startActivity(intent);
+        }
 }
+
 
 

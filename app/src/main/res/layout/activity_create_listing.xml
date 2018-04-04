@@ -7,7 +7,7 @@
     tools:context=".CreateListing">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textVie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -25,18 +25,15 @@
         android:id="@+id/editText"
         android:layout_width="214dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="272dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textFilter"
-        android:text="@string/listingType"
+        android:text="Type: "
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="87dp" />
 
     <EditText
         android:id="@+id/editText2"
@@ -48,7 +45,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:text="@string/price"
+        android:text="Price: $"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/editText3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,16 +56,13 @@
         android:id="@+id/editText3"
         android:layout_width="122dp"
         android:layout_height="34dp"
-        android:layout_marginBottom="72dp"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/city"
+        android:text="City"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="184dp" />
 
     <EditText
         android:id="@+id/editText4"
@@ -79,7 +73,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/state"
+        android:text="State"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.112"
@@ -96,7 +90,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="text|textPersonName"
-        android:text="@string/listingTitle"
+        android:text="Title"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/editText6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,45 +101,13 @@
         android:id="@+id/editText6"
         android:layout_width="215dp"
         android:layout_height="140dp"
-        android:layout_marginBottom="96dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:text="@string/description"
+        android:text="Write a brief description..."
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="76dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/addImage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.263"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6"
-        app:layout_constraintVertical_bias="0.52" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="113dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/publish"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        tools:layout_editor_absoluteY="289dp" />
 </android.support.constraint.ConstraintLayout>

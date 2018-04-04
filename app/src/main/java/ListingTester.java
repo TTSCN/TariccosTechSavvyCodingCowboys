@@ -14,5 +14,6 @@ public class ListingTester
         Listing listing = new Listing(user, "garden help", 8);
         String str = listing.getTitle();
         Log.d("listing", str);
+
     }
 }

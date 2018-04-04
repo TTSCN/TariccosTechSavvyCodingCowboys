@@ -17,4 +17,10 @@
     <string name="priceMin">Minimum Price: $</string>
     <string name="priceMaximum">Maximum Price: $</string>
     <string name="search">Search</string>
+    <string name="login1">Please enter your login: </string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login2">Login</string>
+    <string name="createAccount">Create an Account</string>
+    <string name="or">or</string>
 </resources>

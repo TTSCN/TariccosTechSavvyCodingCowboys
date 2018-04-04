@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchForListings"></activity>
+        <activity android:name=".SearchForListings" />
+        <activity android:name=".LoginScreen" />
+        <activity android:name=".FirstScreen"></activity>
     </application>
 
 </manifest>

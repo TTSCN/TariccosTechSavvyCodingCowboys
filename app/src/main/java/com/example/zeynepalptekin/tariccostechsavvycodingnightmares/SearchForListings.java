@@ -10,4 +10,8 @@ public class SearchForListings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_for_listings);
     }
+
+    public void getParameters(){
+
+    }
 }

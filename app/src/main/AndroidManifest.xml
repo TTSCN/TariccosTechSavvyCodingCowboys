@@ -19,6 +19,7 @@
         <activity android:name=".SearchForListings" />
         <activity android:name=".LoginScreen" />
         <activity android:name=".FirstScreen"></activity>
+        <activity android:name=".Create_Listing"></activity>
     </application>
 
 </manifest>

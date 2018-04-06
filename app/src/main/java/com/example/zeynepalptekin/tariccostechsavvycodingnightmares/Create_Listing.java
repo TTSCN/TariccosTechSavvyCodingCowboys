@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CreateListing extends AppCompatActivity {
+public class Create_Listing extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,4 +26,6 @@ public class CreateListing extends AppCompatActivity {
             //TODO: action
         }
     }
+
+
 }

@@ -19,11 +19,24 @@ public class MainActivity extends AppCompatActivity {
                     clickView();
             }
         });
+
+        final Button buttonTwo = findViewById(R.id.createListingButton);
+        buttonTwo.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                clickCreate();
+            }
+        });
     }
 
         public void clickView() {
         Log.d("clickView", "clickView is running");
         Intent intent = new Intent(this, SearchForListings.class);
+        startActivity(intent);
+        }
+
+        public void clickCreate() {
+        Log.d("clickCreate","clickCreate is running");
+        Intent intent = new Intent(this, CreateListing.class);
         startActivity(intent);
         }
 }

@@ -55,4 +55,20 @@ public class Location {
         String str = getTown() + ", " + getState();
         return str;
     }
+
+    /**
+     * changes the name of the town of the location object to the town given
+     * @param town the new name of the town of the location
+     */
+    public void setTown(String town){
+        this.town = town;
+    }
+
+    /**
+     * changes the name of the state of the location object to the state given
+     * @param state the new name of the state of the location
+     */
+    public void setState(String state){
+        this.state = state;
+    }
 }

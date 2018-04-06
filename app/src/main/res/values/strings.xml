@@ -23,4 +23,6 @@
     <string name="login2">Login</string>
     <string name="createAccount">Create an Account</string>
     <string name="or">or</string>
+    <string name="makeLogin">Make Login</string>
+    <string name="email">Email:</string>
 </resources>

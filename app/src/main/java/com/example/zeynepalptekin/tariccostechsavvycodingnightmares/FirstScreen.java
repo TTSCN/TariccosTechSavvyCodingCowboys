@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 
-
 public class FirstScreen extends AppCompatActivity {
 
     @Override
@@ -39,5 +38,6 @@ public class FirstScreen extends AppCompatActivity {
 
         return a;
     }
+
 
 }

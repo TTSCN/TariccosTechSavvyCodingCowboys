@@ -7,7 +7,7 @@
     tools:context=".LoginScreen">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/loginTtitle"
         android:layout_width="242dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -17,14 +17,14 @@
         android:text="@string/login1"
         android:textAlignment="center"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText9"
+        app:layout_constraintBottom_toTopOf="@+id/userNameEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/userNameEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -33,12 +33,12 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/username"
-        app:layout_constraintBottom_toTopOf="@+id/editText14"
+        app:layout_constraintBottom_toTopOf="@+id/passwordEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText14"
+        android:id="@+id/passwordEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="232dp"
@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -61,10 +61,10 @@
         android:text="@string/login2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText14" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordEdit" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/createAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -75,11 +75,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
         app:layout_constraintVertical_bias="0.489" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/orText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -88,9 +88,9 @@
         android:layout_marginTop="8dp"
         android:text="@string/or"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
         app:layout_constraintVertical_bias="0.6" />
 </android.support.constraint.ConstraintLayout>

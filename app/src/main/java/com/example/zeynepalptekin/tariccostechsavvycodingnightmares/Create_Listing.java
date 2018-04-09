@@ -45,5 +45,4 @@ public class Create_Listing extends AppCompatActivity {
         }
     }
 
-
 }

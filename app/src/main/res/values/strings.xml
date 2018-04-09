@@ -8,7 +8,7 @@
     <string name="price">Price: $</string>
     <string name="city">City:</string>
     <string name="state">State:</string>
-    <string name="listingTitle">title</string>
+    <string name="listingTitle">Title</string>
     <string name="description">Write a brief description...</string>
     <string name="addImage">Add an image</string>
     <string name="publish">Publish</string>
@@ -23,6 +23,5 @@
     <string name="login2">Login</string>
     <string name="createAccount">Create an Account</string>
     <string name="or">or</string>
-    <string name="makeLogin">Make Login</string>
-    <string name="email">Email:</string>
+    <string name="email">Email</string>
 </resources>

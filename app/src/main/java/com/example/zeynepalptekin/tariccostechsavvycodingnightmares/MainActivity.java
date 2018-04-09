@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         public void clickCreate() {
         Log.d("clickCreate","clickCreate is running");
-        Intent intent = new Intent(this, CreateListing.class);
+        Intent intent = new Intent(this, Create_Listing.class);
         startActivity(intent);
         }
 }

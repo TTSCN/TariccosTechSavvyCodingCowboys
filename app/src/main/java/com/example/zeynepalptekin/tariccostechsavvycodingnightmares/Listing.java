@@ -80,6 +80,38 @@ public class Listing {
     }
 
     /**
+     * sets the owner of the listing as an object of the Account class
+     * @param owner
+     */
+    public void addOwner(String owner) {
+        //TODO: add this. pull information from account itself
+    }
+
+    /**
+     *  sets the description\
+     * @param description
+     */
+    public void addDescription(String description) {
+        description = this.description;
+    }
+
+    /**
+     * sets the equipment type
+     * @param type
+     */
+    public void addEquipmentType(String type){
+        type = this.type;
+    }
+
+    /**
+     * sets the cost
+     * @param cost
+     */
+    public void cost(double cost){
+        cost = this.cost;
+    }
+
+    /**
      * gets the account of the owner of the listing
      * @return the account of the owner of the listing
      */

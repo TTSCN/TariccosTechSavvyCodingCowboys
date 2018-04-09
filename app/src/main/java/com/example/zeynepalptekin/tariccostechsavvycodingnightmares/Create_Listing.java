@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import java.io.IOException;
@@ -22,6 +23,7 @@ public class Create_Listing extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+
     }
 
     @Override
@@ -43,6 +45,37 @@ public class Create_Listing extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    public Listing createServiceListing(Account owner, String description, double cost){
+        Listing serviceL = new Listing(owner, description, cost);
+        String str;
+        //TODO: create account owner by pulling from account information
+
+        EditText text = findViewById(R.id.titleText);
+        //TODO: make sure title is automatically filled in in the .xml
+        str = text.getText().toString();
+//        serviceL.
+//
+//        text = findViewById(R.id.priceText);
+        str = text.getText().toString();
+        return serviceL;
+    }
+
+    public Listing createEquipmentListing(Account owner, String description, String equipmentType, double cost){
+        Listing equipL = new Listing(owner, description, equipmentType, cost);
+        String str;
+
+        //TODO: create account owner by pulling from account information
+
+        EditText text = findViewById(R.id.titleText);
+        str = text.getText().toString();
+
+
+        text = findViewById(R.id.priceText);
+        str = text.getText().toString();
+
+        return equipL;
     }
 
 }

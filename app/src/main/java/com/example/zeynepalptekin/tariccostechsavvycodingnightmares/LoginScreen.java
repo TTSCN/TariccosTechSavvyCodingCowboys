@@ -18,13 +18,21 @@ public class LoginScreen extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                    clickCreateAccount();
+            }
+        });
 
+        Button button2 = findViewById(R.id.loginButton);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                login();
             }
         });
 
     }
 
-    public Account login() {
+    public void login() {
         EditText user = findViewById(R.id.userNameEdit);
         String userName = user.getText().toString();
 
@@ -33,7 +41,9 @@ public class LoginScreen extends AppCompatActivity {
 
         //code to find specific account given the username and password from firebase
         //this return statement is just here to prevent the code from giving an error message
-        return new Account();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public void clickCreateAccount() {

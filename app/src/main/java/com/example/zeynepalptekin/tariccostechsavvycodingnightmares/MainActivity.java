@@ -23,7 +23,14 @@ public class MainActivity extends AppCompatActivity {
         final Button buttonTwo = findViewById(R.id.createListingButton);
         buttonTwo.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                clickCreate();
+                clickCreateListing();
+            }
+        });
+
+        final Button buttonThree = findViewById(R.id.mainLoginButton);
+        buttonThree.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                clickLogin();
             }
         });
     }
@@ -34,9 +41,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         }
 
-        public void clickCreate() {
+        public void clickCreateListing() {
         Log.d("clickCreate","clickCreate is running");
         Intent intent = new Intent(this, Create_Listing.class);
+        startActivity(intent);
+        }
+
+        public void clickLogin() {
+        Log.d("clickLogin","clikcLogin is running");
+        Intent intent = new Intent(this, LoginScreen.class);
         startActivity(intent);
         }
 }

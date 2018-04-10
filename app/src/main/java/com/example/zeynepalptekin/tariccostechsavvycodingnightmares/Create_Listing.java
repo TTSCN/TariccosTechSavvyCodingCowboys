@@ -6,18 +6,9 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Create_Listing extends AppCompatActivity {
     public static final int PICK_IMAGE = 1;
@@ -31,33 +22,6 @@ public class Create_Listing extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
-
-        //Add a listing to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference listingsRef = database.getReference("listings");
-
-        Map<String, Listing> listings = new HashMap<>();
-        listings.put("mike's sale", new Listing(new Account(),"some stuff", 19.87));
-        listings.put("zoot me daddy", new Listing(new Account(), "bippity boppity", 399.99));
-
-        listingsRef.setValue(listings);
-
-        // Read from the database
-        listingsRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d("message", "Value is: " + value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("message", "Failed to read value.", error.toException());
-            }
-        });
     }
 
     @Override

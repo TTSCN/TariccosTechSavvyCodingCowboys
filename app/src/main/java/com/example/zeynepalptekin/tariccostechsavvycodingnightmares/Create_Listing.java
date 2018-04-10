@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -24,6 +25,7 @@ public class Create_Listing extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
 
+        //TODO: if in type it is equipment, go to make equip and vice versa
     }
 
     @Override
@@ -31,33 +33,40 @@ public class Create_Listing extends AppCompatActivity {
     {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-
-            Uri uri = data.getData();
-
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                // Log.d(TAG, String.valueOf(bitmap));
-
-                ImageView imageView = (ImageView) findViewById(R.id.imageView);
-                imageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+//        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+//
+//            Uri uri = data.getData();
+//
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+//                // Log.d(TAG, String.valueOf(bitmap));
+//
+//                ImageView imageView = (ImageView) findViewById(R.id.imageView);
+//                imageView.setImageBitmap(bitmap);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     public Listing createServiceListing(Account owner, String description, double cost){
         Listing serviceL = new Listing(owner, description, cost);
         String str;
+
         //TODO: create account owner by pulling from account information
 
         EditText text = findViewById(R.id.titleText);
-        //TODO: make sure title is automatically filled in in the .xml
+        String title = serviceL.getTitle();
+        TextView titleLabel = (TextView)findViewById(R.id.titleText);
+        titleLabel.setText(title);
+
+        text = findViewById(R.id.priceText);
         str = text.getText().toString();
-//        serviceL.
-//
-//        text = findViewById(R.id.priceText);
+        serviceL.setCost(Double.parseDouble(str));
+
+        text = findViewById(R.id.descriptionText);
+        str = text.getText().toString();
+
         str = text.getText().toString();
         return serviceL;
     }
@@ -69,10 +78,17 @@ public class Create_Listing extends AppCompatActivity {
         //TODO: create account owner by pulling from account information
 
         EditText text = findViewById(R.id.titleText);
-        str = text.getText().toString();
-
+        String title = equipL.getTitle();
+        TextView titleLabel = (TextView)findViewById(R.id.titleText);
+        titleLabel.setText(title);
 
         text = findViewById(R.id.priceText);
+        str = text.getText().toString();
+
+        text = findViewById(R.id.typeText);
+        str = text.getText().toString();
+
+        text = findViewById(R.id.descriptionText);
         str = text.getText().toString();
 
         return equipL;

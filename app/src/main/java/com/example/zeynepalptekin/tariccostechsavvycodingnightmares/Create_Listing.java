@@ -24,6 +24,8 @@ public class Create_Listing extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
 
+
+
     }
 
     @Override

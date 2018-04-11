@@ -14,16 +14,18 @@ public class ChoseListingType extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chose_listing_type);
 
-        Intent intent = new Intent(this,Create_Listing.class);
+        Intent intent = new Intent(this,CreateListingService.class);
 
         Button service = findViewById(R.id.serviceButton);
-//        service.setOnClickListener(new View.OnClickListener(){
-//
-//            public void onClick (View v){
-//                click();
-//            });
-//        }
+        service.setOnClickListener(new View.OnClickListener(){
+            public void onClick (View v) {
+                click();
+            }
+            });
+        }
+
+    public void click(){
+
     }
-//
-//    public void click();
+
 }

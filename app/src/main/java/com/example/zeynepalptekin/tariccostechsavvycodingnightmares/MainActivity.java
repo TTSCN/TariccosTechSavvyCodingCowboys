@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         public void clickCreateListing() {
         Log.d("clickCreate","clickCreate is running");
-        Intent intent = new Intent(this, Create_Listing.class);
+        Intent intent = new Intent(this, CreateListingService.class);
         startActivity(intent);
         }
 

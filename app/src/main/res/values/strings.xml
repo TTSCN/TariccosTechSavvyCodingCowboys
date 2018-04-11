@@ -25,4 +25,8 @@
     <string name="or">or</string>
     <string name="email">Email</string>
     <string name="loginMain">You are currently not logged in.</string>
+    <string name="Service">Service</string>
+    <string name="Equipment">Equipment</string>
+    <string name="ListingTypeOption">Would you like to advertise a</string>
+    <string name="OrA">or an</string>
 </resources>

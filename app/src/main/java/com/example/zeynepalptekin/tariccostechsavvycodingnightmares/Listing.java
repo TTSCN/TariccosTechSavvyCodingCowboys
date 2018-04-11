@@ -86,7 +86,7 @@ public class Listing {
      * sets the owner of the listing as an object of the Account class
      * @param owner
      */
-    public void addOwner(String owner) {
+    public void setOwner(String owner) {
         //TODO: add this. pull information from account itself
     }
 
@@ -94,7 +94,7 @@ public class Listing {
      *  sets the description\
      * @param description
      */
-    public void addDescription(String description) {
+    public void setDescription(String description) {
         description = this.description;
     }
 
@@ -102,7 +102,7 @@ public class Listing {
      * sets the equipment type
      * @param type
      */
-    public void addEquipmentType(String type){
+    public void setEquipmentType(String type){
         type = this.type;
     }
 
@@ -110,7 +110,7 @@ public class Listing {
      * sets the cost
      * @param cost
      */
-    public void cost(double cost){
+    public void setCost(double cost){
         cost = this.cost;
     }
 

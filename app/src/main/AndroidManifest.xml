@@ -19,8 +19,9 @@
         <activity android:name=".SearchForListings" />
         <activity android:name=".LoginScreen" />
         <activity android:name=".FirstScreen" />
-        <activity android:name=".Create_Listing" />
-        <activity android:name=".ChoseListingType"></activity>
+        <activity android:name=".CreateListingService" />
+        <activity android:name=".ChoseListingType" />
+        <activity android:name=".CreateListingEquipment"></activity>
     </application>
 
 </manifest>

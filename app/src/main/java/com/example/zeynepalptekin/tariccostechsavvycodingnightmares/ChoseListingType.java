@@ -21,7 +21,7 @@ public class ChoseListingType extends AppCompatActivity {
             }
         });
 
-        
+
         Button equipment = findViewById(R.id.equipmentButton);
         equipment.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -38,13 +38,13 @@ public class ChoseListingType extends AppCompatActivity {
     }
 
     public void clickService() {
-        Intent intent = new Intent(this, Create_Listing.class);
+        Intent intent = new Intent(this, CreateListingService.class);
         intent.putExtra("type","service");
         startActivity(intent);
     }
 
     public void clickEquipment() {
-        Intent intent = new Intent(this, Create_Listing.class);
+        Intent intent = new Intent(this, CreateListingEquipment.class);
         intent.putExtra("type","equipment");
         startActivity(intent);
     }

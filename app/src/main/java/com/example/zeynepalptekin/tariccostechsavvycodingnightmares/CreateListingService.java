@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
-public class Create_Listing extends AppCompatActivity {
+public class CreateListingService extends AppCompatActivity {
     public static final int PICK_IMAGE = 1;
 
     @Override

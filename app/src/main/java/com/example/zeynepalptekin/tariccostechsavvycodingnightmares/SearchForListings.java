@@ -15,7 +15,6 @@ public class SearchForListings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_for_listings);
-        getParameters();
 
         Button backToMain = findViewById(R.id.backToMain1);
         backToMain.setOnClickListener(new View.OnClickListener() {

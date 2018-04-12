@@ -23,9 +23,6 @@ public class CreateListingService extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
-
-
-
     }
 
     @Override
@@ -63,21 +60,4 @@ public class CreateListingService extends AppCompatActivity {
         str = text.getText().toString();
         return serviceL;
     }
-
-    public Listing createEquipmentListing(Account owner, String description, String equipmentType, double cost){
-        Listing equipL = new Listing(owner, description, equipmentType, cost);
-        String str;
-
-        //TODO: create account owner by pulling from account information
-
-        EditText text = findViewById(R.id.titleText);
-        str = text.getText().toString();
-
-
-        text = findViewById(R.id.priceText);
-        str = text.getText().toString();
-
-        return equipL;
-    }
-
 }

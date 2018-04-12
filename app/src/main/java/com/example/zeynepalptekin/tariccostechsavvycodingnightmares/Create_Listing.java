@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +28,13 @@ public class Create_Listing extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
 
         //TODO: if in type it is equipment, go to make equip and vice versa
+
+        Button backToMain = findViewById(R.id.backToMain5);
+        backToMain.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                backToMain();
+            }
+        });
     }
 
     @Override
@@ -94,4 +103,8 @@ public class Create_Listing extends AppCompatActivity {
         return equipL;
     }
 
+    public void backToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

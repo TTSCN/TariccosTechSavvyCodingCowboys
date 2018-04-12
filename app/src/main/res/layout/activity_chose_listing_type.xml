@@ -62,7 +62,9 @@
         android:id="@+id/backToMain6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="27dp"
         android:text="@string/backToMain"
-        tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="447dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/equipmentButton" />
 </android.support.constraint.ConstraintLayout>

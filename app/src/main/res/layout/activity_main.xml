@@ -62,19 +62,23 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/wouldYouText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.285"
-        tools:layout_editor_absoluteX="84dp"
         tools:text="@string/loginMain" />
 
     <Button
         android:id="@+id/mainLoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/wouldYouText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginBanner"
-        tools:layout_editor_absoluteX="148dp"
         tools:text="@string/login2" />
 
 </android.support.constraint.ConstraintLayout>

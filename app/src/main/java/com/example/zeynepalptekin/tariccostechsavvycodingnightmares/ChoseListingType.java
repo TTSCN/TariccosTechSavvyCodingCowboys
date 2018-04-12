@@ -21,6 +21,7 @@ public class ChoseListingType extends AppCompatActivity {
             }
         });
 
+        
         Button equipment = findViewById(R.id.equipmentButton);
         equipment.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

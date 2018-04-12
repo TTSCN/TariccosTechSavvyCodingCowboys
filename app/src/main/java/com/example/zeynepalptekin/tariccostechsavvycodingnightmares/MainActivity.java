@@ -20,29 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-
-        myRef.setValue("Hi");
-
-        // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d("message", "Value is: " + value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("message", "Failed to read value.", error.toException());
-            }
-        });
-
         final Button button = findViewById(R.id.viewListingButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -73,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         public void clickCreateListing() {
         Log.d("clickCreate","clickCreate is running");
-        Intent intent = new Intent(this, Create_Listing.class);
+        Intent intent = new Intent(this, CreateListingService.class);
         startActivity(intent);
         }
 

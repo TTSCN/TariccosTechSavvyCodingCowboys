@@ -2,6 +2,9 @@ package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
 import android.content.Intent;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Date;
 
 /**
@@ -152,4 +155,8 @@ public class Listing {
      * @return returns the date the listing was created
      */
     public Date getDate() { return date;}
+
 }
+
+
+

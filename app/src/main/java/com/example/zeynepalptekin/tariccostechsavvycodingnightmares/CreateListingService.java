@@ -20,7 +20,7 @@ public class CreateListingService extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_listing);
+        setContentView(R.layout.activity_create_listing_service);
 
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -29,7 +29,7 @@ public class CreateListingService extends AppCompatActivity {
 
         //TODO: if in type it is equipment, go to make equip and vice versa
 
-        Button backToMain = findViewById(R.id.backToMain5);
+        Button backToMain = findViewById(R.id.backToMain7);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 backToMain();

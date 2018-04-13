@@ -126,7 +126,7 @@
         app:layout_constraintVertical_bias="0.1" />
 
     <Button
-        android:id="@+id/backToMain5"
+        android:id="@+id/backToMain7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/backToMain"

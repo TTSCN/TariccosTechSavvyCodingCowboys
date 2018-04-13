@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import java.io.IOException;
+import android.view.View;
+import android.widget.Button;
 
 public class CreateListingEquipment extends AppCompatActivity {
 
@@ -63,5 +66,18 @@ public class CreateListingEquipment extends AppCompatActivity {
         str = text.getText().toString();
 
         return equipL;
+        setContentView(R.layout.activity_create_listing_equipment);
+
+        Button backToMain = findViewById(R.id.backToMain7);
+        backToMain.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                backToMain();
+            }
+        });
+    }
+
+    public void backToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

@@ -22,6 +22,14 @@ public class FirstScreen extends AppCompatActivity {
                 backToMain();
             }
         });
+
+        Button backToMain = findViewById(R.id.backToMain4);
+        backToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                backToMain();
+            }
+        });
     }
 
     public Account createAccount(){

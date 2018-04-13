@@ -29,7 +29,13 @@ public class LoginScreen extends AppCompatActivity {
                 login();
             }
         });
-
+        Button button3 = findViewById(R.id.backToMain3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                backToMain();
+            }
+        });
     }
 
     public void login() {
@@ -49,6 +55,11 @@ public class LoginScreen extends AppCompatActivity {
     public void clickCreateAccount() {
         Log.d("clickCreateAccount","clickCreateAccount is running");
         Intent intent = new Intent(this, FirstScreen.class);
+        startActivity(intent);
+    }
+
+    public void backToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

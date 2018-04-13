@@ -14,29 +14,45 @@ public class ChoseListingType extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chose_listing_type);
 
-        Button service = findViewById(R.id.serviceButton);
-        Button equip = findViewById(R.id.equipmentButton);
+        Intent intent = new Intent(this,CreateListingService.class);
 
-        service.setOnClickListener(new View.OnClickListener(){
-            public void onClick (View v) {
-                toCreateService();
-            }
-            });
-        service.setOnClickListener(new View.OnClickListener(){
-            public void onClick (View v) {
-                toCreateEquip();
+        Button service = findViewById(R.id.serviceButton);
+        service.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                clickService();
             }
         });
 
+
+        Button equipment = findViewById(R.id.equipmentButton);
+        equipment.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                clickEquipment();
+            }
+        });
+
+        Button backToMain = findViewById(R.id.backToMain6);
+        backToMain.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                backToMain();
+            }
+        });
     }
 
-    public void toCreateService(){
-        Intent serviceIntent = new Intent(this,CreateListingService.class);
-        startActivity(serviceIntent);
-    }
-    public void toCreateEquip(){
-        Intent equipIntent = new Intent(this, CreateListingEquipment.class);
-        startActivity(equipIntent);
+    public void clickService() {
+        Intent intent = new Intent(this, CreateListingService.class);
+        intent.putExtra("type","service");
+        startActivity(intent);
     }
 
+    public void clickEquipment() {
+        Intent intent = new Intent(this, CreateListingEquipment.class);
+        intent.putExtra("type","equipment");
+        startActivity(intent);
+    }
+
+    public void backToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

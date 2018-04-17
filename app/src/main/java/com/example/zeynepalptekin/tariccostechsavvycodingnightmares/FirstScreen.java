@@ -7,7 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.HashMap;
+
 public class FirstScreen extends AppCompatActivity {
+
+    /**
+     * hashmap of emails to accounts
+     */
+    static HashMap<String,Account> Accounts = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +61,7 @@ public class FirstScreen extends AppCompatActivity {
         str = text.getText().toString();
         a.getLocation().setTown(str);
 
+        Accounts.put(a.getEmail(),a);
 
         return a;
     }

@@ -27,8 +27,6 @@ public class CreateListingService extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
 
-        //TODO: if in type it is equipment, go to make equip and vice versa
-
         Button backToMain = findViewById(R.id.backToMain7);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -60,11 +58,13 @@ public class CreateListingService extends AppCompatActivity {
 //        }
     }
 
+    Account a;
+    //TODO: this is just a placeholder variable. Not linked to anything
     public Listing createServiceListing(Account owner, String description, double cost){
         Listing serviceL = new Listing(owner, description, cost);
         String str;
 
-        //TODO: create account owner by pulling from account information
+        owner = FirstScreen.Accounts.get(a.getEmail());
 
         EditText text = findViewById(R.id.titleText);
         String title = serviceL.getTitle();
@@ -80,29 +80,6 @@ public class CreateListingService extends AppCompatActivity {
 
         str = text.getText().toString();
         return serviceL;
-    }
-
-    public Listing createEquipmentListing(Account owner, String description, String equipmentType, double cost){
-        Listing equipL = new Listing(owner, description, equipmentType, cost);
-        String str;
-
-        //TODO: create account owner by pulling from account information
-
-        EditText text = findViewById(R.id.titleText);
-        String title = equipL.getTitle();
-        TextView titleLabel = (TextView)findViewById(R.id.titleText);
-        titleLabel.setText(title);
-
-        text = findViewById(R.id.priceText);
-        str = text.getText().toString();
-
-        text = findViewById(R.id.typeText);
-        str = text.getText().toString();
-
-        text = findViewById(R.id.descriptionText);
-        str = text.getText().toString();
-
-        return equipL;
     }
 
     public void backToMain() {

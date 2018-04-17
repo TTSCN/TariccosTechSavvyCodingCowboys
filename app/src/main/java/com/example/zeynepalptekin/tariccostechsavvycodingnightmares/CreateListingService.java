@@ -58,15 +58,16 @@ public class CreateListingService extends AppCompatActivity {
     public Listing createServiceListing(Account owner, String description, double cost){
         Listing serviceL = new Listing(owner, description, cost);
         String str;
+        EditText text;
 
         owner = FirstScreen.Accounts.get(a.getEmail());
 
-        EditText text = findViewById(R.id.titleText);
+        text = findViewById(R.id.titleText1);
         String title = serviceL.getTitle();
-        TextView titleLabel = (TextView)findViewById(R.id.titleText);
+        TextView titleLabel = (TextView)findViewById(R.id.titleText1);
         titleLabel.setText(title);
 
-        text = findViewById(R.id.priceText);
+        text = findViewById(R.id.priceText1);
         str = text.getText().toString();
         serviceL.setCost(Double.parseDouble(str));
 

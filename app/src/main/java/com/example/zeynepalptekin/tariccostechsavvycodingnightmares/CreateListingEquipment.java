@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import static com.example.zeynepalptekin.tariccostechsavvycodingnightmares.CreateListingService.PICK_IMAGE;
+
 public class CreateListingEquipment extends AppCompatActivity {
 
     @Override
@@ -15,10 +17,17 @@ public class CreateListingEquipment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_listing_equipment);
 
-        Button backToMain = findViewById(R.id.backToMain7);
+        Button backToMain = findViewById(R.id.backToMain8);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 backToMain();
+            }
+        });
+
+        Button addImage = findViewById(R.id.addImageButton1);
+        addImage.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                addImage();
             }
         });
     }
@@ -40,11 +49,11 @@ public class CreateListingEquipment extends AppCompatActivity {
         str = text.getText().toString();
         equipL.setCost(Double.parseDouble(str));
 
-        text = findViewById(R.id.typeText);
+        text = findViewById(R.id.typeText2);
         str = text.getText().toString();
         equipL.setEquipmentType(str);
 
-        text = findViewById(R.id.descriptionText);
+        text = findViewById(R.id.descriptionText2);
         str = text.getText().toString();
         equipL.setDescription(str);
 
@@ -54,5 +63,12 @@ public class CreateListingEquipment extends AppCompatActivity {
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void addImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
     }
 }

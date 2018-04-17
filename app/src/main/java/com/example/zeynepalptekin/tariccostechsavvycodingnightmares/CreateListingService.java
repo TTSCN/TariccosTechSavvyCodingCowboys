@@ -77,8 +77,8 @@ public class CreateListingService extends AppCompatActivity {
 
         text = findViewById(R.id.descriptionText);
         str = text.getText().toString();
+        serviceL.setDescription(str);
 
-        str = text.getText().toString();
         return serviceL;
     }
 

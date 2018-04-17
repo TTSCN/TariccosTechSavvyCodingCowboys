@@ -38,12 +38,15 @@ public class CreateListingEquipment extends AppCompatActivity {
 
         text = findViewById(R.id.priceText);
         str = text.getText().toString();
+        equipL.setCost(Double.parseDouble(str));
 
         text = findViewById(R.id.typeText);
         str = text.getText().toString();
+        equipL.setEquipmentType(str);
 
         text = findViewById(R.id.descriptionText);
         str = text.getText().toString();
+        equipL.setDescription(str);
 
         return equipL;
     }

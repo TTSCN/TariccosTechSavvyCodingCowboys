@@ -26,7 +26,14 @@ public class CreateListingService extends AppCompatActivity {
         Button addImage = findViewById(R.id.addImageButton1);
         addImage.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                backToMain();
+                addImage();
+            }
+        });
+
+        Button publish = findViewById(R.id.publishButton1);
+        publish.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Listing newListing =  createServiceListing();
             }
         });
 
@@ -55,22 +62,18 @@ public class CreateListingService extends AppCompatActivity {
 
     Account a;
     //TODO: this is just a placeholder variable. Not linked to anything
-    public Listing createServiceListing(Account owner, String description, double cost){
-        Listing serviceL = new Listing(owner, description, cost);
+    public Listing createServiceListing(){
+
         String str;
 
-        owner = FirstScreen.Accounts.get(a.getEmail());
+        Account owner = FirstScreen.Accounts.get(a.getEmail());
+        Listing serviceL = new Listing(owner, "blank", 0);
 
-        EditText text = findViewById(R.id.titleText);
-        String title = serviceL.getTitle();
-        TextView titleLabel = (TextView)findViewById(R.id.titleText);
-        titleLabel.setText(title);
-
-        text = findViewById(R.id.priceText);
+        EditText text = findViewById(R.id.priceText1);
         str = text.getText().toString();
         serviceL.setCost(Double.parseDouble(str));
 
-        text = findViewById(R.id.descriptionText2);
+        text = findViewById(R.id.descriptionText1);
         str = text.getText().toString();
         serviceL.setDescription(str);
 

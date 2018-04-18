@@ -48,6 +48,10 @@ public class LoginScreen extends AppCompatActivity {
         //code to find specific account given the username and password from firebase
         //this return statement is just here to prevent the code from giving an error message
 
+
+        //this is temporary hard code logging in as magnus until we get firebase up and running
+        Account magnus = new Account("Magnus Thoroddsen", "makosokothorodds@wpi.edu","Worcester",
+                "MA","password3");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

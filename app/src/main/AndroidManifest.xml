@@ -21,7 +21,8 @@
         <activity android:name=".FirstScreen" />
         <activity android:name=".CreateListingService" />
         <activity android:name=".ChoseListingType" />
-        <activity android:name=".CreateListingEquipment"></activity>
+        <activity android:name=".CreateListingEquipment" />
+        <activity android:name=".ListingsView"></activity>
     </application>
 
 </manifest>

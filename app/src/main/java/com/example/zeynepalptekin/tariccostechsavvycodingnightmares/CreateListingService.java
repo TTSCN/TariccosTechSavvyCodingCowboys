@@ -1,6 +1,8 @@
 package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 
 public class CreateListingService extends AppCompatActivity {
     public static final int PICK_IMAGE = 1;
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,35 +42,14 @@ public class CreateListingService extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-
-//        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-//
-//            Uri uri = data.getData();
-//
-//            try {
-//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-//                // Log.d(TAG, String.valueOf(bitmap));
-//
-//                ImageView imageView = (ImageView) findViewById(R.id.imageView);
-//                imageView.setImageBitmap(bitmap);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-    }
-
     Account a;
     //TODO: this is just a placeholder variable. Not linked to anything
     public Listing createServiceListing(){
 
         String str;
-
+        //TODO: test to make sure that imageUri is not null
         Account owner = FirstScreen.Accounts.get(a.getEmail());
-        Listing serviceL = new Listing(owner, "blank", 0);
+        Listing serviceL = new Listing(owner, "blank", 0, imageUri);
 
         EditText text = findViewById(R.id.priceText1);
         str = text.getText().toString();
@@ -85,10 +67,16 @@ public class CreateListingService extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void addImage() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+    private void addImage() {
+        Intent image = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(image, PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+            imageUri = data.getData();
+        }
     }
 }

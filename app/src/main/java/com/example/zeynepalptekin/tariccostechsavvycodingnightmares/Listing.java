@@ -1,6 +1,7 @@
 package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
 import android.content.Intent;
+import android.net.Uri;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -44,6 +45,10 @@ public class Listing {
      * the date the listing was created
      */
     private Date date;
+    /**
+     * image uri information
+     */
+    private Uri image;
 
 //    String Location;
 //    Add Location class info after pulling from Abby
@@ -55,7 +60,7 @@ public class Listing {
      * @param description user-entered description of the listing
      * @param cost the cost, in dollars in cents, per hour of the service
      */
-    public Listing(Account owner, String description, double cost) {
+    public Listing(Account owner, String description, double cost, Uri image) {
         type = "service";
         this.owner = owner;
         this.cost = cost;
@@ -63,6 +68,7 @@ public class Listing {
         this.description = description;
         equipmentType = null;
         date = new Date();
+        this.image = image;
     }
 
     /**
@@ -72,7 +78,7 @@ public class Listing {
      * @param equipmentType type of equipment of the listing
      * @param cost the cost, in dollars and cents, per hour of using the equipment
      */
-    public Listing(Account owner, String description, String equipmentType, double cost){
+    public Listing(Account owner, String description, String equipmentType, double cost, Uri image){
         type = "equipment";
         this.owner = owner;
         this.cost = cost;
@@ -80,6 +86,7 @@ public class Listing {
         this.description = description;
         this.equipmentType = equipmentType;
         date = new Date();
+        this.image = image;
     }
 
     /**

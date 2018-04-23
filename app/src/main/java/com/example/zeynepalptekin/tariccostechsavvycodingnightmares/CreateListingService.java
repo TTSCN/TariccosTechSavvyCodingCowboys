@@ -68,7 +68,7 @@ public class CreateListingService extends AppCompatActivity {
 
         String str;
 
-        Account owner = FirstScreen.Accounts.get(a.getEmail());
+        Account owner = new Account();
         Listing serviceL = new Listing(owner, "blank", 0);
 
         EditText text = findViewById(R.id.priceText1);

@@ -7,6 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.example.zeynepalptekin.tariccostechsavvycodingnightmares.CreateListingService.PICK_IMAGE;
 
 public class CreateListingEquipment extends AppCompatActivity {
@@ -33,18 +39,20 @@ public class CreateListingEquipment extends AppCompatActivity {
         Button publish = findViewById(R.id.publishButton2);
         publish.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-               Listing newListing =  createEquipmentListing();
+               createEquipmentListing();
+
+
             }
         });
     }
 
     Account a;
     //TODO: this is just a placeholder variable. Not linked to anything
-    public Listing createEquipmentListing(){
+    public void createEquipmentListing(){
 
         String str;
 
-        Account owner = FirstScreen.Accounts.get(a.getEmail());
+        Account owner = new Account();
 
         Listing equipL = new Listing(owner, "blank", "type", 0);
 
@@ -60,7 +68,14 @@ public class CreateListingEquipment extends AppCompatActivity {
         str = text.getText().toString();
         equipL.setDescription(str);
 
-        return equipL;
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference();
+
+        DatabaseReference equipmentListingsRef = ref.child("equipmentListings");
+
+        Map<Listing, Account> equipmentListings = new HashMap<>();
+
+        equipmentListingsRef.setValue(equipmentListings);
     }
 
     public void backToMain() {

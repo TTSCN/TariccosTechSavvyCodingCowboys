@@ -7,28 +7,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class FirstScreen extends AppCompatActivity {
 
     /**
      * hashmap of emails to accounts
      */
-    static HashMap<String,Account> Accounts = new HashMap<>();
+   // static HashMap<String,Account> Accounts = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_screen);
-        Account a = createAccount();
 
-        Button button = findViewById(R.id.createAccountButton);
+      /*  Button button = findViewById(R.id.createAccountButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                backToMain();
+                createAccount();
             }
         });
+
 
         Button backToMain = findViewById(R.id.backToMain4);
         backToMain.setOnClickListener(new View.OnClickListener() {
@@ -37,9 +41,10 @@ public class FirstScreen extends AppCompatActivity {
                 backToMain();
             }
         });
+        */
     }
 
-    public Account createAccount(){
+    public void createAccount(View v){
         Account a = new Account();
         EditText text = findViewById(R.id.nameText);
         String str = text.getText().toString();
@@ -61,9 +66,12 @@ public class FirstScreen extends AppCompatActivity {
         str = text.getText().toString();
         a.getLocation().setTown(str);
 
-        Accounts.put(a.getEmail(),a);
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference();
 
-        return a;
+        DatabaseReference accounts = ref.child("users");
+
+        accounts.setValue(a);
     }
 
     public void backToMain() {

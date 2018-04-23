@@ -48,7 +48,7 @@ public class CreateListingEquipment extends AppCompatActivity {
 
         Listing equipL = new Listing(owner, "blank", "type", 0);
 
-        EditText text = findViewById(R.id.priceText1);
+        EditText text = findViewById(R.id.price2);
         str = text.getText().toString();
         equipL.setCost(Double.parseDouble(str));
 

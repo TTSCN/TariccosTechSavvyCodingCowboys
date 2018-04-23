@@ -20,13 +20,13 @@ public class FirstScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_screen);
-        Account a = createAccount();
+        final Account a = createAccount();
 
         Button button = findViewById(R.id.createAccountButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                backToMain();
+                backToMain(a);
             }
         });
 
@@ -64,6 +64,12 @@ public class FirstScreen extends AppCompatActivity {
         Accounts.put(a.getEmail(),a);
 
         return a;
+    }
+
+    public void backToMain(Account a) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("name", a.getName());
+        startActivity(intent);
     }
 
     public void backToMain() {

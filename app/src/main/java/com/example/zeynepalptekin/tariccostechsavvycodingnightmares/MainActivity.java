@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +20,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+          //  Bundle bundle = getIntent().getExtras();
+           // if(bundle.containsKey(getString(R.string.name))) {
+             //   String name = bundle.getString("name");
+           //     TextView loggedIn = findViewById(R.id.loginBanner);
+           //     loggedIn.setText("You are logged in as " + name);
+        //    }
 
         Button button = findViewById(R.id.viewListingButton);
         button.setOnClickListener(new View.OnClickListener() {

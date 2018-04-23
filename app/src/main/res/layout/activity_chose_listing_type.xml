@@ -4,60 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.zeynepalptekin.tariccostechsavvycodingnightmares.ChoseListingType">
+    tools:context="com.example.zeynepalptekin.tariccostechsavvycodingnightmares.ChoseListingType"
+    tools:layout_editor_absoluteY="81dp">
 
     <Button
         android:id="@+id/equipmentButton"
         android:layout_width="175dp"
         android:layout_height="108dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/Equipment"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/backToMain6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orAnTextView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/serviceButton"
         android:layout_width="175dp"
         android:layout_height="108dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginBottom="68dp"
         android:text="@string/Service"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/orAnTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wouldYouBanner" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/wouldYouBanner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="29dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginTop="86dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/ListingTypeOption"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/serviceButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.133" />
 
     <TextView
         android:id="@+id/orAnTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/OrA"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/equipmentButton"
         app:layout_constraintEnd_toEndOf="@+id/equipmentButton"
-        app:layout_constraintStart_toStartOf="@+id/equipmentButton"
-        app:layout_constraintTop_toBottomOf="@+id/serviceButton" />
+        app:layout_constraintStart_toStartOf="@+id/equipmentButton" />
 
     <Button
         android:id="@+id/backToMain6"
@@ -68,4 +68,11 @@
         android:text="@string/backToMain"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/equipmentButton" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
 </android.support.constraint.ConstraintLayout>

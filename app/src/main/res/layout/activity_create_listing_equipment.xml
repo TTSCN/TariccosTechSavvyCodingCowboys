@@ -4,107 +4,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateListingService"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context=".CreateListingService">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/descriptionText1"
-        app:layout_constraintStart_toStartOf="@+id/descriptionText1"
-        app:layout_constraintTop_toTopOf="@+id/descriptionText1" />
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/createListingTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/title"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/typeText2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/typeText2"
         android:layout_width="214dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="272dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textFilter"
         android:text="@string/listingType"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/priceText2"
+        android:layout_width="214dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="@string/price"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeText2" />
 
     <EditText
         android:id="@+id/descriptionText1"
         android:layout_width="215dp"
         android:layout_height="140dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="120dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="textMultiLine"
         android:text="@string/description"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/addImageButton1"
-        app:layout_constraintEnd_toStartOf="@+id/publishButton2"
-        app:layout_constraintStart_toStartOf="@+id/publishButton2" />
-
-    <Button
-        android:id="@+id/addImageButton1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginStart="88dp"
-        android:text="@string/addImage"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/publishButton2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/addImageButton1"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/addImage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText1"
+        app:layout_constraintVertical_bias="0.102" />
+
+    <Button
         android:id="@+id/publishButton2"
-        android:layout_width="0dp"
+        android:layout_width="113dp"
         android:layout_height="54dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="79dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/publish"
-        app:layout_constraintBottom_toTopOf="@+id/backToMain8"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.244"
         app:layout_constraintStart_toEndOf="@+id/addImageButton1"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionText1" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText1"
+        app:layout_constraintVertical_bias="0.1" />
 
     <Button
         android:id="@+id/backToMain8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/backToMain"
-        app:layout_constraintEnd_toStartOf="@+id/publishButton2"
-        app:layout_constraintStart_toStartOf="@+id/publishButton2"
-        app:layout_constraintTop_toBottomOf="@+id/addImageButton1" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="208dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/price"
-        app:layout_constraintBottom_toTopOf="@+id/price2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/price2"
-        android:layout_width="wrap_content"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addImageButton1" />
 </android.support.constraint.ConstraintLayout>

@@ -16,8 +16,10 @@ public class CreateListingEquipment extends AppCompatActivity {
     public static final int PICK_IMAGE = 100;
     Uri imageUri;
 
+    Listing listing;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_listing_equipment);
 
@@ -39,20 +41,21 @@ public class CreateListingEquipment extends AppCompatActivity {
         publish.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                Listing newListing = createEquipmentListing();
-
+               listing.ListingsList.put(equipL.getOwner(), equipL);
             }
         });
     }
 
     Account a;
     //TODO: this is just a placeholder variable. Not linked to anything
+    Listing equipL;
     public Listing createEquipmentListing(){
 
         String str;
 
         Account owner = FirstScreen.Accounts.get(a.getEmail());
         //TODO: test to make sure that imageUri is not null
-        Listing equipL = new Listing(owner, "blank", "type", 0, imageUri);
+        equipL = new Listing(owner, "blank", "type", 0, imageUri);
 
         EditText text = findViewById(R.id.priceText1);
         str = text.getText().toString();

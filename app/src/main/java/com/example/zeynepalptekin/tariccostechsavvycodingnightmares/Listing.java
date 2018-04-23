@@ -7,6 +7,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by zeynepalptekin on 3/26/18.
@@ -16,6 +18,9 @@ import java.util.Date;
  */
 
 public class Listing {
+
+    HashMap<Account, Listing> ListingsList = new HashMap<>();
+
     /**
      * type: equipment or service
      */

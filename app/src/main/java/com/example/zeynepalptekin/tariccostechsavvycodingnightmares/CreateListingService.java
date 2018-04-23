@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class CreateListingService extends AppCompatActivity {
     public static final int PICK_IMAGE = 1;
     Uri imageUri;
+    Listing listing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,25 +34,24 @@ public class CreateListingService extends AppCompatActivity {
             }
         });
 
-        Button publish = findViewById(R.id.publishButton1);
+        Button publish = findViewById(R.id.publishButton2);
         publish.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Listing newListing =  createServiceListing();
+                Listing newListing = createServiceListing();
+                listing.ListingsList.put(serviceL.getOwner(), serviceL);
             }
         });
-
-
-
     }
 
     Account a;
     //TODO: this is just a placeholder variable. Not linked to anything
+    Listing serviceL;
     public Listing createServiceListing(){
 
         String str;
         //TODO: test to make sure that imageUri is not null
         Account owner = FirstScreen.Accounts.get(a.getEmail());
-        Listing serviceL = new Listing(owner, "blank", 0, imageUri);
+        serviceL = new Listing(owner, "blank", 0, imageUri);
 
         EditText text = findViewById(R.id.priceText1);
         str = text.getText().toString();

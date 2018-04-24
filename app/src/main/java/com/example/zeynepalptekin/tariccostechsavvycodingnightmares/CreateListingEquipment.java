@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,13 +59,14 @@ public class CreateListingEquipment extends AppCompatActivity {
     //TODO: this is just a placeholder variable. Not linked to anything
     public void createEquipmentListing(){
 
+        Log.d("Magnus", "in create equipment listing");
         String str;
 
         Account owner = new Account();
 
-        Listing equipL = new Listing(owner, "blank", "type", 0);
+        Listing equipL = new Listing(owner, "blank", "type", 0, null);
 
-        EditText text = findViewById(R.id.priceText1);
+        EditText text = findViewById(R.id.priceText2);
         str = text.getText().toString();
         equipL.setCost(Double.parseDouble(str));
 
@@ -81,9 +83,7 @@ public class CreateListingEquipment extends AppCompatActivity {
 
         DatabaseReference equipmentListingsRef = ref.child("equipmentListings");
 
-        Map<Listing, Account> equipmentListings = new HashMap<>();
-
-        equipmentListingsRef.setValue(equipmentListings);
+        equipmentListingsRef.setValue(equipL);
     }
 
     public void backToMain() {

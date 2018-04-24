@@ -3,10 +3,17 @@ package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CreateListingService extends AppCompatActivity {
     public static final int PICK_IMAGE = 1;
@@ -33,7 +40,7 @@ public class CreateListingService extends AppCompatActivity {
         Button publish = findViewById(R.id.publishButton1);
         publish.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Listing newListing =  createServiceListing();
+                createServiceListing();
             }
         });
 
@@ -64,12 +71,13 @@ public class CreateListingService extends AppCompatActivity {
 
     Account a;
     //TODO: this is just a placeholder variable. Not linked to anything
-    public Listing createServiceListing(){
+    public void createServiceListing(){
 
+        Log.d("Magnus", "in create service listing");
         String str;
 
         Account owner = new Account();
-        Listing serviceL = new Listing(owner, "blank", 0);
+        Listing serviceL = new Listing(owner, "blank", 0, null);
 
         EditText text = findViewById(R.id.priceText1);
         str = text.getText().toString();
@@ -79,7 +87,14 @@ public class CreateListingService extends AppCompatActivity {
         str = text.getText().toString();
         serviceL.setDescription(str);
 
-        return serviceL;
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference();
+
+        DatabaseReference serviceListingsRef = ref.child("serviceListings");
+
+        serviceListingsRef.setValue(serviceL);
+
+
     }
 
     public void backToMain() {

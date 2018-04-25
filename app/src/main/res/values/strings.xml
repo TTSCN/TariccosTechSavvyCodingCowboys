@@ -27,8 +27,8 @@
     <string name="loginMain">You are currently not logged in.</string>
     <string name="Service">Service</string>
     <string name="Equipment">Equipment</string>
-    <string name="ListingTypeOption">Would you like to advertise a</string>
-    <string name="OrA">or an</string>
+    <string name="ListingTypeOption">Would you like to advertise</string>
+    <string name="OrA">or</string>
     <string name="backToMain">Back to Main</string>
     <string name="name">name</string>
 </resources>

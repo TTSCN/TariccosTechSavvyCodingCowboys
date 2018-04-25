@@ -32,7 +32,7 @@ public class FirstScreen extends AppCompatActivity {
                 createAccount();
             }
         });
-
+    */
 
         Button backToMain = findViewById(R.id.backToMain4);
         backToMain.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +41,7 @@ public class FirstScreen extends AppCompatActivity {
                 backToMain();
             }
         });
-        */
+
     }
 
     public void createAccount(View v){

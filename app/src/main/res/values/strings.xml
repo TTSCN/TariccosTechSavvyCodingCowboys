@@ -30,4 +30,5 @@
     <string name="ListingTypeOption">Would you like to advertise a</string>
     <string name="OrA">or an</string>
     <string name="backToMain">Back to Main</string>
+    <string name="name">name</string>
 </resources>

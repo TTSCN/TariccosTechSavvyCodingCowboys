@@ -77,15 +77,17 @@ public class CreateListingService extends AppCompatActivity {
         String str;
 
         Account owner = new Account();
-        Listing serviceL = new Listing(owner, "blank", 0, null);
 
-        EditText text = findViewById(R.id.priceText1);
+
+        EditText text = findViewById(R.id.price1);
         str = text.getText().toString();
-        serviceL.setCost(Double.parseDouble(str));
+       Double cost = Double.parseDouble(str);
 
         text = findViewById(R.id.descriptionText1);
         str = text.getText().toString();
-        serviceL.setDescription(str);
+        String desc = str;
+
+        Listing serviceL = new Listing(owner, desc, cost, null);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();

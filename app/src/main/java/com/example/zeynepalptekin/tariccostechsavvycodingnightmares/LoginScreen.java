@@ -52,8 +52,7 @@ public class LoginScreen extends AppCompatActivity {
         //this is temporary hard code logging in as magnus until we get firebase up and running
         Account magnus = new Account("Magnus Thoroddsen", "makosokothorodds@wpi.edu","Worcester",
                 "MA","password3");
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        backToMain(magnus);
     }
 
     public void clickCreateAccount() {
@@ -64,6 +63,12 @@ public class LoginScreen extends AppCompatActivity {
 
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void backToMain(Account a) {
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra("name",a.getName());
         startActivity(intent);
     }
 }

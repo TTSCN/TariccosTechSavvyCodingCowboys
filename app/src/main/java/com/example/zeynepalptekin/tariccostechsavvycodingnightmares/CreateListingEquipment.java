@@ -64,19 +64,21 @@ public class CreateListingEquipment extends AppCompatActivity {
 
         Account owner = new Account();
 
-        Listing equipL = new Listing(owner, "blank", "type", 0, null);
 
-        EditText text = findViewById(R.id.priceText2);
+
+        EditText text = findViewById(R.id.price2);
         str = text.getText().toString();
-        equipL.setCost(Double.parseDouble(str));
+        Double cost = Double.parseDouble(str);
 
         text = findViewById(R.id.typeText2);
         str = text.getText().toString();
-        equipL.setEquipmentType(str);
+        String type = str;
 
         text = findViewById(R.id.descriptionText1);
         str = text.getText().toString();
-        equipL.setDescription(str);
+        String desc = str;
+
+        Listing equipL = new Listing(owner, desc, type, cost, null);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();

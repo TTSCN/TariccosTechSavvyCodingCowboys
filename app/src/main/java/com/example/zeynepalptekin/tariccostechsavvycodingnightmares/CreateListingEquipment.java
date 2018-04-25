@@ -5,12 +5,20 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import java.net.URI;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.example.zeynepalptekin.tariccostechsavvycodingnightmares.CreateListingService.PICK_IMAGE;
 
 public class CreateListingEquipment extends AppCompatActivity {
     public static final int PICK_IMAGE = 100;
@@ -40,24 +48,25 @@ public class CreateListingEquipment extends AppCompatActivity {
         Button publish = findViewById(R.id.publishButton2);
         publish.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-               Listing newListing = createEquipmentListing();
-               listing.ListingsList.put(equipL.getOwner(), equipL);
+               createEquipmentListing();
+
+
             }
         });
     }
 
     Account a;
     //TODO: this is just a placeholder variable. Not linked to anything
-    Listing equipL;
-    public Listing createEquipmentListing(){
+    public void createEquipmentListing(){
 
+        Log.d("Magnus", "in create equipment listing");
         String str;
 
-        Account owner = FirstScreen.Accounts.get(a.getEmail());
-        //TODO: test to make sure that imageUri is not null
-        equipL = new Listing(owner, "blank", "type", 0, imageUri);
+        Account owner = new Account();
 
-        EditText text = findViewById(R.id.price2);
+        Listing equipL = new Listing(owner, "blank", "type", 0, null);
+
+        EditText text = findViewById(R.id.priceText2);
         str = text.getText().toString();
         equipL.setCost(Double.parseDouble(str));
 
@@ -69,7 +78,12 @@ public class CreateListingEquipment extends AppCompatActivity {
         str = text.getText().toString();
         equipL.setDescription(str);
 
-        return equipL;
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference();
+
+        DatabaseReference equipmentListingsRef = ref.child("equipmentListings");
+
+        equipmentListingsRef.setValue(equipL);
     }
 
     public void backToMain() {

@@ -1,19 +1,22 @@
 package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class CreateListingService extends AppCompatActivity {
     public static final int PICK_IMAGE = 1;
-    Uri imageUri;
-    Listing listing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,24 +37,47 @@ public class CreateListingService extends AppCompatActivity {
             }
         });
 
-        Button publish = findViewById(R.id.publishButton2);
+        Button publish = findViewById(R.id.publishButton1);
         publish.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Listing newListing = createServiceListing();
-                listing.ListingsList.put(serviceL.getOwner(), serviceL);
+                createServiceListing();
             }
         });
+
+
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+//        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+//
+//            Uri uri = data.getData();
+//
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+//                // Log.d(TAG, String.valueOf(bitmap));
+//
+//                ImageView imageView = (ImageView) findViewById(R.id.imageView);
+//                imageView.setImageBitmap(bitmap);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     Account a;
     //TODO: this is just a placeholder variable. Not linked to anything
-    Listing serviceL;
-    public Listing createServiceListing(){
+    public void createServiceListing(){
 
+        Log.d("Magnus", "in create service listing");
         String str;
-        //TODO: test to make sure that imageUri is not null
-        Account owner = FirstScreen.Accounts.get(a.getEmail());
-        serviceL = new Listing(owner, "blank", 0, imageUri);
+
+        Account owner = new Account();
+        Listing serviceL = new Listing(owner, "blank", 0, null);
 
         EditText text = findViewById(R.id.price1);
         str = text.getText().toString();
@@ -61,7 +87,14 @@ public class CreateListingService extends AppCompatActivity {
         str = text.getText().toString();
         serviceL.setDescription(str);
 
-        return serviceL;
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference();
+
+        DatabaseReference serviceListingsRef = ref.child("serviceListings");
+
+        serviceListingsRef.setValue(serviceL);
+
+
     }
 
     public void backToMain() {
@@ -69,16 +102,10 @@ public class CreateListingService extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void addImage() {
-        Intent image = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(image, PICK_IMAGE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE){
-            imageUri = data.getData();
-        }
+    public void addImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
     }
 }

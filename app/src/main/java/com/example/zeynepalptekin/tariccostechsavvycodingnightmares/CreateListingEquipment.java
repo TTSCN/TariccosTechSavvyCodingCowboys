@@ -83,7 +83,7 @@ public class CreateListingEquipment extends AppCompatActivity {
 
         DatabaseReference equipmentListingsRef = ref.child("equipmentListings");
 
-        equipmentListingsRef.setValue(equipL);
+        equipmentListingsRef.push().setValue(equipL);
     }
 
     public void backToMain() {

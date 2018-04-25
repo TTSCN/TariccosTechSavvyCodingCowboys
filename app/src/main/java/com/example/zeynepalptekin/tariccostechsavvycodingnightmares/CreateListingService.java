@@ -92,7 +92,7 @@ public class CreateListingService extends AppCompatActivity {
 
         DatabaseReference serviceListingsRef = ref.child("serviceListings");
 
-        serviceListingsRef.setValue(serviceL);
+        serviceListingsRef.push().setValue(serviceL);
 
 
     }

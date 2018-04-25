@@ -71,7 +71,7 @@ public class FirstScreen extends AppCompatActivity {
 
         DatabaseReference accounts = ref.child("users");
 
-        accounts.setValue(a);
+        accounts.push().setValue(a);
     }
 
     public void backToMain() {

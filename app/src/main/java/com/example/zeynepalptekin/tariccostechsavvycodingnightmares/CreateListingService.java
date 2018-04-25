@@ -78,10 +78,9 @@ public class CreateListingService extends AppCompatActivity {
 
         Account owner = new Account();
 
-
         EditText text = findViewById(R.id.price1);
         str = text.getText().toString();
-       Double cost = Double.parseDouble(str);
+        Double cost = Double.parseDouble(str);
 
         text = findViewById(R.id.descriptionText1);
         str = text.getText().toString();

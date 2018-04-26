@@ -11,19 +11,18 @@
         android:id="@+id/equipmentButton"
         android:layout_width="175dp"
         android:layout_height="108dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="44dp"
         android:text="@string/Equipment"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/backToMain6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/serviceButton"
         android:layout_width="175dp"
         android:layout_height="108dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="12dp"
         android:text="@string/Service"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/orAnTextView"
@@ -43,10 +42,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintHorizontal_bias="0.678"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintVertical_bias="0.077" />
 
     <TextView
         android:id="@+id/orAnTextView"
@@ -58,16 +57,20 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/equipmentButton"
         app:layout_constraintEnd_toEndOf="@+id/equipmentButton"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/equipmentButton" />
 
     <Button
         android:id="@+id/backToMain6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="52dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="24dp"
         android:text="@string/backToMain"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.014"
         app:layout_constraintStart_toStartOf="@+id/equipmentButton" />
 
     <android.support.constraint.Guideline

@@ -23,6 +23,14 @@ public class SearchForListings extends AppCompatActivity {
                 backToMain();
             }
         });
+
+        Button searchListings = findViewById(R.id.searchButton);
+        searchListings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewListings();
+            }
+        });
     }
 
     public ArrayList<Object> getParameters(){
@@ -50,6 +58,11 @@ public class SearchForListings extends AppCompatActivity {
 
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void viewListings(){
+        Intent intent = new Intent(this, ListingsView.class);
         startActivity(intent);
     }
 }

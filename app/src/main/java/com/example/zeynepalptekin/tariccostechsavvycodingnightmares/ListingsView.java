@@ -33,5 +33,29 @@ public class ListingsView extends ListActivity {
 
         ListView listView = (ListView) findViewById(R.id.sampleList);
         listView.setAdapter(itemsAdapter);
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference serviceListingsRef = database.getReference("serviceListings");
+
+        serviceListingsRef.orderByChild("serviceListings").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                System.out.println(dataSnapshot.getKey());
+            }
+
+            public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+                System.out.println("The data at for this object has been changed.");
+            }
+            public void onChildRemoved(DataSnapshot snapshot) {
+                System.out.println("This information was removed for security reasons or for violating the Terms of Use.");
+            }
+            public void onCancelled(DatabaseError error) {
+                System.out.println("Unable to retrieve data.");
+            }
+
+            public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
+
+            }
+        });
     }
 }

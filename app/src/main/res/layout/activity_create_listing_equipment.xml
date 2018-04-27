@@ -52,7 +52,7 @@
         android:id="@+id/descriptionText1"
         android:layout_width="212dp"
         android:layout_height="112dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="168dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
@@ -74,10 +74,10 @@
         android:text="@string/addImage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionText1"
-        app:layout_constraintVertical_bias="0.269" />
+        app:layout_constraintVertical_bias="0.181" />
 
     <Button
         android:id="@+id/publishButton2"
@@ -90,10 +90,10 @@
         android:text="@string/publish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toEndOf="@+id/addImageButton1"
         app:layout_constraintTop_toBottomOf="@+id/descriptionText1"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintVertical_bias="0.18" />
 
     <Button
         android:id="@+id/backToMain8"
@@ -103,18 +103,18 @@
         android:text="@string/backToMain"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price2" />
+        app:layout_constraintTop_toBottomOf="@+id/price2"
+        app:layout_constraintVertical_bias="0.916" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="208dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="120dp"
-        app:layout_constraintBottom_toTopOf="@+id/price2"
+        android:layout_width="51dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="136dp"
+        android:text="@string/price"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.236"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/price" />
@@ -123,11 +123,11 @@
         android:id="@+id/price2"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:layout_marginBottom="217dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/backToMain8"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 </android.support.constraint.ConstraintLayout>

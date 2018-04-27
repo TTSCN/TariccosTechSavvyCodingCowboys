@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ListingsView">
 
+    <ListView
+        android:id="@+id/sampleList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:entries="@drawable/_dynamic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/sampleList"
+        app:layout_constraintTop_toTopOf="@+id/sampleList" />
+    <TextView
+        android:id="@+id/android:empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text =""/>
+
 </android.support.constraint.ConstraintLayout>

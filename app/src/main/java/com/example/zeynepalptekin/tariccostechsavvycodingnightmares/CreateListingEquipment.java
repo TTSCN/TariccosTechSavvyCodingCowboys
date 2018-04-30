@@ -64,8 +64,6 @@ public class CreateListingEquipment extends AppCompatActivity {
 
         Account owner = new Account();
 
-
-
         EditText text = findViewById(R.id.price2);
         str = text.getText().toString();
         Double cost = Double.parseDouble(str);

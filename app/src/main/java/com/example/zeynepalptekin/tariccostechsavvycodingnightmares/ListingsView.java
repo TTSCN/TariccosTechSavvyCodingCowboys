@@ -33,7 +33,7 @@ public class ListingsView extends ListActivity {
         setContentView(R.layout.activity_listings_view);
 
 
-        ListView listView = (ListView) findViewById(R.id.listingsList);
+        ListView listView = (ListView) findViewById(R.id.list);
 
         //This hashmap is just a hardcoded in thing used to test the project. You can replace this with stuff from the
         //firebase

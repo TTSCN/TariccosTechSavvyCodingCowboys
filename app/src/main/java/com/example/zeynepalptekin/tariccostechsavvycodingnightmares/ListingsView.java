@@ -5,6 +5,7 @@ import android.app.LoaderManager;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -33,7 +34,7 @@ public class ListingsView extends ListActivity {
         setContentView(R.layout.activity_listings_view);
 
 
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(android.R.id.list);
 
         //This hashmap is just a hardcoded in thing used to test the project. You can replace this with stuff from the
         //firebase
@@ -49,9 +50,10 @@ public class ListingsView extends ListActivity {
         //items and subtitles are coming from resources xml file called listings items. should be replaced with firebase
         List<HashMap<String, String>> listItems = new ArrayList<>();
         SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.listings_items,
-                new String[]{"First Line, " + "Second Line"},
+                new String[]{"First Line", "Second Line"},
                 new int[]{R.id.titles,R.id.descriptions});
 
+        Log.d("Zeynep", "made it to iterator");
         //iterates through listitems to put in listview
        Iterator iterator = items.entrySet().iterator();
        while(iterator.hasNext()){
@@ -63,7 +65,7 @@ public class ListingsView extends ListActivity {
            resultsMap.put("Second Line", pair.getValue().toString());
            listItems.add(resultsMap);
        }
-
+        Log.d("Zeynep","finished iterator");
        listView.setAdapter(adapter);
 
     //commented out to make hardcoding easier

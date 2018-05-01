@@ -73,8 +73,7 @@ public class FirstScreen extends AppCompatActivity {
         DatabaseReference accounts = ref.child("users");
 
         Log.d("account","account is made " + a.toString());
-
-       accounts.push().setValue(a);
+        accounts.push().setValue(a);
 
         backToMain();
     }

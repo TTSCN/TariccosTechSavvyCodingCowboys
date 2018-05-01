@@ -10,17 +10,23 @@ import android.widget.EditText;
 import java.util.ArrayList;
 
 public class SearchForListings extends AppCompatActivity {
+    Account a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            a = bundle.getParcelable("account");
+        }
         setContentView(R.layout.activity_search_for_listings);
 
         Button backToMain = findViewById(R.id.backToMain1);
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                backToMain();
+                backToMain(a);
             }
         });
 
@@ -28,7 +34,7 @@ public class SearchForListings extends AppCompatActivity {
         searchListings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewListings();
+                viewListings(a);
             }
         });
     }
@@ -56,13 +62,19 @@ public class SearchForListings extends AppCompatActivity {
 
     }
 
-    public void backToMain() {
+    public void backToMain(Account a) {
         Intent intent = new Intent(this, MainActivity.class);
+        if(a != null){
+            intent.putExtra("account",a);
+        }
         startActivity(intent);
     }
 
-    public void viewListings(){
+    public void viewListings(Account a){
         Intent intent = new Intent(this, ListingsView.class);
+        if(a != null) {
+            intent.putExtra("account",a);
+        }
         startActivity(intent);
     }
 }

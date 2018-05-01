@@ -17,16 +17,20 @@ import java.util.Map;
 
 public class CreateListingService extends AppCompatActivity {
     public static final int PICK_IMAGE = 1;
-
+    Account a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_listing_service);
 
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            a = bundle.getParcelable("account");
+        }
         Button backToMain = findViewById(R.id.backToMain7);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                backToMain();
+                backToMain(a);
             }
         });
 
@@ -49,14 +53,13 @@ public class CreateListingService extends AppCompatActivity {
     }
 
 
-    Account a;
     //TODO: this is just a placeholder variable. Not linked to anything
     public void createServiceListing(){
 
         Log.d("Magnus", "in create service listing");
         String str;
 
-        Account owner = new Account();
+        Account owner = a;
 
         EditText text = findViewById(R.id.price1);
         str = text.getText().toString();
@@ -78,8 +81,11 @@ public class CreateListingService extends AppCompatActivity {
 
     }
 
-    public void backToMain() {
+    public void backToMain(Account a) {
         Intent intent = new Intent(this, MainActivity.class);
+        if(a != null) {
+            intent.putExtra("account",a);
+        }
         startActivity(intent);
     }
 

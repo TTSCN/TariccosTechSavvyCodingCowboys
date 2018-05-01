@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class LoginScreen extends AppCompatActivity {
-
+Account a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,7 @@ public class LoginScreen extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                backToMain();
+                backToMain(a);
             }
         });
     }
@@ -50,9 +50,8 @@ public class LoginScreen extends AppCompatActivity {
 
 
         //this is temporary hard code logging in as magnus until we get firebase up and running
-        Account magnus = new Account("Magnus Thoroddsen", "makosokothorodds@wpi.edu","Worcester",
-                "MA","password3");
-        backToMain(magnus);
+
+        backToMain(a);
     }
 
     public void clickCreateAccount() {
@@ -61,14 +60,11 @@ public class LoginScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void backToMain() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     public void backToMain(Account a) {
         Intent intent = new Intent(this,MainActivity.class);
-        intent.putExtra("name",a.getName());
+        if(a != null) {
+            intent.putExtra("account", a);
+        }
         startActivity(intent);
     }
 }

@@ -1,8 +1,11 @@
 package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
 import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,39 +46,44 @@ public class FirstScreen extends AppCompatActivity {
         });
 
     }
-
+        Account a;
     public void createAccount(View v){
-        Account a = new Account();
         EditText text = findViewById(R.id.nameText);
-        String str = text.getText().toString();
-        a.changeName(str);
+        String name = text.getText().toString();
+
 
         text = findViewById(R.id.passwordText);
-        str = text.getText().toString();
-        a.changePassword(str);
+        String password = text.getText().toString();
 
         text = findViewById(R.id.emailText);
-        str = text.getText().toString();
-        a.changeEmail(str);
+        String email = text.getText().toString();
+
 
         text = findViewById(R.id.stateText);
-        str = text.getText().toString();
-        a.getLocation().setState(str);
+        String state = text.getText().toString();
 
-        text = findViewById(R.id.stateText);
-        str = text.getText().toString();
-        a.getLocation().setTown(str);
+        text = findViewById(R.id.cityText);
+        String city = text.getText().toString();
+
+        a = new Account(name,email,city,state,password);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
         DatabaseReference accounts = ref.child("users");
 
-        accounts.push().setValue(a);
+        Log.d("account","account is made " + a.toString());
+
+       accounts.push().setValue(a);
+
+        backToMain();
     }
 
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        if(a != null) {
+            intent.putExtra("account",a);
+        }
         startActivity(intent);
     }
 

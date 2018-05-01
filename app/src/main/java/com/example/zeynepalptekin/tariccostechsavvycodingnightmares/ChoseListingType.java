@@ -8,18 +8,21 @@ import android.widget.Button;
 
 public class ChoseListingType extends AppCompatActivity {
 
-
+Account a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chose_listing_type);
 
-        Intent intent = new Intent(this,CreateListingService.class);
+        Bundle bundle = getIntent().getExtras();
 
+        if(bundle != null) {
+            a = bundle.getParcelable("account");
+        }
         Button service = findViewById(R.id.serviceButton);
         service.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                clickService();
+                clickService(a);
             }
         });
 
@@ -27,32 +30,35 @@ public class ChoseListingType extends AppCompatActivity {
         Button equipment = findViewById(R.id.equipmentButton);
         equipment.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                clickEquipment();
+                clickEquipment(a);
             }
         });
 
         Button backToMain = findViewById(R.id.backToMain6);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                backToMain();
+                backToMain(a);
             }
         });
     }
 
-    public void clickService() {
+    public void clickService(Account a) {
         Intent intent = new Intent(this, CreateListingService.class);
         intent.putExtra("type","service");
+        intent.putExtra("account",a);
         startActivity(intent);
     }
 
-    public void clickEquipment() {
+    public void clickEquipment(Account a) {
         Intent intent = new Intent(this, CreateListingEquipment.class);
         intent.putExtra("type","equipment");
+        intent.putExtra("account",a);
         startActivity(intent);
     }
 
-    public void backToMain() {
+    public void backToMain(Account a) {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("account",a);
         startActivity(intent);
     }
 }

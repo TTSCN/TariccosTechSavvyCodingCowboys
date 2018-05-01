@@ -37,8 +37,8 @@ public class ListingsView extends ListActivity {
         items.add("tomatoplants");
         items.add("tiger");
 
-        ListView listView = (ListView) findViewById(R.id.sampleList);
-        listView.setAdapter(itemsAdapter);
+       // ListView listView = (ListView) findViewById(R.id.sampleList);
+       // listView.setAdapter(itemsAdapter);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference serviceListingsRef = database.getReference("serviceListings");

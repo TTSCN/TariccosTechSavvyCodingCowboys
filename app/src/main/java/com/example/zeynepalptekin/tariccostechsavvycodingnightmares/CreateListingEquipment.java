@@ -103,4 +103,6 @@ public class CreateListingEquipment extends AppCompatActivity {
             imageUri = data.getData();
         }
     }
+
+    
 }

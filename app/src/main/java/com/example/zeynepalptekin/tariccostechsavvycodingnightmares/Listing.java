@@ -88,7 +88,8 @@ public class Listing {
         type = "equipment";
         this.owner = owner;
         this.cost = cost;
-        this.title = equipmentType + " in " + owner.getLocationString() + " for $" + cost;
+        this.title = equipmentType + " in " + owner.getLocation().getTown() + ", " +
+                owner.getLocation().getState() + " for $" + cost;
         this.description = description;
         this.equipmentType = equipmentType;
         date = new Date();

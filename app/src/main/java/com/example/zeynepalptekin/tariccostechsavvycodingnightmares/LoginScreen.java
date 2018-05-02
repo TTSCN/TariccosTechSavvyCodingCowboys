@@ -33,7 +33,7 @@ Account a;
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                backToMain(a);
+                backToMain();
             }
         });
     }
@@ -51,7 +51,7 @@ Account a;
 
         //this is temporary hard code logging in as magnus until we get firebase up and running
 
-        backToMain(a);
+        backToMain();
     }
 
     public void clickCreateAccount() {
@@ -60,10 +60,12 @@ Account a;
         startActivity(intent);
     }
 
-    public void backToMain(Account a) {
+    public void backToMain() {
         Intent intent = new Intent(this,MainActivity.class);
         if(a != null) {
-            intent.putExtra("account", a);
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),
+            a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
         }
         startActivity(intent);
     }

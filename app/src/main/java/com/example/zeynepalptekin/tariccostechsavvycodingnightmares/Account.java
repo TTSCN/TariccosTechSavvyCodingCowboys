@@ -11,7 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
  * uses the location class
  */
 
-public class Account implements Parcelable{
+public class Account {
     /**
      * name of the owner of the account
      */
@@ -25,11 +25,8 @@ public class Account implements Parcelable{
     /**
      * location of the owner of the account
      */
-   /* private Location loc; */
+   private Location loc;
 
-   private String town;
-
-   private String state;
 
     /**
      * password for the account
@@ -43,8 +40,7 @@ public class Account implements Parcelable{
     public Account() {
         name = "name";
         email = "user@email.com";
-        town = "town";
-        state = "state";
+        loc = new Location("town","state");
         password = "0000";
     }
 
@@ -59,55 +55,12 @@ public class Account implements Parcelable{
     public Account(String name, String email, String town, String state, String Password) {
         this.name = name;
         this.email = email;
-        this.town = town;
-        this.state = state;
+        loc.setTown(town);
+        loc.setState(state);
         password = Password;
     }
 
-    /**
-     * creates account object from parcel
-     * @param p parcel object
-     */
-    public Account(Parcel p) {
-        String[] data = new String[5];
 
-        p.readStringArray(data);
-
-        this.name = data[0];
-        this.email = data[1];
-        this.town = data[2];
-        this.state = data[3];
-        this.password = data[4];
-
-
-    }
-
-
-    /**
-     * writes account object into a parcel object
-     * @param dest parcel the account information is being written into
-     * @param flags
-     */
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeStringArray(new String[] {this.name,this.email, this.town,this.state,
-                this.password});
-    }
-
-    public int describeContents() {
-        return 0;
-    }
-
-    //error here after clicking create account
-    public static final Parcelable.Creator<Account> CREATOR = new Parcelable.Creator<Account>() {
-        //error here after clicking create account
-        public Account createFromParcel(Parcel p) {
-            return new Account(p);
-        }
-
-        public Account[] newArray(int size) {
-            return new Account[size];
-        }
-    };
 
 
     /**
@@ -132,13 +85,10 @@ public class Account implements Parcelable{
      * return the location of the owner of the account
      * @return the location of the owner of the account
      */
-    public String[] getLocation() {
-        return new String[] {town,state} ;
+    public Location getLocation() {
+        return loc;
     }
 
-    public String getLocationString() {
-       return town + ", " + state;
-    }
 
     /**
      * returns the password for the account
@@ -160,8 +110,8 @@ public class Account implements Parcelable{
      * @param State the new state of the location
      */
     public void changeLocation(String Town, String State){
-        this.town = Town;
-        this.state = State;
+        loc.setTown(Town);
+        loc.setState(State);
     }
 
     /**
@@ -181,11 +131,11 @@ public class Account implements Parcelable{
     }
 
     public void setState(String state) {
-        this.state = state;
+        loc.setState(state);
     }
 
     public void setTown(String town) {
-        this.town = town;
+        loc.setTown(town);
     }
 
     @Override

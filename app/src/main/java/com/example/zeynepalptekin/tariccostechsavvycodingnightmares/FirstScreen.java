@@ -75,6 +75,7 @@ public class FirstScreen extends AppCompatActivity {
         backToMain();
     }
 
+    
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null) {

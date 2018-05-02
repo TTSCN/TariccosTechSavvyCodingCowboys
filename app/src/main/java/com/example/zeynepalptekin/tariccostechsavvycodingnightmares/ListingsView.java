@@ -97,5 +97,7 @@ public class ListingsView extends ListActivity {
 //
 //            }
 //        });
+
+
     }
 }

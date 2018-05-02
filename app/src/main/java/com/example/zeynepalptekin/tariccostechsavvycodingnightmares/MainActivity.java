@@ -55,20 +55,12 @@ public class MainActivity extends AppCompatActivity {
         public void clickView() {
         Log.d("clickView", "clickView is running");
         Intent intent = new Intent(this, SearchForListings.class);
-        if(a != null) {
-            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),
-                    a.getLocation().getState(),a.getPassword()};
-            intent.putExtra("account",account);
-        }
         startActivity(intent);
         }
 
         public void clickCreateListing() {
         Log.d("clickCreate","clickCreate is running");
         Intent intent = new Intent(this, ChoseListingType.class);
-            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),
-                    a.getLocation().getState(),a.getPassword()};
-            intent.putExtra("account",account);
         startActivity(intent);
         }
 

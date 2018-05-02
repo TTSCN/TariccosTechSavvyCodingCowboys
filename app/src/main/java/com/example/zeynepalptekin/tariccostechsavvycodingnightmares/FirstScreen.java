@@ -82,7 +82,7 @@ public class FirstScreen extends AppCompatActivity {
                    a.getLocation().getState(),a.getPassword()};
             intent.putExtra("account",account);
         }
-        startActivity(intent);
+        startActivity(intent); 
     }
 
 }

@@ -45,7 +45,7 @@ public class LoginScreen extends AppCompatActivity {
         EditText pass = findViewById(R.id.passwordEdit);
         String password = pass.getText().toString();
 
-        //code to find specific account given the username and password from firebase
+        //code to find specific account given the username and password from firebase /
         //this return statement is just here to prevent the code from giving an error message
 
 

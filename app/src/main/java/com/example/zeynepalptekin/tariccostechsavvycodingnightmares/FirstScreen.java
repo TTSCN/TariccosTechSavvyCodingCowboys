@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirstScreen extends AppCompatActivity {
-
+    Account a;
     /**
      * hashmap of emails to accounts
      */
@@ -45,7 +45,7 @@ public class FirstScreen extends AppCompatActivity {
     }
 
     public void createAccount(View v){
-        Account a = new Account();
+        a = new Account();
         EditText text = findViewById(R.id.nameText);
         String str = text.getText().toString();
         a.changeName(str);
@@ -72,10 +72,16 @@ public class FirstScreen extends AppCompatActivity {
         DatabaseReference accounts = ref.child("users");
 
         accounts.push().setValue(a);
+        backToMain();
     }
 
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        if(a != null) {
+           String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),
+                   a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 

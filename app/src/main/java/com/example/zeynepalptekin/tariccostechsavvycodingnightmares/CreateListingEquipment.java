@@ -23,13 +23,19 @@ import static com.example.zeynepalptekin.tariccostechsavvycodingnightmares.Creat
 public class CreateListingEquipment extends AppCompatActivity {
     public static final int PICK_IMAGE = 100;
     Uri imageUri;
-
+    Account a;
     Listing listing;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_listing_equipment);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
+        }
 
         Button backToMain = findViewById(R.id.backToMain8);
         backToMain.setOnClickListener(new View.OnClickListener(){
@@ -55,14 +61,13 @@ public class CreateListingEquipment extends AppCompatActivity {
         });
     }
 
-    Account a;
     //TODO: this is just a placeholder variable. Not linked to anything
     public void createEquipmentListing(){
 
         Log.d("Magnus", "in create equipment listing");
         String str;
 
-        Account owner = new Account();
+        Account owner = a;
 
         EditText text = findViewById(R.id.price2);
         str = text.getText().toString();
@@ -88,6 +93,10 @@ public class CreateListingEquipment extends AppCompatActivity {
 
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 

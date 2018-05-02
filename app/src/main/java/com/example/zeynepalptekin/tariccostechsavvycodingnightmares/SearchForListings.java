@@ -11,10 +11,17 @@ import java.util.ArrayList;
 
 public class SearchForListings extends AppCompatActivity {
 
+    Account a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_for_listings);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
+        }
 
         Button backToMain = findViewById(R.id.backToMain1);
         backToMain.setOnClickListener(new View.OnClickListener() {
@@ -58,11 +65,21 @@ public class SearchForListings extends AppCompatActivity {
 
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),
+            a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 
     public void viewListings(){
         Intent intent = new Intent(this, ListingsView.class);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),
+                    a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 }

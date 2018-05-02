@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class ChoseListingType extends AppCompatActivity {
-
+    Account a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +15,12 @@ public class ChoseListingType extends AppCompatActivity {
         setContentView(R.layout.activity_chose_listing_type);
 
         Intent intent = new Intent(this,CreateListingService.class);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
+        }
 
         Button service = findViewById(R.id.serviceButton);
         service.setOnClickListener(new View.OnClickListener() {
@@ -42,17 +48,29 @@ public class ChoseListingType extends AppCompatActivity {
     public void clickService() {
         Intent intent = new Intent(this, CreateListingService.class);
         intent.putExtra("type","service");
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 
     public void clickEquipment() {
         Intent intent = new Intent(this, CreateListingEquipment.class);
         intent.putExtra("type","equipment");
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 }

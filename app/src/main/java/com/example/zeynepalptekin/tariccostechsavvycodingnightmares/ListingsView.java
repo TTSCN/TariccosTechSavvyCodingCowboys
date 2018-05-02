@@ -1,7 +1,9 @@
 package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
+import android.app.IntentService;
 import android.app.ListActivity;
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ public class ListingsView extends ListActivity {
 
 
         ListView listView = (ListView) findViewById(android.R.id.list);
+        listView.setClickable(true);
 
         //This hashmap is just a hardcoded in thing used to test the project. You can replace this with stuff from the
         //firebase
@@ -95,4 +98,10 @@ public class ListingsView extends ListActivity {
 
 
     }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id){
+        Intent intent = new Intent(this, ListingTemplate.class);
+    }
+
 }

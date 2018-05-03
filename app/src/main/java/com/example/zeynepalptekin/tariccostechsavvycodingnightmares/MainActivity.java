@@ -28,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
             a = new Account(account[0],account[1],account[2],account[3],account[4]);
             TextView loggedIn = findViewById(R.id.loginBanner);
             loggedIn.setText("You are logged in as " + a.getName());
+            Log.d("account","Account in MainActivity: " + a.getEmail());
         }
-        //
+
+
         Button button = findViewById(R.id.viewListingButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

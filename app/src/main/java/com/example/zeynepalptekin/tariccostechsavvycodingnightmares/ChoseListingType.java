@@ -23,7 +23,7 @@ public class ChoseListingType extends AppCompatActivity {
             a = new Account(account[0],account[1],account[2],account[3],account[4]);
         }
 
-        Log.d("account","Account in ChoseListing: " + a.getEmail());
+        //Log.d("account","Account in ChoseListing: " + a.getEmail());
 
         Button service = findViewById(R.id.serviceButton);
         service.setOnClickListener(new View.OnClickListener() {

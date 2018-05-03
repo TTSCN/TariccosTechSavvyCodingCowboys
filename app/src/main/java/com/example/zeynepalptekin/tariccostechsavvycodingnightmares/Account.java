@@ -55,8 +55,7 @@ public class Account {
     public Account(String name, String email, String town, String state, String Password) {
         this.name = name;
         this.email = email;
-        loc.setTown(town);
-        loc.setState(state);
+        loc = new Location(town,state);
         password = Password;
     }
 

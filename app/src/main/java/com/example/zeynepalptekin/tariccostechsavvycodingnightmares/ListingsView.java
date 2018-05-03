@@ -39,6 +39,8 @@ public class ListingsView extends ListActivity {
             a = new Account(account[0],account[1],account[2],account[3],account[4]);
         }
 
+        Log.d("account","Account in ListingsView: " + a.getEmail());
+
         ListView listView = (ListView) findViewById(android.R.id.list);
 
         //This hashmap is just a hardcoded in thing used to test the project. You can replace this with stuff from the

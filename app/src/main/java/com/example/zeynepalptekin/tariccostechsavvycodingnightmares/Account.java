@@ -11,30 +11,30 @@ import com.google.firebase.database.FirebaseDatabase;
  * uses the location class
  */
 
-public class Account implements Parcelable{
+public class Account {
     /**
      * name of the owner of the account
      */
-    private String name;
+    public String name;
 
     /**
      * email of the owner of the account
      */
-    private String email;
+    public String email;
 
     /**
      * location of the owner of the account
      */
-   /* private Location loc; */
+   private Location loc;
 
-   private String town;
+/*   public String town;
 
-   private String state;
+   public String state; */
 
     /**
      * password for the account
      */
-    private String password;
+    public String password;
 
     /**
      * constructs an empty account with a fake name, a fake email, and a default location
@@ -43,8 +43,7 @@ public class Account implements Parcelable{
     public Account() {
         name = "name";
         email = "user@email.com";
-        town = "town";
-        state = "state";
+        loc = new Location("town","state");
         password = "0000";
     }
 
@@ -59,15 +58,15 @@ public class Account implements Parcelable{
     public Account(String name, String email, String town, String state, String Password) {
         this.name = name;
         this.email = email;
-        this.town = town;
-        this.state = state;
+        loc = new Location(town,state);
         password = Password;
     }
 
-    /**
-     * creates account object from parcel
-     * @param p parcel object
-     */
+   // /**
+   //  * creates account object from parcel
+     //* @param p parcel object
+     //*/
+    /*
     public Account(Parcel p) {
         String[] data = new String[5];
 
@@ -88,7 +87,7 @@ public class Account implements Parcelable{
      * @param dest parcel the account information is being written into
      * @param flags
      */
-    public void writeToParcel(Parcel dest, int flags) {
+   /* public void writeToParcel(Parcel dest, int flags) {
         dest.writeStringArray(new String[] {this.name,this.email, this.town,this.state,
                 this.password});
     }
@@ -108,7 +107,7 @@ public class Account implements Parcelable{
             return new Account[size];
         }
     };
-
+/*
 
     /**
      * returns the name of the owner of the account
@@ -132,12 +131,12 @@ public class Account implements Parcelable{
      * return the location of the owner of the account
      * @return the location of the owner of the account
      */
-    public String[] getLocation() {
-        return new String[] {town,state} ;
+    public Location getLocation() {
+        return loc;
     }
 
     public String getLocationString() {
-       return town + ", " + state;
+       return loc.getTown() + ", " + loc.getState();
     }
 
     /**
@@ -160,8 +159,8 @@ public class Account implements Parcelable{
      * @param State the new state of the location
      */
     public void changeLocation(String Town, String State){
-        this.town = Town;
-        this.state = State;
+       loc.setTown(Town);
+       loc.setState(State);
     }
 
     /**
@@ -181,11 +180,11 @@ public class Account implements Parcelable{
     }
 
     public void setState(String state) {
-        this.state = state;
+        loc.setState(state);
     }
 
     public void setTown(String town) {
-        this.town = town;
+        loc.setTown(town);
     }
 
     @Override

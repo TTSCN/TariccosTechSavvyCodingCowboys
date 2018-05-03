@@ -63,7 +63,7 @@ Account a;
     public void backToMain(Account a) {
         Intent intent = new Intent(this,MainActivity.class);
         if(a != null) {
-            intent.putExtra("account", a);
+            //intent.putExtra("account", a);
         }
         startActivity(intent);
     }

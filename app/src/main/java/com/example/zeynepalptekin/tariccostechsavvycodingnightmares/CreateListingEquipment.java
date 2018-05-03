@@ -83,20 +83,20 @@ public class CreateListingEquipment extends AppCompatActivity {
         str = text.getText().toString();
         String desc = str;
 
-        Listing equipL = new Listing(owner, desc, type, cost, null);
+       // Listing equipL = new Listing(owner, desc, type, cost, null);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
         DatabaseReference equipmentListingsRef = ref.child("equipmentListings");
 
-        equipmentListingsRef.push().setValue(equipL);
+       // equipmentListingsRef.push().setValue(equipL);
     }
 
     public void backToMain(Account a) {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null) {
-            intent.putExtra("account",a);
+            //intent.putExtra("account",a);
         }
         startActivity(intent);
     }

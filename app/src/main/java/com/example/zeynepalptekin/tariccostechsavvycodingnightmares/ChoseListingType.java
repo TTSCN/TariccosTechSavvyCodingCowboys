@@ -48,20 +48,20 @@ Account a;
     public void clickService(Account a) {
         Intent intent = new Intent(this, CreateListingService.class);
         intent.putExtra("type","service");
-        intent.putExtra("account",a);
+        //intent.putExtra("account",a);
         startActivity(intent);
     }
 
     public void clickEquipment(Account a) {
         Intent intent = new Intent(this, CreateListingEquipment.class);
         intent.putExtra("type","equipment");
-        intent.putExtra("account",a);
+        //intent.putExtra("account",a);
         startActivity(intent);
     }
 
     public void backToMain(Account a) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("account",a);
+        //intent.putExtra("account",a);
         startActivity(intent);
     }
 }

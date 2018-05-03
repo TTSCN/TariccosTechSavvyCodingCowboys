@@ -30,7 +30,7 @@ import static android.content.ContentValues.TAG;
 
 public class ListingsView extends ListActivity {
 
-    ArrayList <Listing> listings;
+    HashMap<String, String> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +42,7 @@ public class ListingsView extends ListActivity {
 
         //This hashmap is just a hardcoded in thing used to test the project. You can replace this with stuff from the
         //firebase
-        HashMap<String, String> items = new HashMap<>();
-            for(Listing listing: listings){
-                items.put(listing.getTitle(),listing.getDescription());
-            }
+        items = new HashMap<>();
 
         //items and subtitles are coming from resources xml file called listings items. should be replaced with firebase
         List<HashMap<String, String>> listItems = new ArrayList<>();
@@ -58,13 +55,14 @@ public class ListingsView extends ListActivity {
         Iterator iterator = items.entrySet().iterator();
         while (iterator.hasNext()) {
             //pairing "first line" string to titles and "second line" string to descriptions
-            HashMap<String, String> resultsMap = new HashMap<>();
+            HashMap<String, String> resultsMap = new HashMap<String, String>();
             //Says that we just want the key-value pair
             Map.Entry pair = (Map.Entry) iterator.next();
             resultsMap.put("First Line", pair.getKey().toString());
             resultsMap.put("Second Line", pair.getValue().toString());
             listItems.add(resultsMap);
         }
+
         Log.d("Zeynep", "finished iterator");
         listView.setAdapter(adapter);
 
@@ -72,16 +70,33 @@ public class ListingsView extends ListActivity {
         final DatabaseReference serviceListingsRef = database.getReference("serviceListings");
 
         // Read from the database
-        serviceListingsRef.addChildEventListener(new ChildEventListener() {
+        serviceListingsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Listing listing;
+               for(DataSnapshot newListing: dataSnapshot.getChildren()){
+                    listing = newListing.getValue(Listing.class);
+                   Log.d("listingsView", "putting title and description into listview");
+                    items.put(listing.getTitle(), listing.getDescription());
+                    Log.d("listingsView",listing.getTitle() + " " + listing.getDescription());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+       /* serviceListingsRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Listing serviceListing = dataSnapshot.getValue(Listing.class);
-                serviceListing.toString();
+                //Listing serviceListing = dataSnapshot.getValue(Listing.class);
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-               // Listing changedServiceListing = dataSnapshot.getValue(Listing.class);
+               Listing changedServiceListing = dataSnapshot.getValue(Listing.class);
             }
 
             @Override
@@ -102,4 +117,8 @@ public class ListingsView extends ListActivity {
 
 
     }
+
+  */
+    }
 }
+

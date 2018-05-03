@@ -81,7 +81,7 @@ public class FirstScreen extends AppCompatActivity {
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null) {
-            intent.putExtra("account",a);
+           // intent.putExtra("account",a);
         }
         startActivity(intent);
     }

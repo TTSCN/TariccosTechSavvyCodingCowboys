@@ -69,20 +69,20 @@ public class CreateListingService extends AppCompatActivity {
         str = text.getText().toString();
         String desc = str;
 
-        Listing serviceL = new Listing(owner, desc, cost, null);
+        //Listing serviceL = new Listing(owner, desc, cost, null);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
         DatabaseReference serviceListingsRef = ref.child("serviceListings");
 
-        serviceListingsRef.push().setValue(serviceL);
+       // serviceListingsRef.push().setValue(serviceL);
     }
 
     public void backToMain(Account a) {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null) {
-            intent.putExtra("account",a);
+            //intent.putExtra("account",a);
         }
         startActivity(intent);
     }

@@ -71,7 +71,7 @@ public class SearchForListings extends AppCompatActivity {
     public void backToMain(Account a) {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null){
-            intent.putExtra("account",a);
+           // intent.putExtra("account",a);
         }
         startActivity(intent);
     }
@@ -79,7 +79,7 @@ public class SearchForListings extends AppCompatActivity {
     public void viewListings(Account a){
         Intent intent = new Intent(this, ListingsView.class);
         if(a != null) {
-            intent.putExtra("account",a);
+         //   intent.putExtra("account",a);
         }
         startActivity(intent);
     }

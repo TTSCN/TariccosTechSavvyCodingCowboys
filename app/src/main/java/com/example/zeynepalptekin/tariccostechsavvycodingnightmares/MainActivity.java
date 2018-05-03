@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("clickView", "clickView is running");
         Intent intent = new Intent(this, ListingsView.class);
         if(a != null) {
-            intent.putExtra("account",a);
+            //intent.putExtra("account",a);
         }
         startActivity(intent);
         }
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("clickCreate","clickCreate is running");
         Intent intent = new Intent(this, ChoseListingType.class);
         if(a != null) {
-            intent.putExtra("account",a);
+           // intent.putExtra("account",a);
         }
         startActivity(intent);
         }

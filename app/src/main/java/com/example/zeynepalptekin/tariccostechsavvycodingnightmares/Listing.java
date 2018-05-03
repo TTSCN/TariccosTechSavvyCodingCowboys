@@ -20,63 +20,73 @@ import java.util.List;
 
 public class Listing {
 
-    HashMap<Account, Listing> ListingsList = new HashMap<>();
+   // HashMap<Account, Listing> ListingsList = new HashMap<>();
 
     /**
      * type: equipment or service
      */
-    private String type;
+    public String type;
     //Service or equipment
     /**
      * title of equipment or service
      */
-    private String title;
+    public String title;
     /**
      * user-entered description of equipment or service
      */
-    private String description;
+    public String description;
     /**
      * if the type is equipment, the type of equipment
      */
-    private String equipmentType;
+  //  public String equipmentType;
     /**
      * the account of the owner of the listing
      */
-    private Account owner;
+  //  public Account owner;
     /**
      * the cost, in dollars and cents, to use the service or equipment per hour
      */
-    private Double cost;
+    public double cost;
     /**
      * the date the listing was created
      */
-    private Date date;
+   // public Date date;
     /**
      * image uri information
      */
-    private Uri image;
+   // public Uri image;
 
 //    String Location;
 //    Add Location class info after pulling from Abby
     // the location is part of the account added by Abby 3/27
 
-    /**
+    public Listing(){
+        type = "ech";
+        title = "idk";
+        description = "none";
+      //  equipmentType = "who knows";
+       // owner = getOwner();
+        cost = 00.00;
+       // date = getDate();
+       // image = null;
+    }
+   /* /**
      * constructs a listing with the type "service"
      * @param owner account of the owner of the listing
      * @param description user-entered description of the listing
      * @param cost the cost, in dollars in cents, per hour of the service
      */
-    public Listing(Account owner, String description, double cost, Uri image) {
+    /*public Listing(Account owner,/* String description, double cost, Uri image) {
         type = "service";
-        this.owner = owner;
+       // this.owner = owner;
         this.cost = cost;
         title = type + " in " + owner.getLocation().toString() + " for $" + cost;
         this.description = description;
-        equipmentType = null;
-        date = new Date();
-        this.image = image;
+        //equipmentType = null;
+      //  date = new Date();
+        //this.image = image;
     }
-
+/*
     /**
      * constructs a listing with the type "equipment"
      * @param owner the account of the owner of the listing
@@ -84,15 +94,15 @@ public class Listing {
      * @param equipmentType type of equipment of the listing
      * @param cost the cost, in dollars and cents, per hour of using the equipment
      */
-    public Listing(Account owner, String description, String equipmentType, double cost, Uri image){
+  /*  public Listing(Account owner, String description, String equipmentType, double cost, Uri image){
         type = "equipment";
-        this.owner = owner;
+       // this.owner = owner;
         this.cost = cost;
         this.title = equipmentType + " in " + owner.getLocationString() + " for $" + cost;
         this.description = description;
-        this.equipmentType = equipmentType;
-        date = new Date();
-        this.image = image;
+       // this.equipmentType = equipmentType;
+       // date = new Date();
+       // this.image = image;
     }
 
     /**
@@ -131,7 +141,7 @@ public class Listing {
      * gets the account of the owner of the listing
      * @return the account of the owner of the listing
      */
-    public Account getOwner() { return owner;}
+   // public Account getOwner() { //return owner;}
 
     /**
      * gets the cost of the listing per hour
@@ -151,12 +161,13 @@ public class Listing {
      */
     public String getTitle() { return title;}
 
-    /**
+  /*  /**
      * gets the equipment type of the listing
      * @return equipment type of the listing
      */
+  /*
     public String getEquipmentType() {return equipmentType;}
-
+*/
     /**
      * returns the owner-entered description of the listing
      * @return the owner-entered description of the listing
@@ -167,7 +178,9 @@ public class Listing {
      * returns the date the listing was created
      * @return returns the date the listing was created
      */
+    /*
     public Date getDate() { return date;}
+    */
 
     @Override
     public String toString() {

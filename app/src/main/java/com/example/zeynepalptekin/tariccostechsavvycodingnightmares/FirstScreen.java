@@ -55,11 +55,11 @@ public class FirstScreen extends AppCompatActivity {
 
         text = findViewById(R.id.passwordText);
         str = text.getText().toString();
-        a.changePassword(str);
+        a.setPassword(str);
 
         text = findViewById(R.id.emailText);
         str = text.getText().toString();
-        a.changeEmail(str);
+        a.setEmail(str);
 
         text = findViewById(R.id.stateText);
         str = text.getText().toString();

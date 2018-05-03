@@ -23,24 +23,26 @@ import static com.example.zeynepalptekin.tariccostechsavvycodingnightmares.Creat
 public class CreateListingEquipment extends AppCompatActivity {
     public static final int PICK_IMAGE = 100;
     Uri imageUri;
-
     Account a;
-
     Listing listing;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null) {
-            a = bundle.getParcelable("account");
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_listing_equipment);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
+        }
+
+      //  Log.d("account","Account in CreateListingEquipment: " + a.getEmail());
 
         Button backToMain = findViewById(R.id.backToMain8);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                backToMain(a);
+                backToMain();
             }
         });
 
@@ -91,10 +93,11 @@ public class CreateListingEquipment extends AppCompatActivity {
         equipmentListingsRef.push().setValue(equipL);
     }
 
-    public void backToMain(Account a) {
+    public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
-        if(a != null) {
-            intent.putExtra("account",a);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
         }
         startActivity(intent);
     }

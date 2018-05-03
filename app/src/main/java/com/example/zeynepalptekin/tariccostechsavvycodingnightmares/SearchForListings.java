@@ -10,23 +10,24 @@ import android.widget.EditText;
 import java.util.ArrayList;
 
 public class SearchForListings extends AppCompatActivity {
-    Account a;
 
+    Account a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search_for_listings);
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
-            a = bundle.getParcelable("account");
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
         }
-        setContentView(R.layout.activity_search_for_listings);
 
         Button backToMain = findViewById(R.id.backToMain1);
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                backToMain(a);
+                backToMain();
             }
         });
 
@@ -34,7 +35,7 @@ public class SearchForListings extends AppCompatActivity {
         searchListings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewListings(a);
+                viewListings();
             }
         });
     }
@@ -62,18 +63,22 @@ public class SearchForListings extends AppCompatActivity {
 
     }
 
-    public void backToMain(Account a) {
+    public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null){
-            intent.putExtra("account",a);
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),
+            a.getPassword()};
+            intent.putExtra("account",account);
         }
         startActivity(intent);
     }
 
-    public void viewListings(Account a){
+    public void viewListings(){
         Intent intent = new Intent(this, ListingsView.class);
-        if(a != null) {
-            intent.putExtra("account",a);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),
+                    a.getPassword()};
+            intent.putExtra("account",account);
         }
         startActivity(intent);
     }

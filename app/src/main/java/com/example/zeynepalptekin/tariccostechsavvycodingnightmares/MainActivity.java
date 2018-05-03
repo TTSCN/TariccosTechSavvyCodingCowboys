@@ -15,7 +15,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-        Account a;
+
+    Account a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,22 +24,25 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
-            a = bundle.getParcelable("account");
-            TextView log = findViewById(R.id.loginBanner);
-            log.setText("You are logged in as " + a.getName());
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
+            TextView loggedIn = findViewById(R.id.loginBanner);
+            loggedIn.setText("You are logged in as " + a.getName());
+            Log.d("account","Account in MainActivity: " + a.getEmail());
         }
+
 
         Button button = findViewById(R.id.viewListingButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                    clickView(a);
+                    clickView();
             }
         });
 
         Button buttonTwo = findViewById(R.id.createListingButton);
         buttonTwo.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                clickCreateListing(a);
+                clickCreateListing();
             }
         });
 
@@ -50,21 +54,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-        public void clickView(Account a) {
+        public void clickView() {
         Log.d("clickView", "clickView is running");
         Intent intent = new Intent(this, SearchForListings.class);
-        if(a != null) {
-            intent.putExtra("account",a);
-        }
         startActivity(intent);
         }
 
-        public void clickCreateListing(Account a) {
+        public void clickCreateListing() {
         Log.d("clickCreate","clickCreate is running");
         Intent intent = new Intent(this, ChoseListingType.class);
-        if(a != null) {
-            intent.putExtra("account",a);
-        }
         startActivity(intent);
         }
 

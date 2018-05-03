@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirstScreen extends AppCompatActivity {
-
+    Account a;
     /**
      * hashmap of emails to accounts
      */
@@ -46,42 +46,45 @@ public class FirstScreen extends AppCompatActivity {
         });
 
     }
-        Account a;
-    public void createAccount(View v){
-        EditText text = findViewById(R.id.nameText);
-        String name = text.getText().toString();
 
+    public void createAccount(View v){
+        a = new Account();
+        EditText text = findViewById(R.id.nameText);
+        String str = text.getText().toString();
+        a.changeName(str);
 
         text = findViewById(R.id.passwordText);
-        String password = text.getText().toString();
+        str = text.getText().toString();
+        a.changePassword(str);
 
         text = findViewById(R.id.emailText);
-        String email = text.getText().toString();
-
+        str = text.getText().toString();
+        a.changeEmail(str);
 
         text = findViewById(R.id.stateText);
-        String state = text.getText().toString();
+        str = text.getText().toString();
+        a.getLocation().setState(str);
 
-        text = findViewById(R.id.cityText);
-        String city = text.getText().toString();
-
-        a = new Account(name,email,city,state,password);
+        text = findViewById(R.id.stateText);
+        str = text.getText().toString();
+        a.getLocation().setTown(str);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
         DatabaseReference accounts = ref.child("users");
 
-        Log.d("account","account is made " + a.toString());
         accounts.push().setValue(a);
-
         backToMain();
     }
+
 
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null) {
-            intent.putExtra("account",a);
+           String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),
+                   a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
         }
         startActivity(intent);
     }

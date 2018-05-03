@@ -24,13 +24,16 @@ public class CreateListingService extends AppCompatActivity {
         setContentView(R.layout.activity_create_listing_service);
 
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null) {
-            a = bundle.getParcelable("account");
+        if(bundle != null){
+            String[] account = bundle.getStringArray("account");
         }
+
+        //Log.d("account","Account in CreateListingService: " + a.getEmail());
+
         Button backToMain = findViewById(R.id.backToMain7);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                backToMain(a);
+                backToMain();
             }
         });
 
@@ -81,10 +84,11 @@ public class CreateListingService extends AppCompatActivity {
 
     }
 
-    public void backToMain(Account a) {
+    public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
-        if(a != null) {
-            intent.putExtra("account",a);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
         }
         startActivity(intent);
     }

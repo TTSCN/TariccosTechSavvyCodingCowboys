@@ -29,12 +29,19 @@ import java.util.Map;
 
 public class ListingsView extends ListActivity {
 
-
+    Account a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listings_view);
 
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
+        }
+
+        Log.d("account","Account in ListingsView: " + a.getEmail());
 
         ListView listView = (ListView) findViewById(android.R.id.list);
         listView.setClickable(true);

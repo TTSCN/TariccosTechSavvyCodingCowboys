@@ -28,22 +28,6 @@ public class SearchForListings extends AppCompatActivity {
         }
         setContentView(R.layout.activity_search_for_listings);
 
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference listings = database.getReference();
-
-        listings.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Listing listing = dataSnapshot.getValue(Listing.class);
-                System.out.println(listing);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-
         Button backToMain = findViewById(R.id.backToMain1);
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override

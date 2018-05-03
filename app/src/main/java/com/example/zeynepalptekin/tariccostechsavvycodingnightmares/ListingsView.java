@@ -72,22 +72,34 @@ public class ListingsView extends ListActivity {
         final DatabaseReference serviceListingsRef = database.getReference("serviceListings");
 
         // Read from the database
-        /*serviceListingsRef.addValueEventListener(new ValueEventListener() {
+        serviceListingsRef.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-               listings = dataSnapshot.getValue(ArrayList.class);
-                //Log.d(TAG, "Value is: " + value);
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Listing serviceListing = dataSnapshot.getValue(Listing.class);
+                serviceListing.toString();
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+               // Listing changedServiceListing = dataSnapshot.getValue(Listing.class);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
-*/
+
 
     }
 }

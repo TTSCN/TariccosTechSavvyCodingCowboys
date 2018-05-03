@@ -76,6 +76,7 @@ public class ListingsView extends ListActivity {
                 Listing listing;
                for(DataSnapshot newListing: dataSnapshot.getChildren()){
                     listing = newListing.getValue(Listing.class);
+                    Log.d("listingsView", listing.getTitle() + " " + listing.getDescription() + " " + listing.getEmail() + " " + listing.getTown() + " " + listing.getState());
                    Log.d("listingsView", "putting title and description into listview");
                     items.put(listing.getTitle(), listing.getDescription());
                     Log.d("listingsView",listing.getTitle() + " " + listing.getDescription());

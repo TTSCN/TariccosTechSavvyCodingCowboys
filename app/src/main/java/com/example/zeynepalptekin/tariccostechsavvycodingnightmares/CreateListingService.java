@@ -30,7 +30,7 @@ public class CreateListingService extends AppCompatActivity {
         Button backToMain = findViewById(R.id.backToMain7);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                backToMain(a);
+                backToMain();
             }
         });
 
@@ -59,8 +59,6 @@ public class CreateListingService extends AppCompatActivity {
         Log.d("Magnus", "in create service listing");
         String str;
 
-        Account owner = a;
-
         EditText text = findViewById(R.id.price1);
         str = text.getText().toString();
         Double cost = Double.parseDouble(str);
@@ -69,21 +67,22 @@ public class CreateListingService extends AppCompatActivity {
         str = text.getText().toString();
         String desc = str;
 
-        //Listing serviceL = new Listing(owner, desc, cost, null);
+        text = findViewById(R.id.typeText2);
+        str = text.getText().toString();
+        String type = str;
+
+        Listing serviceL = new Listing(desc, cost, type, "email", "town", "state");
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
         DatabaseReference serviceListingsRef = ref.child("serviceListings");
 
-       // serviceListingsRef.push().setValue(serviceL);
+        serviceListingsRef.push().setValue(serviceL);
     }
 
-    public void backToMain(Account a) {
+    public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
-        if(a != null) {
-            //intent.putExtra("account",a);
-        }
         startActivity(intent);
     }
 

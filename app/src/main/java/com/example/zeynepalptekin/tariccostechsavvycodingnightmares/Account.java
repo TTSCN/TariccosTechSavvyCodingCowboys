@@ -167,7 +167,7 @@ public class Account {
      * changes the email of the account to the email given
      * @param email the new email of the account
      */
-    public void changeEmail(String email){
+    public void setEmail(String email){
         this.email = email;
     }
 
@@ -175,7 +175,7 @@ public class Account {
      * changes the password of the account to the password given
      * @param password the new password of the account
      */
-    public void changePassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

@@ -20,33 +20,28 @@ import java.util.List;
 
 public class Listing {
 
-   // HashMap<Account, Listing> ListingsList = new HashMap<>();
-
     /**
      * type: equipment or service
      */
-    public String type;
+    private String type;
     //Service or equipment
+    private String email;
     /**
      * title of equipment or service
      */
-    public String title;
+    private String title;
     /**
      * user-entered description of equipment or service
      */
-    public String description;
+    private String description;
     /**
      * if the type is equipment, the type of equipment
      */
   //  public String equipmentType;
     /**
-     * the account of the owner of the listing
-     */
-  //  public Account owner;
-    /**
      * the cost, in dollars and cents, to use the service or equipment per hour
      */
-    public double cost;
+    private double cost;
     /**
      * the date the listing was created
      */
@@ -55,6 +50,9 @@ public class Listing {
      * image uri information
      */
    // public Uri image;
+    private String town;
+
+    private String state;
 
 //    String Location;
 //    Add Location class info after pulling from Abby
@@ -65,26 +63,62 @@ public class Listing {
         title = "idk";
         description = "none";
       //  equipmentType = "who knows";
-       // owner = getOwner();
         cost = 00.00;
+        email = "someone@gmail.com";
+        town = "town";
+        state = "state";
        // date = getDate();
        // image = null;
     }
-   /* /**
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+
+
+    /**
      * constructs a listing with the type "service"
-     * @param owner account of the owner of the listing
+     * @param email email of the owner of the listing
      * @param description user-entered description of the listing
      * @param cost the cost, in dollars in cents, per hour of the service
      */
-    /*public Listing(Account owner,/* String description, double cost, Uri image) {
-        type = "service";
-       // this.owner = owner;
+    public Listing(String description, double cost, String type, String email, String town, String state) {
+        this.type = type;
         this.cost = cost;
-        title = type + " in " + owner.getLocation().toString() + " for $" + cost;
+        this.title = type + " in " + town + ", " + state + " for $" + cost;
         this.description = description;
-        //equipmentType = null;
-      //  date = new Date();
-        //this.image = image;
+        this.email = email;
+        this.town = town;
+        this.state = state;
     }
 /*
     /**
@@ -118,7 +152,7 @@ public class Listing {
      * @param description
      */
     public void setDescription(String description) {
-        description = this.description;
+        this.description = description;
     }
 
     /**
@@ -126,7 +160,7 @@ public class Listing {
      * @param type
      */
     public void setEquipmentType(String type){
-        type = this.type;
+        this.type =type;
     }
 
     /**
@@ -134,7 +168,7 @@ public class Listing {
      * @param cost
      */
     public void setCost(double cost){
-        cost = this.cost;
+        this.cost = cost;
     }
 
     /**

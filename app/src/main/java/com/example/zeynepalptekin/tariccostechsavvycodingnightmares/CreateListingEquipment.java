@@ -42,7 +42,7 @@ public class CreateListingEquipment extends AppCompatActivity {
         Button backToMain = findViewById(R.id.backToMain8);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                backToMain(a);
+                backToMain();
             }
         });
 
@@ -69,8 +69,6 @@ public class CreateListingEquipment extends AppCompatActivity {
         Log.d("Magnus", "in create equipment listing");
         String str;
 
-        Account owner = a;
-
         EditText text = findViewById(R.id.price2);
         str = text.getText().toString();
         Double cost = Double.parseDouble(str);
@@ -83,21 +81,18 @@ public class CreateListingEquipment extends AppCompatActivity {
         str = text.getText().toString();
         String desc = str;
 
-       // Listing equipL = new Listing(owner, desc, type, cost, null);
+        Listing equipL = new Listing(desc, cost, type, "email", "town", "state");
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
         DatabaseReference equipmentListingsRef = ref.child("equipmentListings");
 
-       // equipmentListingsRef.push().setValue(equipL);
+        equipmentListingsRef.push().setValue(equipL);
     }
 
-    public void backToMain(Account a) {
+    public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
-        if(a != null) {
-            //intent.putExtra("account",a);
-        }
         startActivity(intent);
     }
 

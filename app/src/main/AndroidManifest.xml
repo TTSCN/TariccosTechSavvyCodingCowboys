@@ -22,7 +22,8 @@
         <activity android:name=".CreateListingService" />
         <activity android:name=".ChoseListingType" />
         <activity android:name=".CreateListingEquipment" />
-        <activity android:name=".ListingsView"></activity>
+        <activity android:name=".ListingsView" />
+        <activity android:name=".ListingTemplate"></activity>
     </application>
 
 </manifest>

@@ -1,7 +1,9 @@
 package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
+import android.app.IntentService;
 import android.app.ListActivity;
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +32,7 @@ import static android.content.ContentValues.TAG;
 
 public class ListingsView extends ListActivity {
 
+    Account a;
     HashMap<String, String> items;
 
     @Override
@@ -37,8 +40,16 @@ public class ListingsView extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listings_view);
 
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
+        }
+
+        Log.d("account","Account in ListingsView: " + a.getEmail());
 
         ListView listView = (ListView) findViewById(android.R.id.list);
+        listView.setClickable(true);
 
         //This hashmap is just a hardcoded in thing used to test the project. You can replace this with stuff from the
         //firebase

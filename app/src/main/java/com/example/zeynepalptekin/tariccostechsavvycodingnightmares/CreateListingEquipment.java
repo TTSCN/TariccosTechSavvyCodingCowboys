@@ -28,16 +28,19 @@ public class CreateListingEquipment extends AppCompatActivity {
     Account a;
 
     Listing listing;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null) {
-            a = bundle.getParcelable("account");
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_listing_equipment);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
+        }
+
+      //  Log.d("account","Account in CreateListingEquipment: " + a.getEmail());
 
         Button backToMain = findViewById(R.id.backToMain8);
         backToMain.setOnClickListener(new View.OnClickListener(){
@@ -69,6 +72,8 @@ public class CreateListingEquipment extends AppCompatActivity {
         Log.d("Magnus", "in create equipment listing");
         String str;
 
+        Account owner = a;
+
         EditText text = findViewById(R.id.price2);
         str = text.getText().toString();
         Double cost = Double.parseDouble(str);
@@ -93,6 +98,10 @@ public class CreateListingEquipment extends AppCompatActivity {
 
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 
@@ -108,6 +117,4 @@ public class CreateListingEquipment extends AppCompatActivity {
             imageUri = data.getData();
         }
     }
-
-    
 }

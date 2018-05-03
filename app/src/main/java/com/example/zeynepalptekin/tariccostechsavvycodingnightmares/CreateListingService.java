@@ -24,9 +24,12 @@ public class CreateListingService extends AppCompatActivity {
         setContentView(R.layout.activity_create_listing_service);
 
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null) {
-            a = bundle.getParcelable("account");
+        if(bundle != null){
+            String[] account = bundle.getStringArray("account");
         }
+
+        //Log.d("account","Account in CreateListingService: " + a.getEmail());
+
         Button backToMain = findViewById(R.id.backToMain7);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -59,6 +62,8 @@ public class CreateListingService extends AppCompatActivity {
         Log.d("Magnus", "in create service listing");
         String str;
 
+        Account owner = a;
+
         EditText text = findViewById(R.id.price1);
         str = text.getText().toString();
         Double cost = Double.parseDouble(str);
@@ -79,10 +84,16 @@ public class CreateListingService extends AppCompatActivity {
         DatabaseReference serviceListingsRef = ref.child("serviceListings");
 
         serviceListingsRef.push().setValue(serviceL);
+
+
     }
 
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 

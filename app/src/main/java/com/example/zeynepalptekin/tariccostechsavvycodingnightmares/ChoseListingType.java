@@ -3,6 +3,7 @@ package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,15 +18,21 @@ Account a;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chose_listing_type);
 
+        Intent intent = new Intent(this,CreateListingService.class);
+
         Bundle bundle = getIntent().getExtras();
 
         if(bundle != null) {
-            a = bundle.getParcelable("account");
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
         }
+
+        //Log.d("account","Account in ChoseListing: " + a.getEmail());
+
         Button service = findViewById(R.id.serviceButton);
         service.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                clickService(a);
+                clickService();
             }
         });
 
@@ -33,35 +40,44 @@ Account a;
         Button equipment = findViewById(R.id.equipmentButton);
         equipment.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                clickEquipment(a);
+                clickEquipment();
             }
         });
 
         Button backToMain = findViewById(R.id.backToMain6);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                backToMain(a);
+                backToMain();
             }
         });
     }
 
-    public void clickService(Account a) {
+    public void clickService() {
         Intent intent = new Intent(this, CreateListingService.class);
         intent.putExtra("type","service");
-        //intent.putExtra("account",a);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 
-    public void clickEquipment(Account a) {
+    public void clickEquipment() {
         Intent intent = new Intent(this, CreateListingEquipment.class);
         intent.putExtra("type","equipment");
-        //intent.putExtra("account",a);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 
-    public void backToMain(Account a) {
+    public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
-        //intent.putExtra("account",a);
+        if(a != null){
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
     }
 }

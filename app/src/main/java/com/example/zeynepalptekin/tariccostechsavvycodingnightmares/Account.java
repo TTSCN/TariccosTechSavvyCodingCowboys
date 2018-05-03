@@ -15,12 +15,12 @@ public class Account {
     /**
      * name of the owner of the account
      */
-    public String name;
+    private String name;
 
     /**
      * email of the owner of the account
      */
-    public String email;
+    private String email;
 
     /**
      * location of the owner of the account
@@ -34,7 +34,7 @@ public class Account {
     /**
      * password for the account
      */
-    public String password;
+    private String password;
 
     /**
      * constructs an empty account with a fake name, a fake email, and a default location

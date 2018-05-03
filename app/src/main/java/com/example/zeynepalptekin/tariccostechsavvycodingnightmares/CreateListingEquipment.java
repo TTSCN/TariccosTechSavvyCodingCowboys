@@ -37,6 +37,8 @@ public class CreateListingEquipment extends AppCompatActivity {
             a = new Account(account[0],account[1],account[2],account[3],account[4]);
         }
 
+        Log.d("account","Account in CreateListingEquipment: " + a.getEmail());
+
         Button backToMain = findViewById(R.id.backToMain8);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

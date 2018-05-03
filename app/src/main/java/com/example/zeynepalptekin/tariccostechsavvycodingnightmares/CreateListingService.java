@@ -27,6 +27,9 @@ public class CreateListingService extends AppCompatActivity {
         if(bundle != null){
             String[] account = bundle.getStringArray("account");
         }
+
+        Log.d("account","Account in CreateListingService: " + a.getEmail());
+
         Button backToMain = findViewById(R.id.backToMain7);
         backToMain.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

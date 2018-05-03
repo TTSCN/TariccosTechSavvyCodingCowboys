@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         public void clickView() {
         Log.d("clickView", "clickView is running");
-        Intent intent = new Intent(this, SearchForListings.class);
+        Intent intent = new Intent(this, ListingsView.class);
         startActivity(intent);
         }
 

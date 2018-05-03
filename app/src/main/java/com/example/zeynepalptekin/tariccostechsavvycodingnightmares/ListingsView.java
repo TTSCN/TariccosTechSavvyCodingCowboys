@@ -46,7 +46,7 @@ public class ListingsView extends ListActivity {
             a = new Account(account[0],account[1],account[2],account[3],account[4]);
         }
 
-        Log.d("account","Account in ListingsView: " + a.getEmail());
+//        Log.d("account","Account in ListingsView: " + a.getEmail());
 
         ListView listView = (ListView) findViewById(android.R.id.list);
         listView.setClickable(true);

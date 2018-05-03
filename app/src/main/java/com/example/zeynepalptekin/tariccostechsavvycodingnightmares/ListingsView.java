@@ -72,7 +72,7 @@ public class ListingsView extends ListActivity {
         final DatabaseReference serviceListingsRef = database.getReference("serviceListings");
 
         // Read from the database
-        serviceListingsRef.addValueEventListener(new ValueEventListener() {
+        /*serviceListingsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -87,6 +87,7 @@ public class ListingsView extends ListActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+*/
 
     }
 }

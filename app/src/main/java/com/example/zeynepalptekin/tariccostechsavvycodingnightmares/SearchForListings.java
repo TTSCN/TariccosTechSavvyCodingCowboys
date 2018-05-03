@@ -7,6 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class SearchForListings extends AppCompatActivity {
@@ -21,6 +27,22 @@ public class SearchForListings extends AppCompatActivity {
             a = bundle.getParcelable("account");
         }
         setContentView(R.layout.activity_search_for_listings);
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference listings = database.getReference();
+
+        listings.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Listing listing = dataSnapshot.getValue(Listing.class);
+                System.out.println(listing);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
 
         Button backToMain = findViewById(R.id.backToMain1);
         backToMain.setOnClickListener(new View.OnClickListener() {

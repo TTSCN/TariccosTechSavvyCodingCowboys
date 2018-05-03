@@ -77,8 +77,6 @@ public class CreateListingService extends AppCompatActivity {
         DatabaseReference serviceListingsRef = ref.child("serviceListings");
 
         serviceListingsRef.push().setValue(serviceL);
-
-
     }
 
     public void backToMain(Account a) {

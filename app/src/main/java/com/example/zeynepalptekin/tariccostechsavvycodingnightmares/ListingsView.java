@@ -100,7 +100,7 @@ public class ListingsView extends ListActivity {
             }
         });
 
-       /* serviceListingsRef.addChildEventListener(new ChildEventListener() {
+       serviceListingsRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 //Listing serviceListing = dataSnapshot.getValue(Listing.class);
@@ -128,9 +128,6 @@ public class ListingsView extends ListActivity {
         });
 
 
-    }
-
-  */
     }
 }
 

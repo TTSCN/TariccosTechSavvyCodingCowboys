@@ -65,7 +65,7 @@ public class FirstScreen extends AppCompatActivity {
         str = text.getText().toString();
         a.getLocation().setState(str);
 
-        text = findViewById(R.id.stateText);
+        text = findViewById(R.id.cityText);
         str = text.getText().toString();
         a.getLocation().setTown(str);
 

@@ -2,6 +2,7 @@ package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,6 +15,13 @@ public class ListingTemplate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listing_template);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle!=null) {
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
+            Log.d("account","Account in Listing Template " + a.getEmail());
+        }
 
         TextView listingTitle = (TextView)findViewById(R.id.listingTitle);
 //        listingTitle.setText(l.getTitle());

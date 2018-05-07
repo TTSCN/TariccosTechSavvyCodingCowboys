@@ -26,6 +26,9 @@ public class CreateListingService extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
             String[] account = bundle.getStringArray("account");
+
+            a = new Account(account[0],account[1],account[2],account[3],account[4]);
+            Log.d("Account","Account in CreateListingService "  + a.getEmail());
         }
 
         //Log.d("account","Account in CreateListingService: " + a.getEmail());
@@ -62,8 +65,6 @@ public class CreateListingService extends AppCompatActivity {
         Log.d("Magnus", "in create service listing");
         String str;
 
-        Account owner = a;
-
         EditText text = findViewById(R.id.price1);
         str = text.getText().toString();
         Double cost = Double.parseDouble(str);
@@ -76,7 +77,8 @@ public class CreateListingService extends AppCompatActivity {
         str = text.getText().toString();
         String type = str;
 
-        Listing serviceL = new Listing(desc, cost, type, "email", "town", "state");
+        Listing serviceL = new Listing(desc, cost, type, a.getEmail(), a.getLocation().getTown(),
+                a.getLocation().getState());
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();

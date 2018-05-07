@@ -56,18 +56,33 @@ public class MainActivity extends AppCompatActivity {
         public void clickView() {
         Log.d("clickView", "clickView is running");
         Intent intent = new Intent(this, ListingsView.class);
+        if(a!=null) {
+            String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),
+            a.getLocation().getState(),a.getPassword()};
+            intent.putExtra("account",account);
+        }
         startActivity(intent);
         }
 
         public void clickCreateListing() {
         Log.d("clickCreate","clickCreate is running");
         Intent intent = new Intent(this, ChoseListingType.class);
+            if(a!=null) {
+                String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),
+                        a.getLocation().getState(),a.getPassword()};
+                intent.putExtra("account",account);
+            }
         startActivity(intent);
         }
 
         public void clickLogin() {
         Log.d("clickLogin","clickLogin is running");
         Intent intent = new Intent(this, LoginScreen.class);
+            if(a!=null) {
+                String[] account = {a.getName(),a.getEmail(),a.getLocation().getTown(),
+                        a.getLocation().getState(),a.getPassword()};
+                intent.putExtra("account",account);
+            }
         startActivity(intent);
         }
 }

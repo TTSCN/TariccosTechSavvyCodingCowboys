@@ -37,10 +37,9 @@ public class CreateListingEquipment extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
             String[] account = bundle.getStringArray("account");
-            a = new Account(account[0],account[1],account[2],account[3],account[4]);
+          if(account != null)  a = new Account(account[0],account[1],account[2],account[3],account[4]);
+            Log.d("account","Account in CreateListingEquipment: " + a.getEmail());
         }
-
-      //  Log.d("account","Account in CreateListingEquipment: " + a.getEmail());
 
         Button backToMain = findViewById(R.id.backToMain8);
         backToMain.setOnClickListener(new View.OnClickListener(){
@@ -76,7 +75,8 @@ public class CreateListingEquipment extends AppCompatActivity {
 
         EditText text = findViewById(R.id.price2);
         str = text.getText().toString();
-        Double cost = Double.parseDouble(str);
+        if(str.isEmpty()) str = "0";
+        double cost = Double.parseDouble(str);
 
         text = findViewById(R.id.typeText2);
         str = text.getText().toString();

@@ -8,8 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class LoginScreen extends AppCompatActivity {
-Account a;
+    Account a;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +25,7 @@ Account a;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    clickCreateAccount();
+                clickCreateAccount();
             }
         });
 
@@ -39,20 +46,44 @@ Account a;
     }
 
     public void login() {
-        EditText user = findViewById(R.id.userNameEdit);
-        String userName = user.getText().toString();
+        EditText user = findViewById(R.id.emailEdit);
+        final String email = user.getText().toString();
+        Log.d("email","email from box: " + email);
 
         EditText pass = findViewById(R.id.passwordEdit);
-        String password = pass.getText().toString();
+        final String password = pass.getText().toString();
+        Log.d("password","password from box: " + pass);
 
         //code to find specific account given the username and password from firebase /
         //this return statement is just here to prevent the code from giving an error message
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference usersRef = database.getReference("users");
+        Log.d("firebase","firebase referenced");
 
 
-        //this is temporary hard code logging in as magnus until we get firebase up and running
+        usersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Account account;
+                for (DataSnapshot newAccount : dataSnapshot.getChildren()) {
+                    account = newAccount.getValue(Account.class);
+                    Log.d("each account retrieved","most recent account: " + account.getEmail());
+                    if (account.getEmail().equals(email) && account.getPassword().equals(password)) {
+                        Log.d("email", account.getEmail());
+                        a = account;
+                        backToMain();
+                    }
+                }
+            }
 
-        backToMain();
-    }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    //this is temporary hard code logging in as magnus until we get firebase up and running
+
+}
 
     public void clickCreateAccount() {
         Log.d("clickCreateAccount","clickCreateAccount is running");

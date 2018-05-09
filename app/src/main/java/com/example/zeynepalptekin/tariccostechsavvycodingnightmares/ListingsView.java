@@ -7,9 +7,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
@@ -35,10 +38,27 @@ public class ListingsView extends ListActivity {
     Account a;
     HashMap<String, String> items;
 
+    EditText searchInput;
+    SimpleAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listings_view);
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference serviceListingsRef = database.getReference("serviceListings");
+
+        ListView listView = (ListView) findViewById(android.R.id.list);
+        searchInput = (EditText) findViewById(R.id.searchInput);
+
+        items = new HashMap<>();
+        items.put("i am a happy", "meal");
+        items.put("i", "meal");
+        items.put("i am", "meal");
+        items.put("i am a", "meal");
+        items.put("happy", "meal");
+        items.put("i a happy", "meal");
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
@@ -47,18 +67,9 @@ public class ListingsView extends ListActivity {
             Log.d("account","Account in ListingsView " + a.getEmail());
         }
 
-//        Log.d("account","Account in ListingsView: " + a.getEmail());
-
-        ListView listView = (ListView) findViewById(android.R.id.list);
-        listView.setClickable(true);
-
-        //This hashmap is just a hardcoded in thing used to test the project. You can replace this with stuff from the
-        //firebase
-        items = new HashMap<>();
-
         //items and subtitles are coming from resources xml file called listings items. should be replaced with firebase
-        List<HashMap<String, String>> listItems = new ArrayList<>();
-        SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.listings_items,
+        ArrayList<HashMap<String, String>> listItems = new ArrayList<>();
+        adapter = new SimpleAdapter(this, listItems, R.layout.listings_items,
                 new String[]{"First Line", "Second Line"},
                 new int[]{R.id.titles, R.id.descriptions});
 
@@ -78,10 +89,29 @@ public class ListingsView extends ListActivity {
         Log.d("Zeynep", "finished iterator");
         listView.setAdapter(adapter);
 
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference serviceListingsRef = database.getReference("serviceListings");
+        /**
+         * behavior when information inside TextEdit changes
+         */
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                ListingsView.this.adapter.getFilter().filter(charSequence);
+            }
 
-        // Read from the database
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        /**
+         *
+         */
         serviceListingsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -127,8 +157,6 @@ public class ListingsView extends ListActivity {
 
             }
         });
-
-
     }
 
   */

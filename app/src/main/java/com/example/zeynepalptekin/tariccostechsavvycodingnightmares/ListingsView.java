@@ -35,9 +35,11 @@ import static android.content.ContentValues.TAG;
 
 public class ListingsView extends ListActivity {
     Account a;
-    ArrayList<String>keys=new ArrayList<>();
-    ;
+//    ArrayList<String>keys=new ArrayList<>();
+    ArrayList <Listing> listings = new ArrayList<>();
+
     private ArrayList<Listing> arrayList = new ArrayList<>();
+
 //    private ArrayAdapter<Listing> adapter;
     SimpleAdapter adapter;
     private ArrayAdapter<String> listAdapter;
@@ -53,15 +55,42 @@ public class ListingsView extends ListActivity {
             String[] account = bundle.getStringArray("account");
             a = new Account(account[0], account[1], account[2], account[3], account[4]);
             Log.d("account", "Account in ListingsView " + a.getEmail());
-
-            //Get Global Controller Class object (see application tag in AndroidManifest.xml)
-            final Controller aController = (Controller) getApplicationContext();
         }
+
+//        final Controller aController = (Controller) getApplicationContext();
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference listingsRef = database.getReference("serviceListings");
 
-        listingsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        listingsRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Listing listing = dataSnapshot.getValue(Listing.class);
+                System.out.println(listing.getTitle() + " /n  " + listing.getDescription());
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+/*        listingsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot listings : dataSnapshot.getChildren()) {
@@ -71,11 +100,13 @@ public class ListingsView extends ListActivity {
                 }
             }
 
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+        */
 
         // Read from the database
 //        listingsRef.addValueEventListener(new ValueEventListener() {
@@ -167,9 +198,11 @@ public class ListingsView extends ListActivity {
 //
 //    }
     }
-        private void addCard (String desc, String titles) {
+ /*       private void addCard (String desc, String titles) {
            // LinearLayout.generateViewId()
 
-        }
+
+    }
+    */
 }
 

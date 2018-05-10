@@ -50,7 +50,7 @@ public class CreateListingService extends AppCompatActivity {
         Button publish = findViewById(R.id.publishButton1);
         publish.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                //Get Global Controller Class object (see application tag in AndroidManifest.xml)
+/*                //Get Global Controller Class object (see application tag in AndroidManifest.xml)
                 final Controller aController = (Controller) getApplicationContext();
 
                 TextView textView = findViewById(R.id.createListingTitle1);
@@ -60,10 +60,10 @@ public class CreateListingService extends AppCompatActivity {
                 EditText editText = findViewById(R.id.descriptionText1);
                 String description = editText.getText().toString();
                 System.out.println(description);
-
+*/
                 createServiceListing();
 
-                aController.getListingMap().put(title, description);
+//                aController.getListingMap().put(title, description);
             }
         });
 

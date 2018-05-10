@@ -59,8 +59,7 @@ public class CreateListingEquipment extends AppCompatActivity {
         publish.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                createEquipmentListing();
-
-
+                backToMain();
             }
         });
     }

@@ -51,6 +51,7 @@ public class CreateListingService extends AppCompatActivity {
         publish.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 createServiceListing();
+                backToMain();
             }
         });
 

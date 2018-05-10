@@ -30,20 +30,21 @@ public class MainActivity extends AppCompatActivity {
             Log.d("account","Account in MainActivity: " + a.getEmail());
         }
 
-
-        Button button = findViewById(R.id.viewListingButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        if(a != null) {
+            Button button = findViewById(R.id.viewListingButton);
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
                     clickView();
-            }
-        });
+                }
+            });
 
-        Button buttonTwo = findViewById(R.id.createListingButton);
-        buttonTwo.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                clickCreateListing();
-            }
-        });
+            Button buttonTwo = findViewById(R.id.createListingButton);
+            buttonTwo.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    clickCreateListing();
+                }
+            });
+        }
 
         Button buttonThree = findViewById(R.id.mainLoginButton);
         buttonThree.setOnClickListener(new View.OnClickListener() {

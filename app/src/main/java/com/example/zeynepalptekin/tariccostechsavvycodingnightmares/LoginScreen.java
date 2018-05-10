@@ -52,10 +52,8 @@ public class LoginScreen extends AppCompatActivity {
 
         EditText pass = findViewById(R.id.passwordEdit);
         final String password = pass.getText().toString();
-        Log.d("password","password from box: " + pass);
+        Log.d("password","password from box: " + password);
 
-        //code to find specific account given the username and password from firebase /
-        //this return statement is just here to prevent the code from giving an error message
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference usersRef = database.getReference("users");
         Log.d("firebase","firebase referenced");
@@ -66,6 +64,7 @@ public class LoginScreen extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Account account;
                 for (DataSnapshot newAccount : dataSnapshot.getChildren()) {
+                    Log.d("loop","yes");
                     account = newAccount.getValue(Account.class);
                     Log.d("each account retrieved","most recent account: " + account.getEmail());
                     if (account.getEmail().equals(email) && account.getPassword().equals(password)) {
@@ -81,7 +80,6 @@ public class LoginScreen extends AppCompatActivity {
 
             }
         });
-    //this is temporary hard code logging in as magnus until we get firebase up and running
 
 }
 

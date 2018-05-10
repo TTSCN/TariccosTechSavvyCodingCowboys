@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
@@ -22,76 +23,51 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Currency;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import static android.content.ContentValues.TAG;
 
 public class ListingsView extends ListActivity {
-
     Account a;
-    HashMap<String, String> items;
+    ArrayList<String>keys=new ArrayList<>();
+    ;
+    private ArrayList<Listing> arrayList = new ArrayList<>();
+//    private ArrayAdapter<Listing> adapter;
+    SimpleAdapter adapter;
+    private ArrayAdapter<String> listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listings_view);
 
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null) {
-            String[] account = bundle.getStringArray("account");
-            a = new Account(account[0],account[1],account[2],account[3],account[4]);
-            Log.d("account","Account in ListingsView " + a.getEmail());
-        }
-
-//        Log.d("account","Account in ListingsView: " + a.getEmail());
-
         ListView listView = (ListView) findViewById(android.R.id.list);
-        listView.setClickable(true);
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            String[] account = bundle.getStringArray("account");
+            a = new Account(account[0], account[1], account[2], account[3], account[4]);
+            Log.d("account", "Account in ListingsView " + a.getEmail());
 
-        //This hashmap is just a hardcoded in thing used to test the project. You can replace this with stuff from the
-        //firebase
-        items = new HashMap<>();
-
-        //items and subtitles are coming from resources xml file called listings items. should be replaced with firebase
-        List<HashMap<String, String>> listItems = new ArrayList<>();
-        SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.listings_items,
-                new String[]{"First Line", "Second Line"},
-                new int[]{R.id.titles, R.id.descriptions});
-
-        Log.d("Zeynep", "made it to iterator");
-        //iterates through listitems to put in listview
-        Iterator iterator = items.entrySet().iterator();
-        while (iterator.hasNext()) {
-            //pairing "first line" string to titles and "second line" string to descriptions
-            HashMap<String, String> resultsMap = new HashMap<String, String>();
-            //Says that we just want the key-value pair
-            Map.Entry pair = (Map.Entry) iterator.next();
-            resultsMap.put("First Line", pair.getKey().toString());
-            resultsMap.put("Second Line", pair.getValue().toString());
-            listItems.add(resultsMap);
+            //Get Global Controller Class object (see application tag in AndroidManifest.xml)
+            final Controller aController = (Controller) getApplicationContext();
         }
-
-        Log.d("Zeynep", "finished iterator");
-        listView.setAdapter(adapter);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference serviceListingsRef = database.getReference("serviceListings");
+        final DatabaseReference listingsRef = database.getReference("serviceListings");
 
-        // Read from the database
-        serviceListingsRef.addValueEventListener(new ValueEventListener() {
+        listingsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Listing listing;
-               for(DataSnapshot newListing: dataSnapshot.getChildren()){
-                    listing = newListing.getValue(Listing.class);
-                    Log.d("listingsView", listing.getTitle() + " " + listing.getDescription() + " " + listing.getEmail() + " " + listing.getTown() + " " + listing.getState());
-                   Log.d("listingsView", "putting title and description into listview");
-                    items.put(listing.getTitle(), listing.getDescription());
-                    Log.d("listingsView",listing.getTitle() + " " + listing.getDescription());
+                for (DataSnapshot listings : dataSnapshot.getChildren()) {
+                    String descript = listings.child("description").getValue(String.class);
+                    String titles = listings.child("title").getValue(String.class);
+                    addCard(descript, titles);
                 }
             }
 
@@ -101,34 +77,99 @@ public class ListingsView extends ListActivity {
             }
         });
 
-       serviceListingsRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //Listing serviceListing = dataSnapshot.getValue(Listing.class);
-            }
+        // Read from the database
+//        listingsRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                final Controller aController = (Controller) getApplicationContext();
+//                Listing listing;
+//                HashMap<String,String> ultimate = aController.getListingMap();
+//
+//                for(DataSnapshot newListing: dataSnapshot.getChildren()){
+//                    listing = newListing.getValue(Listing.class);
+//                    ultimate.put(listing.getTitle(),listing.getDescription());
+////                    HashMap<String,String> value = (HashMap<String, String>)newListing.getValue();
+////                    String title = newListing.getKey().toString();
+////                    String desc = value.get(title).toString();
+////
+////                    System.out.println(title + " " + desc);
+//
+//                    Log.d("listingsView", listing.getTitle() + " " + listing.getDescription() + " " + listing.getEmail() + " " + listing.getTown() + " " + listing.getState());
+//                    Log.d("listingsView", "putting title and description into listview");
+//                    Log.d("listingsView",listing.getTitle() + " " + listing.getDescription());
+//                }
+//                for(String key: ultimate.keySet()){
+//                    keys.add(key.toString());
+//                }
+//            }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-               Listing changedServiceListing = dataSnapshot.getValue(Listing.class);
-            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//        Controller aController = (Controller) getApplicationContext();
+//        ListView listView = (ListView) findViewById(android.R.id.list);
+//        ArrayList<String> listings = new ArrayList<>();
+//        listings.addAll(aController.getListingMap().values());
+//        Log.d("help",keys.toString());
+//        listAdapter = new ArrayAdapter<String>(this,R.layout.listings_items, keys);
 
-            }
+//        ArrayList<HashMap<String, String>> listItems = new ArrayList<>();
+//        adapter = new SimpleAdapter(this, listItems, R.layout.listings_items,
+//                new String[]{"First Line", "Second Line"},
+//                new int[]{R.id.titles, R.id.descriptions});
+//
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//        Log.d("Zeynep", "made it to iterator");
+//        //iterates through listitems to put in listview
+//        Iterator iterator = aController.getListingMap().entrySet().iterator();
+//        while (iterator.hasNext()) {
+//            //pairing "first line" string to titles and "second line" string to descriptions
+//            HashMap<String, String> resultsMap = new HashMap<>();
+//            //Says that we just want the key-value pair
+//            Map.Entry pair = (Map.Entry) iterator.next();
+//            resultsMap.put("First Line", pair.getKey().toString());
+//            resultsMap.put("Second Line", pair.getValue().toString());
+//            listItems.add(resultsMap);
+//        }
 
-            }
+//        Log.d("Zeynep", "finished iterator");
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
+//        listingsRef.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//        listView.setAdapter(listAdapter);
+//
+//    }
     }
+        private void addCard (String desc, String titles) {
+           // LinearLayout.generateViewId()
+
+        }
 }
 

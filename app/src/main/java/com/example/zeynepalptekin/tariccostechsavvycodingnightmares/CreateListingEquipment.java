@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.net.URI;
 
@@ -58,8 +59,19 @@ public class CreateListingEquipment extends AppCompatActivity {
         Button publish = findViewById(R.id.publishButton2);
         publish.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-               createEquipmentListing();
+                //Get Global Controller Class object (see application tag in AndroidManifest.xml)
+                final Controller aController = (Controller) getApplicationContext();
 
+                TextView textView = findViewById(R.id.createListingTitle2);
+                String title = textView.getText().toString();
+                System.out.println(title);
+
+                EditText editText = findViewById(R.id.descriptionText1);
+                String description = editText.getText().toString();
+                System.out.println(description);
+
+                createEquipmentListing();
+                aController.getListingMap().put(title, description);
 
             }
         });

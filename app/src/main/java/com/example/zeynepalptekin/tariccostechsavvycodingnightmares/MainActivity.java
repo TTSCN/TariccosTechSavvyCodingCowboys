@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             a.getLocation().getState(),a.getPassword()};
             intent.putExtra("account",account);
         }
+
         startActivity(intent);
         }
 

@@ -19,12 +19,15 @@
     <TextView
         android:id="@+id/createListingTitle1"
         android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:layout_marginBottom="28dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="casual"
         android:text="@string/title"
+        android:textColor="@color/colorText"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/typeText2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -63,6 +66,8 @@
         android:layout_marginEnd="25dp"
         android:layout_marginStart="85dp"
         android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="sans-serif-condensed"
         android:text="@string/addImage"
         app:layout_constraintBottom_toTopOf="@+id/backToMain7"
         app:layout_constraintEnd_toStartOf="@+id/publishButton1"
@@ -76,6 +81,8 @@
         android:layout_height="54dp"
         android:layout_marginEnd="85dp"
         android:layout_marginTop="24dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="sans-serif-condensed"
         android:text="@string/publish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/addImageButton1"
@@ -86,6 +93,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="sans-serif-condensed"
         android:text="@string/backToMain"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/publishButton1"
@@ -109,6 +118,7 @@
         android:layout_height="22dp"
         android:layout_marginBottom="12dp"
         android:text="@string/price"
+        android:textColor="@color/colorText"
         app:layout_constraintBottom_toTopOf="@+id/price1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

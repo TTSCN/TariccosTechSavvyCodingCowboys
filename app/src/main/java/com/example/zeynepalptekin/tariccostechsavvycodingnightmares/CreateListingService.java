@@ -61,9 +61,10 @@ public class CreateListingService extends AppCompatActivity {
                 String description = editText.getText().toString();
                 System.out.println(description);
 
-                createServiceListing();
-
                 aController.getListingMap().put(title, description);
+
+                createServiceListing();
+                backToMain();
             }
         });
 
@@ -80,6 +81,7 @@ public class CreateListingService extends AppCompatActivity {
 
         EditText text = findViewById(R.id.price1);
         str = text.getText().toString();
+        if(str.isEmpty()) str = "0";
         Double cost = Double.parseDouble(str);
 
         text = findViewById(R.id.descriptionText1);

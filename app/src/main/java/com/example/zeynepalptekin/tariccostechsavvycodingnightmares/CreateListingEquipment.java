@@ -74,6 +74,9 @@ public class CreateListingEquipment extends AppCompatActivity {
                 createEquipmentListing();
 //                aController.getListingMap().put(title, description);
 
+                createEquipmentListing();
+                backToMain();
+
             }
         });
     }

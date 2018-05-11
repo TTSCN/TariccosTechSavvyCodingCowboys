@@ -80,6 +80,7 @@ public class CreateListingService extends AppCompatActivity {
 
         EditText text = findViewById(R.id.price1);
         str = text.getText().toString();
+        if(str.isEmpty()) str = "0";
         Double cost = Double.parseDouble(str);
 
         text = findViewById(R.id.descriptionText1);

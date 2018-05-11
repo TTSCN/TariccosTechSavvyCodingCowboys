@@ -62,6 +62,7 @@ public class CreateListingService extends AppCompatActivity {
                 System.out.println(description);
 */
                 createServiceListing();
+                backToMain();
 
 //                aController.getListingMap().put(title, description);
             }

@@ -70,8 +70,6 @@ public class CreateListingEquipment extends AppCompatActivity {
                 String description = editText.getText().toString();
                 System.out.println(description);
 */
-
-                createEquipmentListing();
 //                aController.getListingMap().put(title, description);
 
                 createEquipmentListing();

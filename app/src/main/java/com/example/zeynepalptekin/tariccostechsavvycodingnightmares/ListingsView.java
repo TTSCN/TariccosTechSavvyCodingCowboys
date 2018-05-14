@@ -6,6 +6,7 @@ import android.app.ListActivity;
 import android.app.LoaderManager;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,10 +14,13 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 
@@ -79,7 +83,7 @@ public class ListingsView extends Activity {
                     for (DataSnapshot listings : dataSnapshot.getChildren()) {
                         String descript = listings.child("description").getValue(String.class);
                         String titles = listings.child("title").getValue(String.class);
-                        Log.d("help",descript);
+                        Log.d("help", descript);
                         itemsList.add(descript);
                     }
                     mAdapter.setItems(itemsList);
@@ -97,9 +101,6 @@ public class ListingsView extends Activity {
 
             mAdapter.setItems(list);
 
-            // use this setting to improve performance if you know that changes
-            // in content do not change the layout size of the RecyclerView
-            myRecyclerView.setHasFixedSize(false);
         }
     }
 }

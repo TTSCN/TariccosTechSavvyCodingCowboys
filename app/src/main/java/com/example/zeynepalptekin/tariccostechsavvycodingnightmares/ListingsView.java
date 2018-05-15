@@ -6,7 +6,6 @@ import android.app.ListActivity;
 import android.app.LoaderManager;
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,13 +13,11 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 
@@ -64,7 +61,7 @@ public class ListingsView extends Activity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            String[] account = bundle.getStringArray("account");
+            final String[] account = bundle.getStringArray("account");
             a = new Account(account[0], account[1], account[2], account[3], account[4]);
             Log.d("account", "Account in ListingsView " + a.getEmail());
 
@@ -81,10 +78,11 @@ public class ListingsView extends Activity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot listings : dataSnapshot.getChildren()) {
+                        String emails = listings.child("email").getValue(String.class);
                         String descript = listings.child("description").getValue(String.class);
                         String titles = listings.child("title").getValue(String.class);
-                        Log.d("help", descript);
-                        itemsList.add(descript);
+                        Log.d("help",descript);
+                        itemsList.add(titles + " by " + emails + " : " + descript);
                     }
                     mAdapter.setItems(itemsList);
                     myRecyclerView.setAdapter(mAdapter);
@@ -103,6 +101,49 @@ public class ListingsView extends Activity {
 
         }
     }
+
+    public void searchBar() {
+        EditText searchBar = findViewById(R.id.searchInput);
+        searchBar.getText().toString();
+
+    }
+
+//    @Override
+//    public Filter getFilter() {
+//        return new Filter() {
+//            @Override
+//            protected FilterResults performFiltering(CharSequence charSequence) {
+//                String charString = charSequence.toString();
+//                if (charString.isEmpty()) {
+//                    contactListFiltered = contactList;
+//                } else {
+//                    List<Contact> filteredList = new ArrayList<>();
+//                    for (Contact row : contactList) {
+//
+//                        // name match condition. this might differ depending on your requirement
+//                        // here we are looking for name or phone number match
+//                        if (row.getName().toLowerCase().contains(charString.toLowerCase()) || row.getPhone().contains(charSequence)) {
+//                            filteredList.add(row);
+//                        }
+//                    }
+//
+//                    contactListFiltered = filteredList;
+//                }
+//
+//                FilterResults filterResults = new FilterResults();
+//                filterResults.values = contactListFiltered;
+//                return filterResults;
+//            }
+//
+//            @Override
+//            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+//                contactListFiltered = (ArrayList<Contact>) filterResults.values;
+//
+//                // refresh the list with filtered data
+//                notifyDataSetChanged();
+//            }
+//        };
+//    }
 }
 
 

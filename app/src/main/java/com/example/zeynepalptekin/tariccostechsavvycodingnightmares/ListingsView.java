@@ -67,6 +67,7 @@ public class ListingsView extends Activity {
 
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             final DatabaseReference listingsRef = database.getReference("serviceListings");
+            final DatabaseReference listingsRef2 = database.getReference("equipmentListings");
 
             final RecyclerView myRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
             myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -75,6 +76,26 @@ public class ListingsView extends Activity {
 //            myRecyclerView.setAdapter(mAdapter);
 
             listingsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot listings : dataSnapshot.getChildren()) {
+                        String emails = listings.child("email").getValue(String.class);
+                        String descript = listings.child("description").getValue(String.class);
+                        String titles = listings.child("title").getValue(String.class);
+                        Log.d("help",descript);
+                        itemsList.add(titles + " by " + emails + " : " + descript);
+                    }
+                    mAdapter.setItems(itemsList);
+                    myRecyclerView.setAdapter(mAdapter);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            listingsRef2.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot listings : dataSnapshot.getChildren()) {

@@ -4,101 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchForListings">
+    tools:context=".SearchForListings"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/searchListingsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginTop="108dp"
         android:fontFamily="casual"
         android:text="@string/title2"
         android:textColor="@color/colorText"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/kewWordsEdit"
-        android:layout_width="192dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/keyword"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchListingsView" />
-
-    <EditText
         android:id="@+id/typeEdit"
         android:layout_width="194dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="36dp"
         android:ems="10"
+        android:hint="@string/listingType"
         android:inputType="textPersonName"
-        android:text="@string/listingType"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/maxPriceEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchListingsView"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/maxPriceEdit"
-        android:layout_width="193dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="220dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/priceMaximum"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/maxPrice"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/searchButton"
-        android:layout_width="153dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginStart="31dp"
         android:background="@color/colorPrimary"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/search"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/maxPriceEdit"
-        app:layout_constraintVertical_bias="0.217" />
+        app:layout_constraintBottom_toTopOf="@+id/backToMain1"
+        app:layout_constraintEnd_toEndOf="@+id/maxPrice"
+        app:layout_constraintStart_toStartOf="@+id/maxPrice"
+        app:layout_constraintTop_toBottomOf="@+id/maxPrice" />
 
     <Button
         android:id="@+id/backToMain1"
         android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginStart="32dp"
         android:background="@color/colorPrimary"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/backToMain"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/searchButton"
         app:layout_constraintTop_toBottomOf="@+id/searchButton" />
+
+    <EditText
+        android:id="@+id/maxPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginStart="74dp"
+        android:ems="10"
+        android:hint="@string/priceMaximum"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/searchButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeEdit" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginStart="26dp"
+        android:text="@string/typeeors"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/typeEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchListingsView"
+        tools:text="@string/typeeors" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="364dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class SearchForListings extends AppCompatActivity {
 
     Account a;
+    String[] parameters;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,31 +42,28 @@ public class SearchForListings extends AppCompatActivity {
         searchListings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                parameters = getParameters();
                 viewListings();
             }
         });
     }
 
-    public ArrayList<Object> getParameters(){
-        ArrayList<Object> parameters = new ArrayList<>();
-
-        //adds the keywords to the arraylist of parameters
-        EditText text = findViewById(R.id.kewWordsEdit);
-        String str = text.getText().toString();
-        parameters.add(str);
+    public String[] getParameters(){
+        String[] params = new String[2];
 
         //adds the type to the arraylist of parameters
-        text = findViewById(R.id.typeEdit);
-        str = text.getText().toString();
-        parameters.add(str);
+        EditText text = findViewById(R.id.typeEdit);
+       String str = text.getText().toString();
+       if(str.isEmpty()) str = "none";
+        params[0] = str;
 
         //adds the max price to the arraylist of parameters
-        text = findViewById(R.id.maxPriceEdit);
+        text = findViewById(R.id.maxPrice);
         str = text.getText().toString();
-        Double price = Double.parseDouble(str);
-        parameters.add(price);
+        if(str.isEmpty()) str = "none";
+        params[1] = str;
 
-        return parameters;
+        return params;
 
     }
 
@@ -86,6 +84,7 @@ public class SearchForListings extends AppCompatActivity {
                     a.getPassword()};
             intent.putExtra("account",account);
         }
+        if(parameters!=null) intent.putExtra("parameters",parameters);
         startActivity(intent);
     }
 }

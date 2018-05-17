@@ -45,6 +45,8 @@ public class ListingsView extends Activity {
     private RecyclerView.LayoutManager mLayoutManager;
 
     Account a;
+    String type;
+    double mCost;
     ArrayList<String>keys=new ArrayList<>();
     ;
     private ArrayList<Listing> arrayList = new ArrayList<>();
@@ -65,8 +67,14 @@ public class ListingsView extends Activity {
             a = new Account(account[0], account[1], account[2], account[3], account[4]);
             Log.d("account", "Account in ListingsView " + a.getEmail());
 
+            String[] parameters = bundle.getStringArray("parameters");
+            type = parameters[0];
+            if(parameters[1].equals("none")) mCost = -1;
+            else mCost = Double.parseDouble(parameters[1]);
+
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             final DatabaseReference listingsRef = database.getReference("serviceListings");
+            final DatabaseReference listingsRef2 = database.getReference("equipmentListings");
 
             final RecyclerView myRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
             myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -74,26 +82,59 @@ public class ListingsView extends Activity {
             final MyAdapter mAdapter = new MyAdapter();
 //            myRecyclerView.setAdapter(mAdapter);
 
-            listingsRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot listings : dataSnapshot.getChildren()) {
-                        String emails = listings.child("email").getValue(String.class);
-                        String descript = listings.child("description").getValue(String.class);
-                        String titles = listings.child("title").getValue(String.class);
-                        Log.d("help",descript);
-                        itemsList.add(titles + " by " + emails + " : " + descript);
+            if(type.equals("none")||type.equals("s")||type.equals("S")) {
+                listingsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot listings : dataSnapshot.getChildren()) {
+                            String emails = listings.child("email").getValue(String.class);
+                            String descript = listings.child("description").getValue(String.class);
+                            String titles = listings.child("title").getValue(String.class);
+                            double cost = listings.child("cost").getValue(double.class);
+                            Log.d("help", descript);
+                            if(mCost==-1)itemsList.add(titles + " by " + emails + " : " + descript);
+                            else{
+                                if(cost<=mCost) itemsList.add(titles + " by " + emails + " : " + descript);
+                            }
+
+                        }
+                        mAdapter.setItems(itemsList);
+                        myRecyclerView.setAdapter(mAdapter);
                     }
-                    mAdapter.setItems(itemsList);
-                    myRecyclerView.setAdapter(mAdapter);
-                }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
+                    }
+                });
+            }
 
+            if(type.equals("none")||type.equals("e")||type.equals("E")) {
+                listingsRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot listings : dataSnapshot.getChildren()) {
+                            String emails = listings.child("email").getValue(String.class);
+                            String descript = listings.child("description").getValue(String.class);
+                            String titles = listings.child("title").getValue(String.class);
+                            double cost = listings.child("cost").getValue(double.class);
+                            Log.d("help", descript);
+                            if(mCost==-1)itemsList.add(titles + " by " + emails + " : " + descript);
+                            else{
+                                if(cost<=mCost) itemsList.add(titles + " by " + emails + " : " + descript);
+                            }
+
+                        }
+                        mAdapter.setItems(itemsList);
+                        myRecyclerView.setAdapter(mAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
             List<String> list = new ArrayList<>();
             list.addAll(itemsList);
 
@@ -102,11 +143,11 @@ public class ListingsView extends Activity {
         }
     }
 
-    public void searchBar() {
+   /* public void searchBar() {
         EditText searchBar = findViewById(R.id.searchInput);
         searchBar.getText().toString();
 
-    }
+    } */
 
 //    @Override
 //    public Filter getFilter() {

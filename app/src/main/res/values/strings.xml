@@ -32,4 +32,5 @@
     <string name="backToMain">Back to Main</string>
     <string name="name">name</string>
     <string name="youMust">You must be logged in before creating or searching for a listing.</string>
+    <string name="typeeors">"Type "e" for "equipment" or "s" for "service"</string>
 </resources>

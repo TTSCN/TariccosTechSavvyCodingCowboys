@@ -47,6 +47,8 @@ public class ListingsView extends Activity {
     Account a;
     String type;
     double mCost;
+    String tTown;
+    String tState;
     ArrayList<String>keys=new ArrayList<>();
     ;
     private ArrayList<Listing> arrayList = new ArrayList<>();
@@ -71,6 +73,8 @@ public class ListingsView extends Activity {
             type = parameters[0];
             if(parameters[1].equals("none")) mCost = -1;
             else mCost = Double.parseDouble(parameters[1]);
+            tTown = parameters[2];
+            tState = parameters[3];
 
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             final DatabaseReference listingsRef = database.getReference("serviceListings");
@@ -91,12 +95,17 @@ public class ListingsView extends Activity {
                             String descript = listings.child("description").getValue(String.class);
                             String titles = listings.child("title").getValue(String.class);
                             double cost = listings.child("cost").getValue(double.class);
+                            String town = listings.child("town").getValue(String.class);
+                            String state = listings.child("state").getValue(String.class);
+
                             Log.d("help", descript);
-                            if(mCost==-1)itemsList.add(titles + " by " + emails + " : " + descript);
-                            else{
+                            if(mCost==-1 && tTown.isEmpty())itemsList.add(titles + " by " + emails + " : " + descript);
+                            else if(tTown.isEmpty() && cost != -1){
                                 if(cost<=mCost) itemsList.add(titles + " by " + emails + " : " + descript);
                             }
+                            else if(cost == -1 && !tTown.isEmpty()) {
 
+                            }
                         }
                         mAdapter.setItems(itemsList);
                         myRecyclerView.setAdapter(mAdapter);
@@ -118,6 +127,8 @@ public class ListingsView extends Activity {
                             String descript = listings.child("description").getValue(String.class);
                             String titles = listings.child("title").getValue(String.class);
                             double cost = listings.child("cost").getValue(double.class);
+                            String state = listings.child("state").getValue(String.class);
+                            String town = listings.child("town").getValue(String.class);
                             Log.d("help", descript);
                             if(mCost==-1)itemsList.add(titles + " by " + emails + " : " + descript);
                             else{

@@ -46,10 +46,21 @@ public class SearchForListings extends AppCompatActivity {
                 viewListings();
             }
         });
+
+        Button onlyInMy = findViewById(R.id.onlyButton);
+        onlyInMy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                parameters = getParameters();
+                parameters[2] = a.getLocation().getTown();
+                parameters[3] = a.getLocation().getState();
+                viewListings();
+            }
+        });
     }
 
     public String[] getParameters(){
-        String[] params = new String[2];
+        String[] params = new String[4];
 
         //adds the type to the arraylist of parameters
         EditText text = findViewById(R.id.typeEdit);
@@ -62,6 +73,9 @@ public class SearchForListings extends AppCompatActivity {
         str = text.getText().toString();
         if(str.isEmpty()) str = "none";
         params[1] = str;
+
+        params[2] = "";
+        params[3] = "";
 
         return params;
 

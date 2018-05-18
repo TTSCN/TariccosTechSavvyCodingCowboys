@@ -65,14 +65,16 @@ public class SearchForListings extends AppCompatActivity {
         //adds the type to the arraylist of parameters
         EditText text = findViewById(R.id.typeEdit);
        String str = text.getText().toString();
-       if(str.isEmpty()) str = "none";
-        params[0] = str;
+       if(str.isEmpty()) params[0] = "none";
+       else params[0] = str;
+
 
         //adds the max price to the arraylist of parameters
         text = findViewById(R.id.maxPrice);
         str = text.getText().toString();
-        if(str.isEmpty()) str = "none";
-        params[1] = str;
+        if(str.isEmpty()) params[1] = "none";
+        else if(str.toLowerCase()=="e"||str.toLowerCase()=="s") params[1] = str;
+        else params[1] = "none";
 
         params[2] = "";
         params[3] = "";

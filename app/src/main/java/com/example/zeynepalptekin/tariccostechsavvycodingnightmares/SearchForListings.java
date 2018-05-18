@@ -15,9 +15,20 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * class that prompts users to enter parameters for listings to view
+ * brings the user to the ViewListings activity
+ */
 public class SearchForListings extends AppCompatActivity {
 
+    /**
+     * account of the user
+     */
     Account a;
+
+    /**
+     * user-entered parameters to search for listings to view
+     */
     String[] parameters;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +70,10 @@ public class SearchForListings extends AppCompatActivity {
         });
     }
 
+    /**
+     * retrieves the user-entered parameters
+     * @return the parameters in a string array
+     */
     public String[] getParameters(){
         String[] params = new String[4];
 
@@ -83,6 +98,10 @@ public class SearchForListings extends AppCompatActivity {
 
     }
 
+    /**
+     * brings the user back to the main activity
+     * passes the account information of the user back to the main activity
+     */
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null){
@@ -93,6 +112,11 @@ public class SearchForListings extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * brings the user to the ViewListings activity
+     * passes the account of the user to the ViewListings activity
+     * passes the parameters to the ViewListings activity
+     */
     public void viewListings(){
         Intent intent = new Intent(this, ListingsView.class);
         if(a != null){

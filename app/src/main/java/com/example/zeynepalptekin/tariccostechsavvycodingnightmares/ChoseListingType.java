@@ -10,9 +10,15 @@ import android.widget.Button;
 import java.util.ArrayList;
 
 public class ChoseListingType extends AppCompatActivity {
+    /**
+     * account of the user who is logged in
+     */
+    Account a;
 
-Account a;
-
+    /** intermediary class that prompts the user to
+     * select a service or equipment listing to make
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +57,9 @@ Account a;
         });
     }
 
+    /**
+     * if the user wants to create a service listing
+     */
     public void clickService() {
         Intent intent = new Intent(this, CreateListingService.class);
         intent.putExtra("type","service");
@@ -61,6 +70,7 @@ Account a;
         startActivity(intent);
     }
 
+    /**if the user wants to create an equipment listing*/
     public void clickEquipment() {
         Intent intent = new Intent(this, CreateListingEquipment.class);
         intent.putExtra("type","equipment");
@@ -71,6 +81,10 @@ Account a;
         startActivity(intent);
     }
 
+    /**
+     * brings user back to the main activity
+     * passes account info to main activity
+     */
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null){

@@ -16,8 +16,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * class that allows user to create an account
+ * creating an account will log the user into that account
+ * pushes new account to firebase
+ */
 public class FirstScreen extends AppCompatActivity {
+    /**
+     * account the user will create
+     */
     Account a;
+
     /**
      * hashmap of emails to accounts
      */
@@ -47,6 +56,11 @@ public class FirstScreen extends AppCompatActivity {
 
     }
 
+    /**
+     * creates an account from user-entered information
+     * pushes account to firebase
+     * @param v xml of the activity
+     */
     public void createAccount(View v){
         a = new Account();
         EditText text = findViewById(R.id.nameText);
@@ -79,6 +93,10 @@ public class FirstScreen extends AppCompatActivity {
     }
 
 
+    /**
+     * brings the user back to the main activity
+     * passes the account of the user back to the main activity
+     */
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null) {

@@ -39,16 +39,42 @@ import java.util.ResourceBundle;
 
 import static android.content.ContentValues.TAG;
 
+/**
+ * class that prints listing information from firebase to show user
+ * takes parameters from SearchForListings activity to filter out
+ * listings the user does not want to view
+ */
 public class ListingsView extends Activity {
     private RecyclerView myRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+    /**
+     * account of the user who is viewing listings
+     */
     Account a;
+
+    /**
+     * the type of listing that the user is looking for
+     * "s" for service, "e" for equipment, or "none" for no specific type
+     */
     String type;
+
+    /**
+     * the maximum cost of the listings the user is looking for
+     */
     double mCost;
+
+    /**
+     * the town where the user is looking for a listing
+     */
     String tTown;
+
+    /**
+     * the state where the user is looking for a listing
+     */
     String tState;
+
     ArrayList<String>keys=new ArrayList<>();
     ;
     private ArrayList<Listing> arrayList = new ArrayList<>();

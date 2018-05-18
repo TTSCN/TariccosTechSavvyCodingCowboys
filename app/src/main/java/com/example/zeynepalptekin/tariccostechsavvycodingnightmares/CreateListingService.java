@@ -15,8 +15,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * the class allows the user to create a service listing
+ * listing is pushed to firebase
+ */
 public class CreateListingService extends AppCompatActivity {
+    /**
+     * image code is not used by the user in the app
+     */
     public static final int PICK_IMAGE = 1;
+
+    /**
+     * account of the user
+     */
     Account a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +84,10 @@ public class CreateListingService extends AppCompatActivity {
     }
 
 
-    //TODO: this is just a placeholder variable. Not linked to anything
+    /**
+     * creates a service listing from user-entered information
+     * pushes the listing to firebase
+     */
     public void createServiceListing(){
 
         Log.d("Magnus", "in create service listing");
@@ -105,6 +119,10 @@ public class CreateListingService extends AppCompatActivity {
 
     }
 
+    /**
+     * brings the use back to the main activity
+     * passes the user account information to the main activity
+     */
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null){
@@ -114,6 +132,9 @@ public class CreateListingService extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * not used in the app
+     */
     public void addImage() {
         Intent intent = new Intent();
         intent.setType("image/*");

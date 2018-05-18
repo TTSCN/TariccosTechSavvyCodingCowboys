@@ -9,7 +9,6 @@ public class Controller extends Application
     private HashMap<String, String> myData = new HashMap<>();
 
     public HashMap<String, String> getListingMap() {
-
         return myData;
     }
 }

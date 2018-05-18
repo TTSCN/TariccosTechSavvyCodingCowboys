@@ -62,6 +62,8 @@ public class Account {
         password = Password;
     }
 
+    /*https://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents*/
+
    // /**
    //  * creates account object from parcel
      //* @param p parcel object

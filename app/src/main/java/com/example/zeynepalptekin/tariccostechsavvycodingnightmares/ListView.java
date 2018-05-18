@@ -24,13 +24,13 @@ public class ListView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
-
+/*
         nDatabase = FirebaseDatabase.getInstance().getReference();
 
         search = (Button) findViewById(R.id.search);
         etDatabase = (EditText) findViewById(R.id.etDatabase);
         listView = findViewById(R.id.database_list_view);
-
+*/
 
     }
 }

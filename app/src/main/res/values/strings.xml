@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tools Pitch</string>
+    <string name="app_name">ToolsPitch</string>
     <string name="title">Create your listing</string>
     <string name="introQuestion">Would you like to...</string>
     <string name="listingButton">Create a listing</string>
@@ -32,5 +32,6 @@
     <string name="backToMain">Back to Main</string>
     <string name="name">name</string>
     <string name="youMust">You must be logged in before creating or searching for a listing.</string>
-    <string name="wantedLocation" />
+    <string name="typeeors">"Type "e" for "equipment" or "s" for "service"</string>
+    <string name="only">Only in My Location</string>
 </resources>

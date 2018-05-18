@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class SearchForListings extends AppCompatActivity {
 
     Account a;
+    String[] parameters;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,31 +42,44 @@ public class SearchForListings extends AppCompatActivity {
         searchListings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                parameters = getParameters();
+                viewListings();
+            }
+        });
+
+        Button onlyInMy = findViewById(R.id.onlyButton);
+        onlyInMy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                parameters = getParameters();
+                parameters[2] = a.getLocation().getTown();
+                parameters[3] = a.getLocation().getState();
                 viewListings();
             }
         });
     }
 
-    public ArrayList<Object> getParameters(){
-        ArrayList<Object> parameters = new ArrayList<>();
-
-        //adds the keywords to the arraylist of parameters
-        EditText text = findViewById(R.id.kewWordsEdit);
-        String str = text.getText().toString();
-        parameters.add(str);
+    public String[] getParameters(){
+        String[] params = new String[4];
 
         //adds the type to the arraylist of parameters
-        text = findViewById(R.id.typeEdit);
-        str = text.getText().toString();
-        parameters.add(str);
+        EditText text = findViewById(R.id.typeEdit);
+       String str = text.getText().toString();
+       if(str.isEmpty()) params[0] = "none";
+       else params[0] = str;
+
 
         //adds the max price to the arraylist of parameters
-        text = findViewById(R.id.maxPriceEdit);
+        text = findViewById(R.id.maxPrice);
         str = text.getText().toString();
-        Double price = Double.parseDouble(str);
-        parameters.add(price);
+        if(str.isEmpty()) params[1] = "none";
+        else if(str.toLowerCase()=="e"||str.toLowerCase()=="s") params[1] = str;
+        else params[1] = "none";
 
-        return parameters;
+        params[2] = "";
+        params[3] = "";
+
+        return params;
 
     }
 
@@ -86,6 +100,7 @@ public class SearchForListings extends AppCompatActivity {
                     a.getPassword()};
             intent.putExtra("account",account);
         }
+        if(parameters!=null) intent.putExtra("parameters",parameters);
         startActivity(intent);
     }
 }

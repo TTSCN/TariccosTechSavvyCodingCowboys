@@ -45,6 +45,10 @@ public class ListingsView extends Activity {
     private RecyclerView.LayoutManager mLayoutManager;
 
     Account a;
+    String type;
+    double mCost;
+    String tTown;
+    String tState;
     ArrayList<String>keys=new ArrayList<>();
     ;
     private ArrayList<Listing> arrayList = new ArrayList<>();
@@ -65,6 +69,14 @@ public class ListingsView extends Activity {
             a = new Account(account[0], account[1], account[2], account[3], account[4]);
             Log.d("account", "Account in ListingsView " + a.getEmail());
 
+            String[] parameters = bundle.getStringArray("parameters");
+            type = parameters[0];
+            Log.d("parameters",parameters[1]);
+            if(parameters[1].equals("none")) mCost = -1;
+            else mCost = Double.parseDouble(parameters[1]);
+            tTown = parameters[2];
+            tState = parameters[3];
+
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             final DatabaseReference listingsRef = database.getReference("serviceListings");
             final DatabaseReference listingsRef2 = database.getReference("equipmentListings");
@@ -75,46 +87,102 @@ public class ListingsView extends Activity {
             final MyAdapter mAdapter = new MyAdapter();
 //            myRecyclerView.setAdapter(mAdapter);
 
-            listingsRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot listings : dataSnapshot.getChildren()) {
-                        String emails = listings.child("email").getValue(String.class);
-                        String descript = listings.child("description").getValue(String.class);
-                        String titles = listings.child("title").getValue(String.class);
-                        Log.d("help",descript);
-                        itemsList.add(titles + " by " + emails + " : " + descript);
+            if(type.equals("none")||type.equals("s")||type.equals("S")) {
+                listingsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot listings : dataSnapshot.getChildren()) {
+                            String emails = listings.child("email").getValue(String.class);
+                            String descript = listings.child("description").getValue(String.class);
+                            String titles = listings.child("title").getValue(String.class);
+                            double cost = listings.child("cost").getValue(double.class);
+                            String town = listings.child("town").getValue(String.class);
+                            Log.d("town",tTown + " " + town);
+                            String state = listings.child("state").getValue(String.class);
+                            Log.d("state",tState + " " + state);
+                            if(tState.toLowerCase().equals(state.toLowerCase())) {
+                                Log.d("stateBoolean","true");
+                            }
+
+                            Log.d("help", descript);
+                            if(mCost==-1 && tTown.isEmpty())itemsList.add(titles + " by " + emails + " : " + descript);
+                            else if(tTown.isEmpty() && cost != -1){
+                                if(cost<=mCost) itemsList.add(titles + " by " + emails + " : " + descript);
+                            }
+                            else if(mCost == -1 && !tTown.isEmpty()) {
+                                Log.d("in conditional","in conditional");
+                                if(tTown.toLowerCase().equals(town.toLowerCase())
+                                        && tState.toLowerCase().equals(state.toLowerCase())){
+                                    itemsList.add(titles + " by " + emails + " : " + descript);
+                                }
+                            }
+                            else if(mCost!=-1 && !tTown.isEmpty()) {
+                                Log.d("in conditional","in conditional");
+                                if(cost<=mCost && tTown.toLowerCase().equals(town.toLowerCase())
+                                && tState.toLowerCase().equals(state.toLowerCase())){
+                                    itemsList.add(titles + " by " + emails + " : " + descript);
+                                }
+                            }
+                        }
+                        mAdapter.setItems(itemsList);
+                        myRecyclerView.setAdapter(mAdapter);
                     }
-                    mAdapter.setItems(itemsList);
-                    myRecyclerView.setAdapter(mAdapter);
-                }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
-
-            listingsRef2.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot listings : dataSnapshot.getChildren()) {
-                        String emails = listings.child("email").getValue(String.class);
-                        String descript = listings.child("description").getValue(String.class);
-                        String titles = listings.child("title").getValue(String.class);
-                        Log.d("help",descript);
-                        itemsList.add(titles + " by " + emails + " : " + descript);
                     }
-                    mAdapter.setItems(itemsList);
-                    myRecyclerView.setAdapter(mAdapter);
-                }
+                });
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+            if(type.equals("none")||type.equals("e")||type.equals("E")) {
+                listingsRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot listings : dataSnapshot.getChildren()) {
+                            String emails = listings.child("email").getValue(String.class);
+                            String descript = listings.child("description").getValue(String.class);
+                            String titles = listings.child("title").getValue(String.class);
+                            double cost = listings.child("cost").getValue(double.class);
+                            String state = listings.child("state").getValue(String.class);
+                            String town = listings.child("town").getValue(String.class);
+                            if(tTown.toLowerCase().equals(town.toLowerCase())
+                                    && tState.toLowerCase().equals(state.toLowerCase())) {
+                                Log.d("locationBoolean","true");
+                            }
+                            Log.d("help", descript);
 
-                }
-            });
+                            if(mCost==-1 && tTown.isEmpty())itemsList.add(titles + " by " + emails + " : " + descript);
+                            else if(tTown.isEmpty() && cost != -1){
+                                if(cost<=mCost) itemsList.add(titles + " by " + emails + " : " + descript);
+                            }
+                            else if(mCost == -1 && !tTown.isEmpty()) {
+                                Log.d("in conditional","in conditional");
+                                if(tTown.toLowerCase().equals(town.toLowerCase())
+                                        && tState.toLowerCase().equals(state.toLowerCase())){
+                                    itemsList.add(titles + " by " + emails + " : " + descript);
+                                    Log.d("in conditional","added to list");
+                                }
+                            }
+                            else if(mCost!=-1 && !tTown.isEmpty()) {
+                                Log.d("in conditional","in conditional");
+                                if(cost<=mCost && tTown.toLowerCase().equals(town.toLowerCase())
+                                        && tState.toLowerCase().equals(state.toLowerCase())){
+                                          itemsList.add(titles + " by " + emails + " : " + descript);
+                                }
+                            }
 
+                        }
+                        mAdapter.setItems(itemsList);
+                        myRecyclerView.setAdapter(mAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
             List<String> list = new ArrayList<>();
             list.addAll(itemsList);
 
@@ -123,11 +191,11 @@ public class ListingsView extends Activity {
         }
     }
 
-    public void searchBar() {
+   /* public void searchBar() {
         EditText searchBar = findViewById(R.id.searchInput);
         searchBar.getText().toString();
 
-    }
+    } */
 
 //    @Override
 //    public Filter getFilter() {

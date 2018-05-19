@@ -8,6 +8,9 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * a previous attempt/version of the ListingsView activity
+ */
 public class ListView extends AppCompatActivity {
 
     Account a;

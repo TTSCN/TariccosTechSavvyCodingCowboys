@@ -14,7 +14,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * class that allows the user to log into an existing account
+ * or allow user to continue onto an activity that will allow
+ * the user to create an account
+ */
 public class LoginScreen extends AppCompatActivity {
+    /**
+     * account of the user
+     */
     Account a;
 
     @Override
@@ -45,6 +53,11 @@ public class LoginScreen extends AppCompatActivity {
         });
     }
 
+    /**
+     * logs the user into a pre-existing account by
+     * pulling accounts from firebase and looking for
+     * matching emails and passwords
+     */
     public void login() {
         EditText user = findViewById(R.id.emailEdit);
         final String email = user.getText().toString();
@@ -59,6 +72,10 @@ public class LoginScreen extends AppCompatActivity {
         Log.d("firebase","firebase referenced");
 
 
+        /**
+         * pulls accounts from firebase and checks if the account email and password
+         * match the user-entered email and password
+         */
         usersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -83,12 +100,19 @@ public class LoginScreen extends AppCompatActivity {
 
 }
 
+    /**
+     * brings user to the FirstScreen class
+     */
     public void clickCreateAccount() {
         Log.d("clickCreateAccount","clickCreateAccount is running");
         Intent intent = new Intent(this, FirstScreen.class);
         startActivity(intent);
     }
 
+    /**
+     * brings the user back to the main menu
+     * passes the account information of the user back to the main menu
+     */
     public void backToMain() {
         Intent intent = new Intent(this,MainActivity.class);
         if(a != null) {

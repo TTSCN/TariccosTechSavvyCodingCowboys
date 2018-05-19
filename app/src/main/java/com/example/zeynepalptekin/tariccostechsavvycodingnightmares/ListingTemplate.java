@@ -8,7 +8,16 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+/**
+ * class that did not make it into the final app
+ * originally, this class would have been what the user
+ * was brought to after clicking on a listing in the
+ * ListingsView activity
+ */
 public class ListingTemplate extends AppCompatActivity {
+    /**
+     * account of the user
+     */
     Account a;
     Listing l;
     @Override

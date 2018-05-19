@@ -22,10 +22,20 @@ import java.util.Map;
 
 import static com.example.zeynepalptekin.tariccostechsavvycodingnightmares.CreateListingService.PICK_IMAGE;
 
+/**
+ * this class allows the user to make an equipment listing
+ * listing is then stored in firebase
+ */
 public class CreateListingEquipment extends AppCompatActivity {
+    /**
+     * image code is not actually called while the app is running
+     */
     public static final int PICK_IMAGE = 100;
     Uri imageUri;
 
+    /**
+     * account of the user who is logged in
+     */
     Account a;
 
     Listing listing;
@@ -80,7 +90,10 @@ public class CreateListingEquipment extends AppCompatActivity {
         });
     }
 
-    //TODO: this is just a placeholder variable. Not linked to anything
+    /**
+     * creates a listing from the user-entered information
+     * pushes object to firebase
+     */
     public void createEquipmentListing(){
 
         Log.d("Magnus", "in create equipment listing");
@@ -111,6 +124,11 @@ public class CreateListingEquipment extends AppCompatActivity {
         equipmentListingsRef.push().setValue(equipL);
     }
 
+    /**
+     * brings user back to the main activity
+     * passes the account information from the user to
+     * main activity
+     */
     public void backToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         if(a != null){
@@ -120,11 +138,20 @@ public class CreateListingEquipment extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * not used in the app
+     */
     private void addImage() {
         Intent image = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(image, PICK_IMAGE);
     }
 
+    /**
+     * not used in the app
+     * @param requestCode
+     * @param resultCode
+     * @param data  intent to open window to select fimle
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);

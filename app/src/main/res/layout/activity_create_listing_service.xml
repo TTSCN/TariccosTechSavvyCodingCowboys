@@ -55,37 +55,36 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/backToMain7"
         app:layout_constraintEnd_toStartOf="@+id/publishButton1"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.246"
         app:layout_constraintStart_toStartOf="@+id/publishButton1" />
 
-    <Button
-        android:id="@+id/addImageButton1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorPrimary"
-        android:fontFamily="sans-serif-condensed"
-        android:text="@string/addImage"
-        app:layout_constraintBottom_toTopOf="@+id/backToMain7"
-        app:layout_constraintEnd_toStartOf="@+id/publishButton1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionText1"
-        app:layout_constraintVertical_bias="0.761" />
+    <!--<Button-->
+        <!--android:id="@+id/addImageButton1"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="25dp"-->
+        <!--android:layout_marginStart="85dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:fontFamily="sans-serif-condensed"-->
+        <!--android:text="@string/addImage"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/backToMain7"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/publishButton1"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/descriptionText1"-->
+        <!--app:layout_constraintVertical_bias="0.761" />-->
 
     <Button
         android:id="@+id/publishButton1"
         android:layout_width="0dp"
         android:layout_height="54dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginTop="20dp"
         android:background="@color/colorPrimary"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/publish"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addImageButton1"
         app:layout_constraintTop_toBottomOf="@+id/descriptionText1" />
 
     <Button

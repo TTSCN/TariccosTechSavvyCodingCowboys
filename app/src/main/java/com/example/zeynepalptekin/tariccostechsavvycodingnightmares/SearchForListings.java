@@ -75,7 +75,7 @@ public class SearchForListings extends AppCompatActivity {
      * @return the parameters in a string array
      */
     public String[] getParameters(){
-        String[] params = new String[4];
+        String[] params = new String[5];
 
         //adds the type to the arraylist of parameters
         EditText text = findViewById(R.id.typeEdit);
@@ -90,6 +90,12 @@ public class SearchForListings extends AppCompatActivity {
         if(str.isEmpty()) params[1] = "none";
         else if(str.toLowerCase()=="e"||str.toLowerCase()=="s") params[1] = str;
         else params[1] = "none";
+
+        //adds the user-defined location to the arraylist of params
+        text = findViewById(R.id.locationEdit);
+        str = text.getText().toString().toLowerCase();
+        if(str.isEmpty()) params[4]=" ";
+        else params[4] = str;
 
         params[2] = "";
         params[3] = "";

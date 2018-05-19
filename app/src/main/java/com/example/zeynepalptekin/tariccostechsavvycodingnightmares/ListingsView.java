@@ -1,5 +1,12 @@
 package com.example.zeynepalptekin.tariccostechsavvycodingnightmares;
 
+/**
+ * used
+ https://stackoverflow.com/questions/37291606/how-do-i-populate-a-listview-with-data-from-firebase?noredirect=1
+ and https://developer.android.com/guide/topics/ui/layout/recyclerview
+ and https://www.youtube.com/watch?v=uTVu3HsRIEE
+ */
+
 import android.app.Activity;
 import android.app.IntentService;
 import android.app.ListActivity;
@@ -102,6 +109,7 @@ public class ListingsView extends Activity {
             else mCost = Double.parseDouble(parameters[1]);
             tTown = parameters[2];
             tState = parameters[3];
+            final String tLoc = parameters[4];
 
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             final DatabaseReference listingsRef = database.getReference("serviceListings");
@@ -131,24 +139,31 @@ public class ListingsView extends Activity {
                             }
 
                             Log.d("help", descript);
-                            if(mCost==-1 && tTown.isEmpty())itemsList.add(titles + " by " + emails + " : " + descript);
+                            if((mCost==-1 && tTown.isEmpty())){
+                                itemsList.add(titles + " by " + emails + " in "+ town +","+ state+ " : " + descript);
+                            }
+                            if((mCost==-1 && tTown.isEmpty())&&(state.contains(tLoc)||
+                                    town.contains(tLoc))){
+                                itemsList.add(titles + " by " + emails + " in "+ town +","+state+ " : " + descript);
+                            }
                             else if(tTown.isEmpty() && cost != -1){
                                 if(cost<=mCost) itemsList.add(titles + " by " + emails + " : " + descript);
                             }
-                            else if(mCost == -1 && !tTown.isEmpty()) {
+                            else if((mCost == -1 && !tTown.isEmpty())) {
                                 Log.d("in conditional","in conditional");
                                 if(tTown.toLowerCase().equals(town.toLowerCase())
                                         && tState.toLowerCase().equals(state.toLowerCase())){
                                     itemsList.add(titles + " by " + emails + " : " + descript);
                                 }
                             }
-                            else if(mCost!=-1 && !tTown.isEmpty()) {
+                            else if((mCost!=-1 && !tTown.isEmpty())) {
                                 Log.d("in conditional","in conditional");
                                 if(cost<=mCost && tTown.toLowerCase().equals(town.toLowerCase())
                                 && tState.toLowerCase().equals(state.toLowerCase())){
                                     itemsList.add(titles + " by " + emails + " : " + descript);
                                 }
                             }
+
                         }
                         mAdapter.setItems(itemsList);
                         myRecyclerView.setAdapter(mAdapter);
@@ -177,24 +192,28 @@ public class ListingsView extends Activity {
                                 Log.d("locationBoolean","true");
                             }
                             Log.d("help", descript);
-
-                            if(mCost==-1 && tTown.isEmpty())itemsList.add(titles + " by " + emails + " : " + descript);
+                            if((mCost==-1 && tTown.isEmpty())){
+                                itemsList.add(titles + " by " + emails + " in "+ town +","+ state+ " : " + descript);
+                            }
+                            if((mCost==-1 && tTown.isEmpty())&&(state.contains(tLoc)||
+                                    town.contains(tLoc))){
+                                itemsList.add(titles + " by " + emails + " in "+ town +","+state+ " : " + descript);
+                            }
                             else if(tTown.isEmpty() && cost != -1){
                                 if(cost<=mCost) itemsList.add(titles + " by " + emails + " : " + descript);
                             }
-                            else if(mCost == -1 && !tTown.isEmpty()) {
+                            else if((mCost == -1 && !tTown.isEmpty())) {
                                 Log.d("in conditional","in conditional");
                                 if(tTown.toLowerCase().equals(town.toLowerCase())
                                         && tState.toLowerCase().equals(state.toLowerCase())){
                                     itemsList.add(titles + " by " + emails + " : " + descript);
-                                    Log.d("in conditional","added to list");
                                 }
                             }
-                            else if(mCost!=-1 && !tTown.isEmpty()) {
+                            else if((mCost!=-1 && !tTown.isEmpty())) {
                                 Log.d("in conditional","in conditional");
                                 if(cost<=mCost && tTown.toLowerCase().equals(town.toLowerCase())
                                         && tState.toLowerCase().equals(state.toLowerCase())){
-                                          itemsList.add(titles + " by " + emails + " : " + descript);
+                                    itemsList.add(titles + " by " + emails + " : " + descript);
                                 }
                             }
 
@@ -217,48 +236,6 @@ public class ListingsView extends Activity {
         }
     }
 
-   /* public void searchBar() {
-        EditText searchBar = findViewById(R.id.searchInput);
-        searchBar.getText().toString();
-
-    } */
-
-//    @Override
-//    public Filter getFilter() {
-//        return new Filter() {
-//            @Override
-//            protected FilterResults performFiltering(CharSequence charSequence) {
-//                String charString = charSequence.toString();
-//                if (charString.isEmpty()) {
-//                    contactListFiltered = contactList;
-//                } else {
-//                    List<Contact> filteredList = new ArrayList<>();
-//                    for (Contact row : contactList) {
-//
-//                        // name match condition. this might differ depending on your requirement
-//                        // here we are looking for name or phone number match
-//                        if (row.getName().toLowerCase().contains(charString.toLowerCase()) || row.getPhone().contains(charSequence)) {
-//                            filteredList.add(row);
-//                        }
-//                    }
-//
-//                    contactListFiltered = filteredList;
-//                }
-//
-//                FilterResults filterResults = new FilterResults();
-//                filterResults.values = contactListFiltered;
-//                return filterResults;
-//            }
-//
-//            @Override
-//            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-//                contactListFiltered = (ArrayList<Contact>) filterResults.values;
-//
-//                // refresh the list with filtered data
-//                notifyDataSetChanged();
-//            }
-//        };
-//    }
 }
 
 
